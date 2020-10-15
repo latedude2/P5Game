@@ -7,6 +7,7 @@ public class NavigationArrow : MonoBehaviour
 
     [SerializeField] private List<NavObject> navObjects;
 
+    private int navObjectFollowed = 0;
 
     void Start()
     {
@@ -17,7 +18,27 @@ public class NavigationArrow : MonoBehaviour
     void Update()
     {
         NavObject navObject = GetNavObjectToFollow(navObjects);
-        transform.LookAt(navObject.transform);
+        //transform.LookAt(navObject.transform);
+        CheckDistance(navObject);
+    }
+
+    private void CheckDistance(NavObject navObject)
+    {
+        float distance = Vector3.Distance(transform.position, navObject.transform.position);
+        if (distance < 10)
+        {
+            navObject.setChecked(true);
+            IterateNew();
+        }
+    }
+
+    private void IterateNew()
+    {
+        navObjectFollowed++;
+        if (navObjects.Count == 0 || navObjects[navObjectFollowed] == null)
+            return;
+
+        navObjects[navObjectFollowed].isFollowed = true;
     }
 
     private NavObject GetNavObjectToFollow(List<NavObject> navObjects)
@@ -29,5 +50,21 @@ public class NavigationArrow : MonoBehaviour
         }
         //if none of the navObjects are followed, take the first one
         return navObjects[0];
+    }
+
+    // Angular speed in radians per sec.
+    public float rotationSpeed = 0.01f;
+    private void LateUpdate()
+    {
+        // Determine which direction to rotate towards
+        Vector3 targetDirection = navObjects[navObjectFollowed].transform.position - transform.position;
+
+        // Rotate the forward vector towards the target direction by one step
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationSpeed * Time.deltaTime, 0.0f);
+
+        Vector3 remapToY = new Vector3(newDirection.x, 0, newDirection.z); 
+
+        // Calculate a rotation a step closer to the target and applies rotation to this object
+        transform.rotation = Quaternion.LookRotation(remapToY);
     }
 }
