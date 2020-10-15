@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class MoveTo : MonoBehaviour
+public class BeeController : MonoBehaviour
 {
     public Transform player;
     public Transform[] points;
