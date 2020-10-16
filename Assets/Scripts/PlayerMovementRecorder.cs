@@ -17,7 +17,6 @@ public class PlayerMovementRecorder : MonoBehaviour
         File.Delete(path);
         //Write some text to the test.txt file
         writer = new StreamWriter(path, true);
-        writer.WriteLine("Start of recording");
     }
 
     //Does not depend on framerate
@@ -25,7 +24,7 @@ public class PlayerMovementRecorder : MonoBehaviour
     {
         counter++;
         if(counter % framesBetweenRecordTakes == 0)   //
-            writer.WriteLine(transform.position);
+            writer.WriteLine(transform.position.x + " " + transform.position.y + " " + transform.position.z);
     }
 
     void OnDisable()
