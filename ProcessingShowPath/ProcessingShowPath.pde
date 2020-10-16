@@ -34,9 +34,9 @@ void lineDraw(String line){
   int y = Integer.parseInt(split(coords[1], ",")[0]);
   int z = Integer.parseInt(split(coords[2], ",")[0]);
   color c = color(255,0,0);
-  pixels[(600 - z)*800 + x*2] = c;
-  pixels[(600 - z)*800 + x*2 + 1] = c;
-  pixels[(600 - z)*800 + x*2 + 800 + 1] = c;
-  pixels[(600 - z)*800 + x*2 + 800] = c;
+  pixels[(600 - z)*800 + x] = c;
+  //pixels[(600 - z)*800 + x*2 + 1] = c;
+  //pixels[(600 - z)*800 + x*2 + 800 + 1] = c;
+  //pixels[(600 - z)*800 + x*2 + 800] = c;
   updatePixels();
 }
