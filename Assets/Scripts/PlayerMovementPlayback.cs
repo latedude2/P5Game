@@ -8,7 +8,6 @@ public class PlayerMovementPlayback : MonoBehaviour
     private StreamReader reader = null;
     FileInfo theSourceFile = null;
     private int counter = 0;
-    string meme;
     [SerializeField] private int framesBetweenRecordTakes = 10; // How many frames between recording of gameobject coordinates
 
     // Start is called before the first frame update
@@ -38,10 +37,8 @@ public class PlayerMovementPlayback : MonoBehaviour
             if(line != null)
             {
                 string[] data = line.Split(' ');
-                Vector3 p = new Vector3(float.Parse(data[0]), float.Parse(data[1]), float.Parse(data[2]));
-                transform.position = p;
-                //transform.rotation = Quaternion.Euler(float.Parse(data[3]), float.Parse(data[4]), float.Parse(data[5]));
-                //transform.eulerAngles = new Vector3(float.Parse(data[3]), float.Parse(data[4]), float.Parse(data[5]));
+                Vector3 position = new Vector3(float.Parse(data[0]), float.Parse(data[1]), float.Parse(data[2]));
+                transform.position = position;
                 // Rotate the cube by converting the angles into a quaternion.
                 Quaternion target = new Quaternion(float.Parse(data[4]), float.Parse(data[5]), float.Parse(data[6]), float.Parse(data[3]));
 
