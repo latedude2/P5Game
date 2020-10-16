@@ -1,0 +1,59 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.IO;
+
+public class PlayerMovementPlayback : MonoBehaviour
+{
+    private StreamReader reader = null;
+    FileInfo theSourceFile = null;
+    private int counter = 0;
+    string meme;
+    [SerializeField] private int framesBetweenRecordTakes = 10; // How many frames between recording of gameobject coordinates
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        string path = "Assets/Resources/test.txt";
+        theSourceFile = new FileInfo(path);
+
+        if (theSourceFile != null && theSourceFile.Exists)
+            reader = theSourceFile.OpenText();
+
+
+        if (reader == null)
+        {
+            Debug.Log("puzzles.txt not found or not readable");
+        }
+
+    }
+
+    //Does not depend on framerate
+    void FixedUpdate()
+    {
+        counter++;
+        if (counter % framesBetweenRecordTakes == 0)
+        {
+            string line = reader.ReadLine();
+            if(line != null)
+            {
+                string[] data = line.Split(' ');
+                Vector3 p = new Vector3(float.Parse(data[0]), float.Parse(data[1]), float.Parse(data[2]));
+                transform.position = p;
+                //transform.rotation = Quaternion.Euler(float.Parse(data[3]), float.Parse(data[4]), float.Parse(data[5]));
+                //transform.eulerAngles = new Vector3(float.Parse(data[3]), float.Parse(data[4]), float.Parse(data[5]));
+                // Rotate the cube by converting the angles into a quaternion.
+                Quaternion target = new Quaternion(float.Parse(data[4]), float.Parse(data[5]), float.Parse(data[6]), float.Parse(data[3]));
+
+                // Dampen towards the target rotation
+                transform.rotation = target;
+                Debug.Log(data[7]);
+            }
+        }
+    }
+
+    void OnDisable()
+    {
+        reader.Close();
+    }
+}
