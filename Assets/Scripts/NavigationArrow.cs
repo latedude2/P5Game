@@ -1,70 +1,87 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class NavigationArrow : MonoBehaviour
+public class NavigationArrow : MonoBehaviour, NavObject.TriggerListener
 {
 
+    // Angular speed in radians per sec.
+    [SerializeField] private float rotationSpeed = 3f;
     [SerializeField] private List<NavObject> navObjects;
 
     private int navObjectFollowed = 0;
 
-    void Start()
+    public void Triggered(NavObject navObject)
     {
-        // when the script starts, the first navObject is set to be followed
-        navObjects[0].isFollowed = true;
+        navObject.isFollowed = false;
+        // if a player moved back
+        if (navObjectFollowed > navObject.Id)
+        {
+            navObjectFollowed = navObject.Id;
+        }
+        navObjectFollowed++;
+        CheckIfNavigationFinished();
+        GetNewObject();
+    }
+
+    void Awake()
+    {
+        SetupNavObjects();
     }
 
     void Update()
     {
-        NavObject navObject = GetNavObjectToFollow(navObjects);
-        //transform.LookAt(navObject.transform);
-        CheckDistance(navObject);
+        CheckIfNavigationFinished();
+        RotateArrow(GetNavObjectToFollow(navObjects[navObjectFollowed]).transform);
     }
 
-    private void CheckDistance(NavObject navObject)
-    {
-        float distance = Vector3.Distance(transform.position, navObject.transform.position);
-        if (distance < 10)
-        {
-            navObject.setChecked(true);
-            IterateNew();
-        }
-    }
 
-    private void IterateNew()
-    {
-        navObjectFollowed++;
-        if (navObjects.Count == 0 || navObjects[navObjectFollowed] == null)
-            return;
-
-        navObjects[navObjectFollowed].isFollowed = true;
-    }
-
-    private NavObject GetNavObjectToFollow(List<NavObject> navObjects)
-    {
-        foreach (NavObject navObject in navObjects)
-        {
-            if (navObject.isFollowed)
-                return navObject;
-        }
-        //if none of the navObjects are followed, take the first one
-        return navObjects[0];
-    }
-
-    // Angular speed in radians per sec.
-    public float rotationSpeed = 0.01f;
-    private void LateUpdate()
+    private void RotateArrow(Transform target)
     {
         // Determine which direction to rotate towards
-        Vector3 targetDirection = navObjects[navObjectFollowed].transform.position - transform.position;
+        Vector3 targetDirection = target.position - transform.position;
 
         // Rotate the forward vector towards the target direction by one step
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationSpeed * Time.deltaTime, 0.0f);
 
-        Vector3 remapToY = new Vector3(newDirection.x, 0, newDirection.z); 
+        // Remap the direction, so the arrow doesn't rotate in vertical axis
+        Vector3 remapWithoutY = new Vector3(newDirection.x, 0, newDirection.z);
 
-        // Calculate a rotation a step closer to the target and applies rotation to this object
-        transform.rotation = Quaternion.LookRotation(remapToY);
+        transform.rotation = Quaternion.LookRotation(remapWithoutY);
+    }
+
+    private NavObject GetNewObject()
+    {
+        CheckIfNavigationFinished();
+        navObjects[navObjectFollowed].isFollowed = true;
+        return navObjects[navObjectFollowed];
+    }
+
+    private NavObject GetNavObjectToFollow(NavObject navObject)
+    {
+        if (navObject.isFollowed)
+        {
+            return navObject;
+        }
+        //if the current object is not followed anymore, take the first one
+        navObjectFollowed = 0;
+        return GetNewObject();
+    }
+
+    private void SetupNavObjects()
+    {
+        for (int iterator = 0; iterator < navObjects.Count; iterator++)
+        {
+            navObjects[iterator].Id = iterator;
+            navObjects[iterator].SetListener = this;
+        }
+    }
+
+    private void CheckIfNavigationFinished()
+    {
+        if (navObjectFollowed >= navObjects.Count || navObjectFollowed < 0)
+        {
+            // do whatever when the navigation was finished
+            navObjectFollowed = 0;
+        }
     }
 }
