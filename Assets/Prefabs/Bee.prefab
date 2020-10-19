@@ -143,6 +143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bee
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: c74493a2f1686d945ab9b74f68feef44, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ceccfb993d662b24eadf6ce4e82eee96, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c74493a2f1686d945ab9b74f68feef44, type: 3}
 --- !u!4 &7075707025481042113 stripped
