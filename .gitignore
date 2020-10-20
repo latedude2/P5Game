@@ -58,3 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Custom 
+Assets/Resources/test.txt
+Assets/Resources/test.txt.meta
+ProjectSettings/Packages/com.unity.polybrush/Settings.json
+
