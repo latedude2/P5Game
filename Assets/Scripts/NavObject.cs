@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class NavObject : MonoBehaviour
 {
     public bool isFollowed = false;
 
-    private int id;
-    public int Id { get => id; set => id = value; }
+    [NonSerialized] public int id;
 
     public interface TriggerListener
     {

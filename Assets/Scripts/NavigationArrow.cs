@@ -14,9 +14,9 @@ public class NavigationArrow : MonoBehaviour, NavObject.TriggerListener
     {
         navObject.isFollowed = false;
         // if a player moved back
-        if (navObjectFollowed > navObject.Id)
+        if (navObjectFollowed > navObject.id)
         {
-            navObjectFollowed = navObject.Id;
+            navObjectFollowed = navObject.id;
         }
         navObjectFollowed++;
         CheckIfNavigationFinished();
@@ -71,7 +71,7 @@ public class NavigationArrow : MonoBehaviour, NavObject.TriggerListener
     {
         for (int iterator = 0; iterator < navObjects.Count; iterator++)
         {
-            navObjects[iterator].Id = iterator;
+            navObjects[iterator].id = iterator;
             navObjects[iterator].SetListener = this;
         }
     }
