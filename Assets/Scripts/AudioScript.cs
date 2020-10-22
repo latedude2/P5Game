@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioScript : MonoBehaviour
 {
-    [SerializeField] private AudioSource audioPlayer;
+    [SerializeField] private AudioSource narrationPlayer;
     [SerializeField] private AudioSource musicPlayer;
 
     private void OnTriggerEnter(Collider other)
@@ -20,8 +20,8 @@ public class AudioScript : MonoBehaviour
             else
             {
                 //Debug.Log("Triggered audio trigger");
-                audioPlayer.clip = other.GetComponent<AudioTrigger>().triggerClip;
-                audioPlayer.Play();
+                narrationPlayer.clip = other.GetComponent<AudioTrigger>().triggerClip;
+                narrationPlayer.Play();
             }
             if(other.GetComponent<AudioTrigger>().destroyOnPlay)
                 Destroy(other);
