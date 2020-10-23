@@ -43,11 +43,19 @@ public class BeeController : MonoBehaviour
         if (navObjects.Count == 0)
             return;
 
-        // Set the agent to go to the currently selected destination.
-        agent.destination = navObjects[destPoint].position;
+        if (destPoint >= navObjects.Count)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            // Set the agent to go to the currently selected destination.
+            agent.destination = navObjects[destPoint].position;
 
 
-        destPoint = (destPoint + 1);
+            destPoint = (destPoint + 1);
+        }
+
     }
 
 }
