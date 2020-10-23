@@ -71,17 +71,16 @@ public class NavigationArrow : MonoBehaviour, NavObject.TriggerListener
 
     private void SetupNavObjects()
     {
+        int iterator = 0;
         foreach (Transform child in navObjectParent.transform)
         {
-            navObjects.Add(child.gameObject.GetComponent<NavObject>());
+            NavObject navObject = child.gameObject.GetComponent<NavObject>();
+            navObject.id = iterator;
+            navObject.SetListener = this;
+            navObjects.Add(navObject);
+            iterator++;
         }
         navObjects.Reverse();
-
-        for (int iterator = 0; iterator < navObjects.Count; iterator++)
-        {
-            navObjects[iterator].id = iterator;
-            navObjects[iterator].SetListener = this;
-        }
     }
 
     private void CheckIfNavigationFinished()
