@@ -8,4 +8,7 @@ public class AudioTrigger : MonoBehaviour
     public bool isMusicTrigger = false;
     public bool destroyOnPlay = true;
 
+    public bool playSubtitles = true;
+    public string[] subtitleText;
+    public float[] subtitleTime;
 }

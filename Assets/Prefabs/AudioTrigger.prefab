@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2147905691378602984}
   - component: {fileID: 55710609905396623}
   m_Layer: 0
-  m_Name: LakeTrigger
+  m_Name: AudioTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,3 +84,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerClip: {fileID: 0}
+  isMusicTrigger: 0
+  destroyOnPlay: 1
