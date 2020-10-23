@@ -6,7 +6,9 @@ public class NavigationArrow : MonoBehaviour, NavObject.TriggerListener
 
     // Angular speed in radians per sec.
     [SerializeField] private float rotationSpeed = 3f;
-    [SerializeField] private List<NavObject> navObjects;
+    
+    [SerializeField] private GameObject navObjectParent;
+    private List<NavObject> navObjects = new List<NavObject>();
 
     private int navObjectFollowed = 0;
 
@@ -69,6 +71,12 @@ public class NavigationArrow : MonoBehaviour, NavObject.TriggerListener
 
     private void SetupNavObjects()
     {
+        foreach (Transform child in navObjectParent.transform)
+        {
+            navObjects.Add(child.gameObject.GetComponent<NavObject>());
+        }
+        navObjects.Reverse();
+
         for (int iterator = 0; iterator < navObjects.Count; iterator++)
         {
             navObjects[iterator].id = iterator;
