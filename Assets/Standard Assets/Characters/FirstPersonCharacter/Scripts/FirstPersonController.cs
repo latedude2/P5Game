@@ -256,5 +256,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
+        
+        public void SetFootstepSounds(AudioClip[] footstepSounds)
+        {
+            m_FootstepSounds = footstepSounds;
+        }
+
+        public void SetLandSound(AudioClip landSound)
+        {
+            m_LandSound = landSound;
+        }
+
+        public void SetJumpSound(AudioClip jumpSound)
+        {
+            m_JumpSound = jumpSound;
+        }
     }
 }
