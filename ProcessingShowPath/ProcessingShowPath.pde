@@ -1,6 +1,6 @@
 BufferedReader reader;
 String line;
-
+color c;
 void setup() {
   size(800,600);
   PImage map = loadImage("minecraft.png");
@@ -9,6 +9,7 @@ void setup() {
   reader = createReader("test.txt");
   System.out.println("Started");
   loadPixels();  
+  c = color(0,0,255);
 }
 
 void draw() {
@@ -30,13 +31,20 @@ void draw() {
 }
 void lineDraw(String line){
   String[] coords = split(line, " ");
-  int x = Integer.parseInt(split(coords[0], ",")[0]);
-  int y = Integer.parseInt(split(coords[1], ",")[0]);
-  int z = Integer.parseInt(split(coords[2], ",")[0]);
-  color c = color(255,0,0);
-  pixels[(600 - z)*800 + x] = c;
-  //pixels[(600 - z)*800 + x*2 + 1] = c;
-  //pixels[(600 - z)*800 + x*2 + 800 + 1] = c;
-  //pixels[(600 - z)*800 + x*2 + 800] = c;
-  updatePixels();
+  if(coords.length > 1)  //If this line has coordinates
+  {
+    int x = Integer.parseInt(split(coords[0], ",")[0]);
+    int y = Integer.parseInt(split(coords[1], ",")[0]);
+    int z = Integer.parseInt(split(coords[2], ",")[0]);
+    
+    pixels[(600 - z)*800 + x] = c;
+    //pixels[(600 - z)*800 + x*2 + 1] = c;
+    //pixels[(600 - z)*800 + x*2 + 800 + 1] = c;
+    //pixels[(600 - z)*800 + x*2 + 800] = c;
+    updatePixels();
+  }
+  else //This is the end task tag
+  {
+    c = color(255,0,0);
+  }
 }

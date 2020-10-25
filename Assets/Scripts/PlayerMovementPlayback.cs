@@ -37,14 +37,17 @@ public class PlayerMovementPlayback : MonoBehaviour
             if(line != null)
             {
                 string[] data = line.Split(' ');
-                Vector3 position = new Vector3(float.Parse(data[0]), float.Parse(data[1]), float.Parse(data[2]));
-                transform.position = position;
-                // Rotate the cube by converting the angles into a quaternion.
-                Quaternion target = new Quaternion(float.Parse(data[4]), float.Parse(data[5]), float.Parse(data[6]), float.Parse(data[3]));
+                if (data.Length > 1) //If this line has coordinates (not the end task tag)
+                {
+                    Vector3 position = new Vector3(float.Parse(data[0]), float.Parse(data[1]), float.Parse(data[2]));
+                    transform.position = position;
+                    // Rotate the cube by converting the angles into a quaternion.
+                    Quaternion target = new Quaternion(float.Parse(data[4]), float.Parse(data[5]), float.Parse(data[6]), float.Parse(data[3]));
 
-                // Dampen towards the target rotation
-                transform.rotation = target;
-                Debug.Log(data[7]);
+                    // Dampen towards the target rotation
+                    transform.rotation = target;
+                    Debug.Log(data[7]);
+                }
             }
         }
     }
