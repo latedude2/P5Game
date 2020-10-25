@@ -95,7 +95,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.818955, y: 90, z: 1.6040084}
-  m_Center: {x: -0.14541924, y: 1.4102395, z: -0.16419378}
+  m_Center: {x: -0.14541924, y: 44.94, z: -0.16419378}
 --- !u!64 &-8606997727984467425
 MeshCollider:
   m_ObjectHideFlags: 0
