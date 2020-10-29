@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1014312319146389525}
   - component: {fileID: 429082138843609996}
+  - component: {fileID: 6059503540588181006}
   m_Layer: 0
   m_Name: EndTest
   m_TagString: Untagged
@@ -44,3 +45,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 15, y: 10, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6059503540588181006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5691764322927653004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54678d253e9971c418ad2721a399c318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

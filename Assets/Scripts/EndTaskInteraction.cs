@@ -22,6 +22,8 @@ public class EndTaskInteraction : MonoBehaviour
     private Text text;
     private bool taskCompleted = false;
 
+    [SerializeField] private GameObject endTestTrigger;
+
     void Start()
     {
         honeyCollectionTimeLeft = honeyCollectionTime;
@@ -66,10 +68,12 @@ public class EndTaskInteraction : MonoBehaviour
             progressBar.SetActive(false);
             taskCompletionTextShowTime -= Time.fixedDeltaTime;
             text.text = "Honey has been collected and the bees are angry! Return home!";
+            endTestTrigger.SetActive(true);
 
             if (taskCompletionTextShowTime <= 0)
             {
                 textElement.SetActive(false);
+                this.enabled = false;
             }
         }
             
