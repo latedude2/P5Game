@@ -25,6 +25,7 @@ public class EndTaskInteraction : MonoBehaviour
     private bool taskCompleted = false;
 
     [SerializeField] private GameObject endTestTrigger;
+    [SerializeField] private GameObject mistakeTriggerParent;
 
     void Start()
     {
@@ -71,6 +72,7 @@ public class EndTaskInteraction : MonoBehaviour
             taskCompletionTextShowTime -= Time.fixedDeltaTime;
             text.text = taskCompletionText;
             endTestTrigger.SetActive(true);
+            mistakeTriggerParent.SetActive(true);
 
             if (taskCompletionTextShowTime <= 0)
             {

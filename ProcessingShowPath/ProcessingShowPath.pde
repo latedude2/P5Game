@@ -1,6 +1,14 @@
 BufferedReader reader;
 String line;
 color c;
+
+boolean forwardTimeSaved = false;
+boolean backTimeSaved = false;
+
+float forwardTime;
+float backTime;
+int mistakes;
+
 void setup() {
   size(800,600);
   PImage map = loadImage("minecraft.png");
@@ -17,6 +25,7 @@ void draw() {
     line = reader.readLine();
     if (line == null || line == "") {
       System.out.println("File read");
+      System.out.println(forwardTime + ", " + backTime + ", " + mistakes);
       stop();
       noLoop();
     } else {
@@ -28,23 +37,44 @@ void draw() {
     stop();
     noLoop();
   }
+  
 }
 void lineDraw(String line){
   String[] coords = split(line, " ");
-  if(!coords[0].equals("EndTaskCompleted"))  //If this line has coordinates
+  if(coords.length > 1)  //If this line has coordinates
   {
-    int x = Integer.parseInt(split(coords[0], ",")[0]);
-    int y = Integer.parseInt(split(coords[1], ",")[0]);
-    int z = Integer.parseInt(split(coords[2], ",")[0]);
-    
-    pixels[(600 - z)*800 + x] = c;
-    //pixels[(600 - z)*800 + x*2 + 1] = c;
-    //pixels[(600 - z)*800 + x*2 + 800 + 1] = c;
-    //pixels[(600 - z)*800 + x*2 + 800] = c;
-    updatePixels();
+    if(!coords[0].equals("EndTaskCompleted"))
+    {
+      int x = Integer.parseInt(split(coords[0], ",")[0]);
+      int y = Integer.parseInt(split(coords[1], ",")[0]);
+      int z = Integer.parseInt(split(coords[2], ",")[0]);
+      
+      pixels[(600 - z)*800 + x] = c;
+      //pixels[(600 - z)*800 + x*2 + 1] = c;
+      //pixels[(600 - z)*800 + x*2 + 800 + 1] = c;
+      //pixels[(600 - z)*800 + x*2 + 800] = c;
+      updatePixels();
+      
+      if(!forwardTimeSaved)
+      {
+         coords[7] = coords[7].replace(',', '.');
+         forwardTime = Float.parseFloat(coords[7]);
+      }
+      if(!backTimeSaved)
+      {
+         coords[7] = coords[7].replace(',', '.');
+         backTime = Float.parseFloat(coords[7]) - forwardTime;
+      }
+    }
+    else
+    {
+        backTimeSaved = true;
+        mistakes = Integer.parseInt(coords[0]);
+    }
   }
   else //This is the end task tag
   {
+    forwardTimeSaved = true;
     c = color(255,0,0);
   }
 }
