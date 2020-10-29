@@ -52,8 +52,7 @@ public class BeeController : MonoBehaviour
             // Set the agent to go to the currently selected destination.
             agent.destination = navObjects[destPoint].position;
 
-
-            destPoint = (destPoint + 1);
+            destPoint++;
         }
 
     }
