@@ -1,20 +1,29 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.AI;
 
 public class BeeController : MonoBehaviour
 {
     public Transform player;
-    public Transform[] points;
+    public List<Transform> navObjects = new List<Transform>();
+
+    [SerializeField] private GameObject guidePointParent;
     public float beeSpookDistance = 5;
     private int destPoint = 0;
     private NavMeshAgent agent;
 
     void Start()
     {
+        foreach (Transform child in guidePointParent.transform)
+        {
+            navObjects.Add(child);
+        }
+        navObjects.Reverse();
+
         agent = GetComponent<NavMeshAgent>();
 
         //Set first point as goal
-        agent.destination = points[destPoint].position;
+        agent.destination = navObjects[destPoint].position;
     }
 
     void Update()
@@ -31,15 +40,22 @@ public class BeeController : MonoBehaviour
     void GotoNextPoint()
     {
         // Returns if no points have been set up
-        if (points.Length == 0)
+        if (navObjects.Count == 0)
             return;
 
-        // Set the agent to go to the currently selected destination.
-        agent.destination = points[destPoint].position;
+        if (destPoint >= navObjects.Count)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            // Set the agent to go to the currently selected destination.
+            agent.destination = navObjects[destPoint].position;
 
-        // Choose the next point in the array as the destination,
-        // cycling to the start if necessary.
-        destPoint = (destPoint + 1) % points.Length;
+
+            destPoint = (destPoint + 1);
+        }
+
     }
-    
+
 }

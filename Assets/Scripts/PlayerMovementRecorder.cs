@@ -8,6 +8,7 @@ public class PlayerMovementRecorder : MonoBehaviour
     private StreamWriter writer;
     private int counter = 0;
     [SerializeField] private int framesBetweenRecordTakes = 10; // How many frames between recording of gameobject coordinates
+    [System.NonSerialized] public bool endTaskCompleted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +23,16 @@ public class PlayerMovementRecorder : MonoBehaviour
     //Does not depend on framerate
     void FixedUpdate()
     {
+        if (endTaskCompleted)
+        {
+            writer.WriteLine("EndTaskCompleted");
+            endTaskCompleted = false;
+        }
         counter++;
-        if(counter % framesBetweenRecordTakes == 0)   
+        if (counter % framesBetweenRecordTakes == 0)
+        {
             writer.WriteLine(transform.position.x + " " + transform.position.y + " " + transform.position.z + " " + transform.GetChild(0).rotation.w + " " + transform.GetChild(0).rotation.x + " " + transform.GetChild(0).rotation.y + " " + transform.GetChild(0).rotation.z + " " + Time.fixedTime);
+        }
     }
 
     void OnDisable()

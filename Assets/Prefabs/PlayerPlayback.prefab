@@ -153,4 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab97d03150bf4549a25abb18dad63a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  framesBetweenRecordTakes: 10
+  framesBetweenRecordTakes: 2
