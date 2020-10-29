@@ -18,6 +18,8 @@ public class EndTaskInteraction : MonoBehaviour
 
     [SerializeField] private float interactionDistance;
 
+    [SerializeField] private string taskCompletionText = "Honey has been collected and the bees are angry! Return home!";
+
     private Slider slider;
     private Text text;
     private bool taskCompleted = false;
@@ -67,7 +69,7 @@ public class EndTaskInteraction : MonoBehaviour
             }
             progressBar.SetActive(false);
             taskCompletionTextShowTime -= Time.fixedDeltaTime;
-            text.text = "Honey has been collected and the bees are angry! Return home!";
+            text.text = taskCompletionText;
             endTestTrigger.SetActive(true);
 
             if (taskCompletionTextShowTime <= 0)
