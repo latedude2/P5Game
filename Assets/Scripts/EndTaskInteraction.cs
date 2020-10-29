@@ -14,11 +14,13 @@ public class EndTaskInteraction : MonoBehaviour
 
     [SerializeField] private GameObject progressBar;
     [SerializeField] private GameObject textElement;
+    [SerializeField] private PlayerMovementRecorder playerMovementRecorder;
 
     [SerializeField] private float interactionDistance;
 
     private Slider slider;
     private Text text;
+    private bool taskCompleted = false;
 
     void Start()
     {
@@ -56,12 +58,19 @@ public class EndTaskInteraction : MonoBehaviour
         }
         else     //What happens when honey is collected
         {
+            if (!taskCompleted)
+            {
+                playerMovementRecorder.endTaskCompleted = true;
+                taskCompleted = true;
+            }
             progressBar.SetActive(false);
             taskCompletionTextShowTime -= Time.fixedDeltaTime;
             text.text = "Honey has been collected and the bees are angry! Return home!";
 
             if (taskCompletionTextShowTime <= 0)
+            {
                 textElement.SetActive(false);
+            }
         }
             
     }
