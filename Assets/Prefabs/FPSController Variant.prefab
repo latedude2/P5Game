@@ -18,6 +18,21 @@ MonoBehaviour:
   textElement: {fileID: 0}
   playerMovementRecorder: {fileID: 9068725277384773965}
   interactionDistance: 3
+  taskCompletionText: Honey has been collected and the bees are angry! Return home!
+  endTestTrigger: {fileID: 0}
+--- !u!114 &615961245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068725275937811787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533f4874598901048abf24db2fa150b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textElement: {fileID: 0}
 --- !u!1001 &9068725275937778667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31,15 +46,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 107
+      value: 104.78
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.3
+      value: 24.16
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 126.03
+      value: 123.98
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -79,12 +94,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+--- !u!1 &9068725275937811787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  m_PrefabInstance: {fileID: 9068725275937778667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &9068725277384773965 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1774238374, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
   m_PrefabInstance: {fileID: 9068725275937778667}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 9068725275937811787}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1df51e5a413b9d4d953c34601d14796, type: 3}
