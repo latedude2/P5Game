@@ -10,10 +10,18 @@ public class PlayerMovementRecorder : MonoBehaviour
     [SerializeField] private int framesBetweenRecordTakes = 10; // How many frames between recording of gameobject coordinates
     [System.NonSerialized] public bool endTaskCompleted = false;
     [System.NonSerialized] public bool testEnded = false;
+    [SerializeField] private GameObject mistakeTriggerParent;
+
+    private List<MistakeTrigger> mistakeTriggers = new List<MistakeTrigger>();
 
     // Start is called before the first frame update
     void Start()
     {
+        foreach (Transform child in mistakeTriggerParent.transform)
+        {
+            mistakeTriggers.Add(child.GetComponent<MistakeTrigger>());
+        }
+
         string path = "Assets/Resources/test.txt";
 
         File.Delete(path);
@@ -40,8 +48,26 @@ public class PlayerMovementRecorder : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        MistakeTrigger mistakeTrigger = other.GetComponent<MistakeTrigger>();
+        if(mistakeTrigger != null)
+        {
+            mistakeTrigger.visited = true; 
+        }
+    }
+
     void OnDisable()
     {
+        int mistakeCount = 0;
+        for(int i = 0; i < mistakeTriggers.Count; i++)
+        {
+            if(mistakeTriggers[i].visited)
+            {
+                mistakeCount++;
+            }
+        }
+        writer.WriteLine(mistakeCount);
         writer.Close();
     }
 }
