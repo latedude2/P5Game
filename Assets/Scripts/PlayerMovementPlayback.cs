@@ -37,7 +37,7 @@ public class PlayerMovementPlayback : MonoBehaviour
             if(line != null)
             {
                 string[] data = line.Split(' ');
-                if (data.Length > 1) //If this line has coordinates (not the end task tag)
+                if (!data[0].Equals("EndTaskCompleted")) //If this line has coordinates (not the end task tag)
                 {
                     Vector3 position = new Vector3(float.Parse(data[0]), float.Parse(data[1]), float.Parse(data[2]));
                     transform.position = position;

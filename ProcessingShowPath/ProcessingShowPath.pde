@@ -31,7 +31,7 @@ void draw() {
 }
 void lineDraw(String line){
   String[] coords = split(line, " ");
-  if(coords.length > 1)  //If this line has coordinates
+  if(!coords[0].equals("EndTaskCompleted"))  //If this line has coordinates
   {
     int x = Integer.parseInt(split(coords[0], ",")[0]);
     int y = Integer.parseInt(split(coords[1], ",")[0]);
