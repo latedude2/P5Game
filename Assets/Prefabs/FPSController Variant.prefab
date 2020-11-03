@@ -112,11 +112,11 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_JumpSound
       value: 
-      objectReference: {fileID: 8300000, guid: 487caf08fce25854ba530efee25a912a, type: 3}
+      objectReference: {fileID: 8300000, guid: ec110618f5ae2604180963c41cb821be, type: 3}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LandSound
       value: 
-      objectReference: {fileID: 8300000, guid: 7fbded316e3a0ca42bff9228b3d2da57, type: 3}
+      objectReference: {fileID: 8300000, guid: 080d3ab97c990cb47a5cc27a1dfaa9fa, type: 3}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_WalkSpeed
       value: 7
