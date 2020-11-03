@@ -6,7 +6,10 @@ public class NavigationArrow : MonoBehaviour
 
     void Update()
     {
-        RotateArrow();
+        if (objectToFollow == null)
+            Destroy(gameObject);
+        else
+            RotateArrow();
     }
 
     private void RotateArrow()
