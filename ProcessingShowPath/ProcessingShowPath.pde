@@ -42,9 +42,9 @@ void draw() {
 }
 void lineDraw(String line){
   String[] coords = split(line, " ");
-  if(!coords[0].equals("EndTaskCompleted"))  //If this line has coordinates
+  if(!coords[0].equals("EndTaskCompleted"))  //If this is not the end task tag
   {
-    if(coords.length > 2)
+    if(coords.length > 2)    //if coordinates, not mistake and shortcut count
     {
       int x = Integer.parseInt(split(coords[0], ",")[0]);
       int y = Integer.parseInt(split(coords[1], ",")[0]);

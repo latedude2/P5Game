@@ -16,20 +16,12 @@ public class ReactToTeleportTriggers : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         TeleportTrigger teleportTrigger = other.GetComponent<TeleportTrigger>();
         if (teleportTrigger != null)
         {
-            //gameObject.GetComponent<FirstPersonController>().enabled = false;
             gameObject.transform.position = teleportTrigger.teleportDestination.transform.position;
-            //gameObject.GetComponent<FirstPersonController>().enabled = true;
         }
     }
 }
