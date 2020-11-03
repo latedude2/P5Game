@@ -8,6 +8,7 @@ boolean backTimeSaved = false;
 float forwardTime;
 float backTime;
 int mistakes;
+int shortcuts;
 
 void setup() {
   size(800,600);
@@ -25,7 +26,7 @@ void draw() {
     line = reader.readLine();
     if (line == null || line == "") {
       System.out.println("File read");
-      System.out.println(forwardTime + ", " + backTime + ", " + mistakes);
+      System.out.println(forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts);
       stop();
       noLoop();
     } else {
@@ -41,7 +42,7 @@ void draw() {
 }
 void lineDraw(String line){
   String[] coords = split(line, " ");
-  if(coords.length > 1)  //If this line has coordinates
+  if(coords.length > 2)  //If this line has coordinates
   {
     if(!coords[0].equals("EndTaskCompleted"))
     {
@@ -70,6 +71,7 @@ void lineDraw(String line){
     {
         backTimeSaved = true;
         mistakes = Integer.parseInt(coords[0]);
+        shortcuts = Integer.parseInt(coords[1]);
     }
   }
   else //This is the end task tag
