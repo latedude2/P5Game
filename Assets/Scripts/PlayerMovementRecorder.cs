@@ -11,8 +11,10 @@ public class PlayerMovementRecorder : MonoBehaviour
     [System.NonSerialized] public bool endTaskCompleted = false;
     [System.NonSerialized] public bool testEnded = false;
     [SerializeField] private GameObject mistakeTriggerParent;
+    [SerializeField] private GameObject shortcutTriggerParent;
 
     private List<MistakeTrigger> mistakeTriggers = new List<MistakeTrigger>();
+    private List<ShortcutTrigger> shortcutTriggers = new List<ShortcutTrigger>();
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,10 @@ public class PlayerMovementRecorder : MonoBehaviour
         foreach (Transform child in mistakeTriggerParent.transform)
         {
             mistakeTriggers.Add(child.GetComponent<MistakeTrigger>());
+        }
+        foreach (Transform child in shortcutTriggerParent.transform)
+        {
+            shortcutTriggers.Add(child.GetComponent<ShortcutTrigger>());
         }
 
         string path = "Assets/Resources/test.txt";
@@ -55,19 +61,33 @@ public class PlayerMovementRecorder : MonoBehaviour
         {
             mistakeTrigger.visited = true; 
         }
+
+        ShortcutTrigger shortcutTrigger = other.GetComponent<ShortcutTrigger>();
+        if (shortcutTrigger != null)
+        {
+            shortcutTrigger.visited = true;
+        }
     }
 
     void OnDisable()
     {
         int mistakeCount = 0;
-        for(int i = 0; i < mistakeTriggers.Count; i++)
+        int shortcutCount = 0;
+        for (int i = 0; i < mistakeTriggers.Count; i++)
         {
             if(mistakeTriggers[i].visited)
             {
                 mistakeCount++;
             }
         }
-        writer.WriteLine(mistakeCount);
+        for (int i = 0; i < shortcutTriggers.Count; i++)
+        {
+            if (shortcutTriggers[i].visited)
+            {
+                shortcutCount++;
+            }
+        }
+        writer.WriteLine(mistakeCount + " " + shortcutCount);
         writer.Close();
     }
 }
