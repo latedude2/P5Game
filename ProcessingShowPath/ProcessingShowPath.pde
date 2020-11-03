@@ -42,9 +42,9 @@ void draw() {
 }
 void lineDraw(String line){
   String[] coords = split(line, " ");
-  if(coords.length > 2)  //If this line has coordinates
+  if(!coords[0].equals("EndTaskCompleted"))  //If this line has coordinates
   {
-    if(!coords[0].equals("EndTaskCompleted"))
+    if(coords.length > 2)
     {
       int x = Integer.parseInt(split(coords[0], ",")[0]);
       int y = Integer.parseInt(split(coords[1], ",")[0]);
@@ -67,7 +67,7 @@ void lineDraw(String line){
          backTime = Float.parseFloat(coords[7]) - forwardTime;
       }
     }
-    else
+    else //mistake and shortcut counts, last line in file
     {
         backTimeSaved = true;
         mistakes = Integer.parseInt(coords[0]);
