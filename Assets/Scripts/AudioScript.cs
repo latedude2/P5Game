@@ -17,9 +17,9 @@ public class AudioScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        currentTrigger = other.GetComponent<AudioTrigger>();
-        if (currentTrigger != null)
+        if (other.GetComponent<AudioTrigger>() != null)
         {
+            currentTrigger = other.GetComponent<AudioTrigger>();
             if (currentTrigger.isMusicTrigger)
             {
                 //Debug.Log("Triggered music trigger");
@@ -33,12 +33,12 @@ public class AudioScript : MonoBehaviour
                 narrationPlayer.Play();
             }
             if (currentTrigger.destroyOnPlay)
-                Destroy(other);
+                currentTrigger.GetComponent<BoxCollider>().enabled = false;
         }
     }
 
     void FixedUpdate()
-    {
+    {  
         if (currentTrigger != null && currentTrigger.playSubtitles && isNarrativePlaying)
         {
             if (IsSubtitleOver(currentTrigger.subtitleTime[subtitleCounter]))
