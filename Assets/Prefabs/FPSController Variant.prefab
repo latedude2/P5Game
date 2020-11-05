@@ -48,6 +48,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportTriggerParent: {fileID: 0}
+--- !u!114 &780189335157177869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068725275937811787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a80c561a7532e8438bc1c68f8efd47f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  narrationPlayer: {fileID: 7074432612378404327}
+  musicPlayer: {fileID: 557509441849837174}
+  textMesh: {fileID: 0}
 --- !u!1001 &9068725275937778667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -248,5 +263,15 @@ MonoBehaviour:
 --- !u!1 &9068725275937811785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  m_PrefabInstance: {fileID: 9068725275937778667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &557509441849837174 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8819805593247313309, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  m_PrefabInstance: {fileID: 9068725275937778667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &7074432612378404327 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2303586183174704652, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
   m_PrefabInstance: {fileID: 9068725275937778667}
   m_PrefabAsset: {fileID: 0}

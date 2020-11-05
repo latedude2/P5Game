@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2147905691378602987}
   - component: {fileID: 2147905691378602986}
   - component: {fileID: 2147905691378602984}
-  - component: {fileID: 55710609905396623}
   m_Layer: 0
   m_Name: AudioTrigger
   m_TagString: Untagged
@@ -71,18 +70,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &55710609905396623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2147905691378602996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 660d9942889de524fb34ecce8146d50c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerClip: {fileID: 0}
-  isMusicTrigger: 0
-  destroyOnPlay: 1
