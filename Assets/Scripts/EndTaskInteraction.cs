@@ -26,6 +26,7 @@ public class EndTaskInteraction : MonoBehaviour
 
     [SerializeField] private GameObject endTestTrigger;
     [SerializeField] private GameObject mistakeTriggerParent;
+    [SerializeField] private GameObject shortcutTriggerParent;
 
     void Start()
     {
@@ -73,6 +74,7 @@ public class EndTaskInteraction : MonoBehaviour
             text.text = taskCompletionText;
             endTestTrigger.SetActive(true);
             mistakeTriggerParent.SetActive(true);
+            shortcutTriggerParent.SetActive(true);
 
             if (taskCompletionTextShowTime <= 0)
             {

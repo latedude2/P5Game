@@ -8,6 +8,7 @@ boolean backTimeSaved = false;
 float forwardTime;
 float backTime;
 int mistakes;
+int shortcuts;
 
 void setup() {
   size(800,600);
@@ -25,7 +26,7 @@ void draw() {
     line = reader.readLine();
     if (line == null || line == "") {
       System.out.println("File read");
-      System.out.println(forwardTime + ", " + backTime + ", " + mistakes);
+      System.out.println(forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts);
       stop();
       noLoop();
     } else {
@@ -41,9 +42,9 @@ void draw() {
 }
 void lineDraw(String line){
   String[] coords = split(line, " ");
-  if(coords.length > 1)  //If this line has coordinates
+  if(!coords[0].equals("EndTaskCompleted"))  //If this is not the end task tag
   {
-    if(!coords[0].equals("EndTaskCompleted"))
+    if(coords.length > 2)    //if coordinates, not mistake and shortcut count
     {
       int x = Integer.parseInt(split(coords[0], ",")[0]);
       int y = Integer.parseInt(split(coords[1], ",")[0]);
@@ -66,10 +67,11 @@ void lineDraw(String line){
          backTime = Float.parseFloat(coords[7]) - forwardTime;
       }
     }
-    else
+    else //mistake and shortcut counts, last line in file
     {
         backTimeSaved = true;
         mistakes = Integer.parseInt(coords[0]);
+        shortcuts = Integer.parseInt(coords[1]);
     }
   }
   else //This is the end task tag
