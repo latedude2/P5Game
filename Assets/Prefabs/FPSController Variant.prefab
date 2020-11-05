@@ -21,6 +21,7 @@ MonoBehaviour:
   taskCompletionText: Honey has been collected and the bees are angry! Return home!
   endTestTrigger: {fileID: 0}
   mistakeTriggerParent: {fileID: 0}
+  shortcutTriggerParent: {fileID: 0}
 --- !u!114 &615961245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34,6 +35,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 0}
+--- !u!114 &1744465477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068725275937811787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5439117f7f9505543bdec69baae953b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportTriggerParent: {fileID: 0}
 --- !u!1001 &9068725275937778667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89,6 +103,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: far clip plane
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: field of view
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_FootstepSounds.Array.size
       value: 5
@@ -96,6 +126,11 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_RunSpeed
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614226369694329713, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_HeadBob.HorizontalBobRange
@@ -197,12 +232,14 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
 --- !u!1 &9068725275937811787 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 3}
   m_PrefabInstance: {fileID: 9068725275937778667}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &9068725277384773965 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1774238374, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1774238374, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 3}
   m_PrefabInstance: {fileID: 9068725275937778667}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9068725275937811787}
@@ -213,6 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!1 &9068725275937811785 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 3}
   m_PrefabInstance: {fileID: 9068725275937778667}
   m_PrefabAsset: {fileID: 0}

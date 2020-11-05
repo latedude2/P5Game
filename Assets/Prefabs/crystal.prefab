@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 3662259295016618295}
   - component: {fileID: 4519275168692581998}
   - component: {fileID: 8348733444494895434}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3662259295016618295
 Transform:
@@ -97,7 +97,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3379752900423221250
 Transform:
@@ -187,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 8120278582557196194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 25.279, y: 1130.6, z: 406.78}
-  m_LocalScale: {x: 0.23383164, y: 0.18085709, z: 0.23383164}
+  m_LocalScale: {x: 0.11993923, y: 0.092767, z: 0.11993925}
   m_Children:
   - {fileID: 3662259295016618295}
   - {fileID: 3379752900423221250}
@@ -220,7 +220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8909258214273196700}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12, y: 4.09, z: 0.09}
+  m_LocalPosition: {x: -0.1, y: 8.5, z: 0.1}
   m_LocalScale: {x: 4.2765813, y: 5.5292277, z: 4.2765813}
   m_Children: []
   m_Father: {fileID: 8933689161219106072}
@@ -277,7 +277,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
