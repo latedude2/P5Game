@@ -25,6 +25,8 @@ public class EndTaskInteraction : MonoBehaviour
     [SerializeField] private GameObject mistakeTriggerParent;
     [SerializeField] private GameObject shortcutTriggerParent;
 
+    [SerializeField] private GameObject audioTriggers;
+
     [SerializeField] private AudioClip endTaskClip;
     [SerializeField] private string[] subtitleText;
     [SerializeField] private float[] subtitleTime;
@@ -75,6 +77,7 @@ public class EndTaskInteraction : MonoBehaviour
                 audioPlayer.PlayAudioClip(endTaskClip, false);
                 subtitles.SetupUpSubtitles(subtitleText, subtitleTime);
                 subtitles.Play();
+                ChangeAudioTriggerActiveness();
             }
             progressBar.SetActive(false);
             taskCompletionTextShowTime -= Time.fixedDeltaTime;
@@ -89,6 +92,14 @@ public class EndTaskInteraction : MonoBehaviour
                 this.enabled = false;
             }
         }
-            
+    }
+
+    private void ChangeAudioTriggerActiveness()
+    {
+        foreach (Transform triggerParent in audioTriggers.transform)
+        {
+            foreach (Transform trigger in triggerParent.transform)
+                trigger.GetComponent<AudioTrigger>().ChangeActiveness();
+        }
     }
 }
