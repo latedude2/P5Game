@@ -18,22 +18,26 @@ public class EndTaskInteraction : MonoBehaviour
 
     [SerializeField] private float interactionDistance;
 
-    [SerializeField] private string taskCompletionText = "Honey has been collected and the bees are angry! Return home!";
-
     private Slider slider;
-    private Text text;
     private bool taskCompleted = false;
 
     [SerializeField] private GameObject endTestTrigger;
     [SerializeField] private GameObject mistakeTriggerParent;
     [SerializeField] private GameObject shortcutTriggerParent;
 
+    [SerializeField] private AudioClip endTaskClip;
+    [SerializeField] private string[] subtitleText;
+    [SerializeField] private float[] subtitleTime;
+    private Subtitles subtitles;
+    private AudioScript audioPlayer;
+
     void Start()
     {
         honeyCollectionTimeLeft = honeyCollectionTime;
         slider = progressBar.GetComponent<Slider>();
-        text = textElement.GetComponent<Text>();
         slider.maxValue = honeyCollectionTime;
+        subtitles = GetComponent<Subtitles>();
+        audioPlayer = GetComponentInParent<AudioScript>();
     }
 
     void FixedUpdate()
@@ -68,13 +72,16 @@ public class EndTaskInteraction : MonoBehaviour
             {
                 playerMovementRecorder.endTaskCompleted = true;
                 taskCompleted = true;
+                audioPlayer.PlayAudioClip(endTaskClip, false);
+                subtitles.SetupUpSubtitles(subtitleText, subtitleTime);
+                subtitles.Play();
             }
             progressBar.SetActive(false);
             taskCompletionTextShowTime -= Time.fixedDeltaTime;
-            text.text = taskCompletionText;
             endTestTrigger.SetActive(true);
             mistakeTriggerParent.SetActive(true);
             shortcutTriggerParent.SetActive(true);
+            
 
             if (taskCompletionTextShowTime <= 0)
             {
