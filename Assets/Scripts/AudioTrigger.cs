@@ -13,14 +13,20 @@ public class AudioTrigger : MonoBehaviour
     public string[] subtitleText;
     public float[] subtitleTime;
 
+    private GameObject audioTriggerGroup;
+
     private void Start()
     {
+        audioTriggerGroup = transform.parent.gameObject;
+
         if (isReturnTrigger)
-            transform.parent.gameObject.SetActive(false);
+            // deactivate the AudioTrigger group, which works when returning
+            audioTriggerGroup.SetActive(false);
     }
 
     public void ChangeActiveness()
     {
-        transform.parent.gameObject.SetActive(!transform.parent.gameObject.activeSelf);
+        // change the activeness of the AudioTrigger group
+        audioTriggerGroup.SetActive(!audioTriggerGroup.activeSelf);
     }
 }
