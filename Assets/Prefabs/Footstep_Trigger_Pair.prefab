@@ -59,10 +59,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   footstepSounds:
-  - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
-  - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
-  jumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
-  landSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  - {fileID: 8300000, guid: 2d522ed06bf2d9042a97a7320f9b58d3, type: 3}
+  - {fileID: 8300000, guid: c15eaa42f4401f94f8ae314ea62dab8a, type: 3}
+  - {fileID: 8300000, guid: e1641556423733d4790f23e7657064fd, type: 3}
+  jumpSound: {fileID: 8300000, guid: cfe7928c909a4424abf3cd05bea596da, type: 3}
+  landSound: {fileID: 8300000, guid: 1afe344f75be67d45b3e3ba15a0ea77a, type: 3}
 --- !u!1 &6309072906467112278
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   footstepSounds:
-  - {fileID: 8300000, guid: 4437bc80104f4f84a9149c54a918b984, type: 3}
-  - {fileID: 8300000, guid: 592e7903575792e48aed4b7e5b699e71, type: 3}
-  jumpSound: {fileID: 8300000, guid: 5a7bf85c9d703074db7e82ff2ce16e6a, type: 3}
-  landSound: {fileID: 8300000, guid: 50d72a013f13ce0488147b799a838890, type: 3}
+  - {fileID: 8300000, guid: eb84b93ae02a3d143903be9bdee532c2, type: 3}
+  - {fileID: 8300000, guid: 13bc23563727ce3409ef4fbcb1efea36, type: 3}
+  - {fileID: 8300000, guid: 59a45cd0d8018684199107b63e2ba008, type: 3}
+  jumpSound: {fileID: 8300000, guid: ec110618f5ae2604180963c41cb821be, type: 3}
+  landSound: {fileID: 8300000, guid: 080d3ab97c990cb47a5cc27a1dfaa9fa, type: 3}

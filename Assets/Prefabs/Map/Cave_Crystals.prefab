@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7589862072430187563}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -96.44272, y: -27.765787, z: -117.40668}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2161,9 +2161,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7589862072430187560}
     m_Modifications:
+    - target: {fileID: 2315380786199845761, guid: 405c732484c36ce41b8893c5c93ecbba, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795542738986296074, guid: 405c732484c36ce41b8893c5c93ecbba, type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8120278582557196194, guid: 405c732484c36ce41b8893c5c93ecbba, type: 3}
       propertyPath: m_Name
       value: crystal (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348733444494895434, guid: 405c732484c36ce41b8893c5c93ecbba, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8933689161219106072, guid: 405c732484c36ce41b8893c5c93ecbba, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,25 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class AudioScript : MonoBehaviour
 {
     [SerializeField] private AudioSource narrationPlayer;
     [SerializeField] private AudioSource musicPlayer;
 
-    [SerializeField] private TextMeshProUGUI textMesh;
+    private Subtitles subtitles;
 
     private AudioTrigger currentTrigger;
-    private bool isNarrativePlaying = false;
-    private float startTime;
-    private int subtitleCounter = 0;
+
+    private void Start()
+    {
+        subtitles = GetComponentInChildren<Subtitles>();
+        musicPlayer.loop = true;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        currentTrigger = other.GetComponent<AudioTrigger>();
-        if (currentTrigger != null)
+        if (other.GetComponent<AudioTrigger>() != null)
         {
+            currentTrigger = other.GetComponent<AudioTrigger>();
             if (currentTrigger.isMusicTrigger)
             {
                 //Debug.Log("Triggered music trigger");
@@ -31,48 +33,36 @@ public class AudioScript : MonoBehaviour
                 //Debug.Log("Triggered audio trigger");
                 PrepareNarrative();
                 narrationPlayer.Play();
+                subtitles.Play();
+                if (currentTrigger.changeMusic)
+                {
+                    musicPlayer.clip = currentTrigger.musicClip;
+                    musicPlayer.Play();
+                }
             }
             if (currentTrigger.destroyOnPlay)
-                Destroy(other);
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (currentTrigger != null && currentTrigger.playSubtitles && isNarrativePlaying)
-        {
-            if (IsSubtitleOver(currentTrigger.subtitleTime[subtitleCounter]))
-            {
-                subtitleCounter++;
-                SetTime();
-            }
-            
-            if (subtitleCounter >= currentTrigger.subtitleText.Length)
-            {
-                isNarrativePlaying = false;
-                textMesh.text = " ";
-            } else
-            {
-                textMesh.text = currentTrigger.subtitleText[subtitleCounter];
-            }
-            
+                currentTrigger.GetComponent<BoxCollider>().enabled = false;
         }
     }
 
     private void PrepareNarrative()
     {
         narrationPlayer.clip = currentTrigger.triggerClip;
-        SetTime();
-        isNarrativePlaying = true;
+        subtitles.SetupUpSubtitles(currentTrigger.subtitleText, currentTrigger.subtitleTime);
     }
 
-    private void SetTime()
+    public void PlayAudioClip(AudioClip audioClip, bool isMusicClip, float volume = 1f)
     {
-        startTime = Time.time;
-    }
-
-    private bool IsSubtitleOver(float subtitleTime)
-    {
-        return startTime + subtitleTime <= Time.time;
+        if (isMusicClip)
+        {
+            musicPlayer.clip = audioClip;
+            musicPlayer.volume = volume;
+            musicPlayer.Play();
+        } else
+        {
+            narrationPlayer.clip = audioClip;
+            narrationPlayer.volume = volume;
+            narrationPlayer.Play();
+        }
     }
 }

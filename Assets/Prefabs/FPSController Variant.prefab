@@ -18,10 +18,35 @@ MonoBehaviour:
   textElement: {fileID: 0}
   playerMovementRecorder: {fileID: 9068725277384773965}
   interactionDistance: 3
-  taskCompletionText: Honey has been collected and the bees are angry! Return home!
   endTestTrigger: {fileID: 0}
   mistakeTriggerParent: {fileID: 0}
   shortcutTriggerParent: {fileID: 0}
+  audioTriggers: {fileID: 0}
+  returnMusicClip: {fileID: 8300000, guid: b3d2fbe899a839d428cacd8c12bd8a7d, type: 3}
+  endTaskClip: {fileID: 8300000, guid: a97b83f805c93be40b8e82b87ed0a0d4, type: 3}
+  subtitleText:
+  - The bees don't seem so happy. You have to leave this place and do it fast!
+  - Jumping into water should be enough to get rid of them
+  - Luckily, there is a lake next to your cave!
+  - Quickly rush back before the bees reach you!
+  subtitleTime:
+  - 4.5
+  - 2.5
+  - 2
+  - 3
+--- !u!114 &7122234923672636354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068725275937811785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f300168696dda4496814f528ea1660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
 --- !u!114 &615961245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,6 +73,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportTriggerParent: {fileID: 0}
+--- !u!114 &780189335157177869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068725275937811787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a80c561a7532e8438bc1c68f8efd47f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  narrationPlayer: {fileID: 7074432612378404327}
+  musicPlayer: {fileID: 557509441849837174}
+--- !u!114 &7382902158597848906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068725275937811787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d2e17a93f82f14c91bf6c045e91737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMusicClip: {fileID: 8300000, guid: 309c830a0e239cb4e9c995a5446ff126, type: 3}
+  isArrowCondition: 1
+  introClipArrow: {fileID: 8300000, guid: 5b299a9a37c1ec349b8f11a673aa7dbc, type: 3}
+  subtitleTextArrow:
+  - You are persuaded to go on a honey hunt.
+  - Luckily, you know, where the nearest beehive is.
+  - You should head out and follow your senses to find the beehive!
+  subtitleTimeArrow:
+  - 3
+  - 2.5
+  - 3.5
+  introClipBee: {fileID: 8300000, guid: 8e1a4cfdea8e5ee4b992a0ba24249764, type: 3}
+  subtitleTextBee:
+  - You sometimes see a few bees buzzing around.
+  - Even now, one is wondering around your cave.
+  - Perhaps it could lead you towards honey
+  - Follow the bee to find the beehive!
+  subtitleTimeBee:
+  - 3
+  - 3
+  - 2.5
+  - 2.5
 --- !u!1001 &9068725275937778667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61,15 +134,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 121.7
+      value: 106.13
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.93
+      value: 24.08
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 130.7
+      value: 126.42
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -113,7 +186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: far clip plane
-      value: 200
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: field of view
@@ -127,11 +200,6 @@ PrefabInstance:
       propertyPath: m_RunSpeed
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 1614226369694329713, guid: 5e9e851c0e142814dac026a256ba2ac0,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_HeadBob.HorizontalBobRange
       value: 0
@@ -139,19 +207,19 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_FootstepSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 59a45cd0d8018684199107b63e2ba008, type: 3}
+      objectReference: {fileID: 8300000, guid: 2d522ed06bf2d9042a97a7320f9b58d3, type: 3}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_FootstepSounds.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 59a45cd0d8018684199107b63e2ba008, type: 3}
+      objectReference: {fileID: 8300000, guid: c15eaa42f4401f94f8ae314ea62dab8a, type: 3}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_JumpSound
       value: 
-      objectReference: {fileID: 8300000, guid: ec110618f5ae2604180963c41cb821be, type: 3}
+      objectReference: {fileID: 8300000, guid: cfe7928c909a4424abf3cd05bea596da, type: 3}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LandSound
       value: 
-      objectReference: {fileID: 8300000, guid: 080d3ab97c990cb47a5cc27a1dfaa9fa, type: 3}
+      objectReference: {fileID: 8300000, guid: 1afe344f75be67d45b3e3ba15a0ea77a, type: 3}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_WalkSpeed
       value: 7
@@ -219,27 +287,29 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_FootstepSounds.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 13bc23563727ce3409ef4fbcb1efea36, type: 3}
+      objectReference: {fileID: 8300000, guid: e1641556423733d4790f23e7657064fd, type: 3}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_FootstepSounds.Array.data[3]
       value: 
-      objectReference: {fileID: 8300000, guid: eb84b93ae02a3d143903be9bdee532c2, type: 3}
+      objectReference: {fileID: 8300000, guid: c15eaa42f4401f94f8ae314ea62dab8a, type: 3}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_FootstepSounds.Array.data[4]
       value: 
-      objectReference: {fileID: 8300000, guid: eb84b93ae02a3d143903be9bdee532c2, type: 3}
+      objectReference: {fileID: 8300000, guid: c15eaa42f4401f94f8ae314ea62dab8a, type: 3}
+    - target: {fileID: 1614226369694329713, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
 --- !u!1 &9068725275937811787 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
   m_PrefabInstance: {fileID: 9068725275937778667}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &9068725277384773965 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1774238374, guid: 5e9e851c0e142814dac026a256ba2ac0,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 1774238374, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
   m_PrefabInstance: {fileID: 9068725275937778667}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9068725275937811787}
@@ -250,7 +320,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!1 &9068725275937811785 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  m_PrefabInstance: {fileID: 9068725275937778667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &557509441849837174 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8819805593247313309, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  m_PrefabInstance: {fileID: 9068725275937778667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &7074432612378404327 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2303586183174704652, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
   m_PrefabInstance: {fileID: 9068725275937778667}
   m_PrefabAsset: {fileID: 0}

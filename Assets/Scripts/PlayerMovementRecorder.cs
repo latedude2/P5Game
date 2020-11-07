@@ -28,7 +28,7 @@ public class PlayerMovementRecorder : MonoBehaviour
             shortcutTriggers.Add(child.GetComponent<ShortcutTrigger>());
         }
 
-        string path = "Assets/Resources/test.txt";
+        string path = "test.txt";
 
         File.Delete(path);
         //Write some text to the test.txt file
