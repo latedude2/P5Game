@@ -1,7 +1,6 @@
 BufferedReader reader;
 String line;
 color c;
-
 boolean forwardTimeSaved = false;
 boolean backTimeSaved = false;
 
@@ -9,21 +8,25 @@ float forwardTime;
 float backTime;
 int mistakes;
 int shortcuts;
-int startBiasX = -140;
-int startBiasZ = -50;
+
 int sizeX = 1200;
 int sizeY = 900;
+int startBiasX = -140;
+int startBiasZ = -50;
 float stretchMultiplierX = 2.2;
 float stretchMultiplierY = 2.2;
 
-String[] filenames1;
-String[] filenames2;
-
 color forwardColor = color(0,0,255);
 color backColor = color(255,0,0);
+int drawAlpha;
 
+//modify wanted output here
 boolean drawForward = true;
 boolean drawBack = true;
+boolean drawAll = true;
+
+String[] arrowFilenames;
+String[] beeFilenames;
 
 void setup() {
   size(1200,900);
@@ -33,32 +36,44 @@ void setup() {
   frameRate(1000000000);
   loadPixels();  
   c = forwardColor;
-  println("Files for first condition: ");
-  filenames1 = listFileNames("C:/UnityProjects/P5Game/ProcessingShowPath/Condition1");
-  printArray(filenames1);
-
-  println("Files for second condition: ");
-  filenames2 = listFileNames("C:/UnityProjects/P5Game/ProcessingShowPath/Condition2");
-  printArray(filenames2);
   
-  
-  System.out.println("Drawing first condition files");
-  for(int i = 0; i < filenames1.length; i++)
+  if(drawAll)
   {
-    reader = createReader("Condition1/" + filenames1[i]);
-    drawPath();
-  }
+    drawAlpha = 30;
+    println("Files for arrow condition: ");
+    arrowFilenames = listFileNames("C:/UnityProjects/P5Game/ProcessingShowPath/arrow");
+    printArray(arrowFilenames);
   
-  System.out.println("Drawing second condition files");
-  for(int i = 0; i < filenames2.length; i++)
-  {
-    reader = createReader("Condition2/" + filenames2[i]);
-    drawPath();
+    println("Files for bee condition: ");
+    beeFilenames = listFileNames("C:/UnityProjects/P5Game/ProcessingShowPath/bee");
+    printArray(beeFilenames);
+  
+    System.out.println("Drawing arrow condition files");
+    for(int i = 0; i < arrowFilenames.length; i++)
+    {
+      reader = createReader("arrow/" + arrowFilenames[i]);
+      drawPath();
+    }
+    
+    System.out.println("Drawing bee condition files");
+    for(int i = 0; i < beeFilenames.length; i++)
+    {
+      reader = createReader("bee/" + beeFilenames[i]);
+      drawPath();
+    }
   }
+  else 
+   {
+     drawAlpha = 100;
+     reader = createReader("arrow/test.txt");
+   }
 }
 
 void draw() {
-  //drawSinglePathSlow();
+  if(!drawAll)
+  {
+     drawSinglePathSlow();
+  }
 }
 
 void drawSinglePathSlow()
@@ -112,7 +127,7 @@ void lineDraw(String line){
         //int y = Integer.parseInt(split(coords[1], ",")[0]);
         int z = int(startBiasZ + (stretchMultiplierY * Float.parseFloat(coords[2])));
         
-        stroke(c, 30);
+        stroke(c, drawAlpha);
         point(x, sizeY - z);
         point(x + 1, sizeY - z);
         point(x + 1, sizeY - z + 1);
