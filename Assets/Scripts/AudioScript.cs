@@ -14,6 +14,7 @@ public class AudioScript : MonoBehaviour
     private void Start()
     {
         subtitles = GetComponentInChildren<Subtitles>();
+        musicPlayer.loop = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,6 +34,11 @@ public class AudioScript : MonoBehaviour
                 PrepareNarrative();
                 narrationPlayer.Play();
                 subtitles.Play();
+                if (currentTrigger.changeMusic)
+                {
+                    musicPlayer.clip = currentTrigger.musicClip;
+                    musicPlayer.Play();
+                }
             }
             if (currentTrigger.destroyOnPlay)
                 currentTrigger.GetComponent<BoxCollider>().enabled = false;
@@ -45,15 +51,17 @@ public class AudioScript : MonoBehaviour
         subtitles.SetupUpSubtitles(currentTrigger.subtitleText, currentTrigger.subtitleTime);
     }
 
-    public void PlayAudioClip(AudioClip audioClip, bool isMusicClip)
+    public void PlayAudioClip(AudioClip audioClip, bool isMusicClip, float? volume)
     {
         if (isMusicClip)
         {
             musicPlayer.clip = audioClip;
+            if (volume != null) musicPlayer.volume = (float) volume;
             musicPlayer.Play();
         } else
         {
             narrationPlayer.clip = audioClip;
+            if (volume != null) narrationPlayer.volume = (float) volume;
             narrationPlayer.Play();
         }
     }
