@@ -30,7 +30,7 @@ void setup() {
   PImage map = loadImage("isometric.png");
   //map.filter(GRAY);
   background(map);
-  frameRate(30);
+  frameRate(1000000000);
   loadPixels();  
   c = forwardColor;
   println("Files for first condition: ");
