@@ -48,7 +48,8 @@ MonoBehaviour:
   triggerClip: {fileID: 8300000, guid: daa8d968ebd270145afa47c7c4e941b2, type: 3}
   isMusicTrigger: 0
   destroyOnPlay: 1
-  playSubtitles: 1
+  changeMusic: 1
+  musicClip: {fileID: 8300000, guid: 309c830a0e239cb4e9c995a5446ff126, type: 3}
   subtitleText:
   - Home sweet home!
   - You managed to run away from the bees and make your cubs happy with honey treats!
@@ -104,7 +105,8 @@ MonoBehaviour:
   triggerClip: {fileID: 8300000, guid: 59e05d98f461b1747b704e0c28cdff50, type: 3}
   isMusicTrigger: 0
   destroyOnPlay: 1
-  playSubtitles: 1
+  changeMusic: 0
+  musicClip: {fileID: 0}
   subtitleText:
   - At last! Now quickly gather the sweet honey goodness!
   subtitleTime:

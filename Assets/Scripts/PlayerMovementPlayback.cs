@@ -39,6 +39,11 @@ public class PlayerMovementPlayback : MonoBehaviour
                 string[] data = line.Split(' ');
                 if (!data[0].Equals("EndTaskCompleted") && data.Length > 2) //If this line has coordinates (not the end task tag)
                 {
+                    for(int i = 0; i < data.Length; i++)
+                    {
+                        data[i] = data[i].Replace('.', ','); //Some systems save the float values with wrong notation, we fix that here
+                    }
+
                     Vector3 position = new Vector3(float.Parse(data[0]), float.Parse(data[1]), float.Parse(data[2]));
                     transform.position = position;
                     // Rotate the cube by converting the angles into a quaternion.

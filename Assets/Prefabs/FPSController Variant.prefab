@@ -21,6 +21,8 @@ MonoBehaviour:
   endTestTrigger: {fileID: 0}
   mistakeTriggerParent: {fileID: 0}
   shortcutTriggerParent: {fileID: 0}
+  audioTriggers: {fileID: 0}
+  returnMusicClip: {fileID: 8300000, guid: b3d2fbe899a839d428cacd8c12bd8a7d, type: 3}
   endTaskClip: {fileID: 8300000, guid: a97b83f805c93be40b8e82b87ed0a0d4, type: 3}
   subtitleText:
   - The bees don't seem so happy. You have to leave this place and do it fast!
@@ -97,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d2e17a93f82f14c91bf6c045e91737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMusicClip: {fileID: 8300000, guid: 309c830a0e239cb4e9c995a5446ff126, type: 3}
   isArrowCondition: 1
   introClipArrow: {fileID: 8300000, guid: 5b299a9a37c1ec349b8f11a673aa7dbc, type: 3}
   subtitleTextArrow:
@@ -131,15 +134,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 104
+      value: 106.13
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.16
+      value: 24.08
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 124.89
+      value: 126.42
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalRotation.x

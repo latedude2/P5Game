@@ -27,6 +27,8 @@ public class EndTaskInteraction : MonoBehaviour
 
     [SerializeField] private GameObject audioTriggers;
 
+    [SerializeField] private AudioClip returnMusicClip;
+
     [SerializeField] private AudioClip endTaskClip;
     [SerializeField] private string[] subtitleText;
     [SerializeField] private float[] subtitleTime;
@@ -75,6 +77,7 @@ public class EndTaskInteraction : MonoBehaviour
                 playerMovementRecorder.endTaskCompleted = true;
                 taskCompleted = true;
                 audioPlayer.PlayAudioClip(endTaskClip, false);
+                audioPlayer.PlayAudioClip(returnMusicClip, true, 0.4f);
                 subtitles.SetupUpSubtitles(subtitleText, subtitleTime);
                 subtitles.Play();
                 ChangeAudioTriggerActiveness();
