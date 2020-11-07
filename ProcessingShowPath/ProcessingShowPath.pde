@@ -109,7 +109,7 @@ void lineDraw(String line){
         coords[0] = coords[0].replace(',', '.');      //Processing only likes floats with "." and not ","
         coords[2] = coords[2].replace(',', '.');      //Processing only likes floats with "." and not ","
         int x = int(startBiasX + (stretchMultiplierX * Float.parseFloat(coords[0])));
-        int y = Integer.parseInt(split(coords[1], ",")[0]);
+        //int y = Integer.parseInt(split(coords[1], ",")[0]);
         int z = int(startBiasZ + (stretchMultiplierY * Float.parseFloat(coords[2])));
         
         stroke(c, 30);
