@@ -10,6 +10,9 @@ public class AudioTrigger : MonoBehaviour
     public bool isMusicTrigger = false;
     public bool destroyOnPlay = true;
 
+    public bool changeMusic = false;
+    public AudioClip musicClip;
+
     public string[] subtitleText;
     public float[] subtitleTime;
 
