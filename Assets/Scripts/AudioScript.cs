@@ -51,17 +51,17 @@ public class AudioScript : MonoBehaviour
         subtitles.SetupUpSubtitles(currentTrigger.subtitleText, currentTrigger.subtitleTime);
     }
 
-    public void PlayAudioClip(AudioClip audioClip, bool isMusicClip, float? volume)
+    public void PlayAudioClip(AudioClip audioClip, bool isMusicClip, float volume = 1f)
     {
         if (isMusicClip)
         {
             musicPlayer.clip = audioClip;
-            if (volume != null) musicPlayer.volume = (float) volume;
+            musicPlayer.volume = volume;
             musicPlayer.Play();
         } else
         {
             narrationPlayer.clip = audioClip;
-            if (volume != null) narrationPlayer.volume = (float) volume;
+            narrationPlayer.volume = volume;
             narrationPlayer.Play();
         }
     }

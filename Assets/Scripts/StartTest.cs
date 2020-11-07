@@ -28,12 +28,12 @@ public class StartTest : MonoBehaviour
         if (isArrowCondition)
         {
             subtitles.SetupUpSubtitles(subtitleTextArrow, subtitleTimeArrow);
-            audioPlayer.PlayAudioClip(introClipArrow, false, null);
+            audioPlayer.PlayAudioClip(introClipArrow, false);
         } 
         else
         {
             subtitles.SetupUpSubtitles(subtitleTextBee, subtitleTimeBee);
-            audioPlayer.PlayAudioClip(introClipBee, false, null);
+            audioPlayer.PlayAudioClip(introClipBee, false);
         }
         subtitles.Play();
     }
