@@ -9,9 +9,11 @@ float forwardTime;
 float backTime;
 int mistakes;
 int shortcuts;
+int startBiasX = -120;
+int startBiasZ = -300;
 
 void setup() {
-  size(800,600);
+  size(1200,900);
   PImage map = loadImage("minecraft.png");
   background(map);
   frameRate(1000000000);
@@ -46,11 +48,11 @@ void lineDraw(String line){
   {
     if(coords.length > 2)    //if coordinates, not mistake and shortcut count
     {
-      int x = Integer.parseInt(split(coords[0], ",")[0]);
+      int x = int(startBiasX + (2.1 * Integer.parseInt(split(coords[0], ",")[0])));
       int y = Integer.parseInt(split(coords[1], ",")[0]);
-      int z = Integer.parseInt(split(coords[2], ",")[0]);
+      int z = int(startBiasZ + (2 * Integer.parseInt(split(coords[2], ",")[0])));
       
-      pixels[(600 - z)*800 + x] = c;
+      pixels[(600 - z) * 1200 + x] = c;
       //pixels[(600 - z)*800 + x*2 + 1] = c;
       //pixels[(600 - z)*800 + x*2 + 800 + 1] = c;
       //pixels[(600 - z)*800 + x*2 + 800] = c;
