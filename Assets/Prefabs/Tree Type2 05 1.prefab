@@ -1034,6 +1034,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4617250265422868220}
     m_Modifications:
+    - target: {fileID: 1931579545343752900, guid: c3da28c9c3a44a146915b9e89e6cd3f2, type: 3}
+      propertyPath: m_LocalReferencePoint.x
+      value: 0.012123346
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931579545343752900, guid: c3da28c9c3a44a146915b9e89e6cd3f2, type: 3}
+      propertyPath: m_LocalReferencePoint.z
+      value: 0.040572286
+      objectReference: {fileID: 0}
     - target: {fileID: 4087473403934874099, guid: c3da28c9c3a44a146915b9e89e6cd3f2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.426242
@@ -1096,6 +1104,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4617250265422868220}
     m_Modifications:
+    - target: {fileID: 1931579545343752900, guid: c3da28c9c3a44a146915b9e89e6cd3f2, type: 3}
+      propertyPath: m_LocalReferencePoint.x
+      value: 0.012134731
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931579545343752900, guid: c3da28c9c3a44a146915b9e89e6cd3f2, type: 3}
+      propertyPath: m_LocalReferencePoint.z
+      value: 0.0405609
+      objectReference: {fileID: 0}
     - target: {fileID: 4087473403934874099, guid: c3da28c9c3a44a146915b9e89e6cd3f2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.967156
@@ -1220,6 +1236,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4617250265422868220}
     m_Modifications:
+    - target: {fileID: 1931579545343752900, guid: c3da28c9c3a44a146915b9e89e6cd3f2, type: 3}
+      propertyPath: m_LocalReferencePoint.x
+      value: 0.012134969
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931579545343752900, guid: c3da28c9c3a44a146915b9e89e6cd3f2, type: 3}
+      propertyPath: m_LocalReferencePoint.z
+      value: 0.04058492
+      objectReference: {fileID: 0}
     - target: {fileID: 4087473403934874099, guid: c3da28c9c3a44a146915b9e89e6cd3f2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.6223226
