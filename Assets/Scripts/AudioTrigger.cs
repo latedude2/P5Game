@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioTrigger : MonoBehaviour
 {
     public bool isReturnTrigger = false;
+    public bool stopEffect = false;
 
     public AudioClip triggerClip;
     public bool isMusicTrigger = false;
