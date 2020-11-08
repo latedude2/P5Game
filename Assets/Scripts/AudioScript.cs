@@ -52,7 +52,7 @@ public class AudioScript : MonoBehaviour
     private void Update()
     {
         if (stopEffect)
-            StopEffect();
+            FadeOutEffect();
     }
 
     private void PrepareNarrative()
@@ -76,20 +76,22 @@ public class AudioScript : MonoBehaviour
         }
     }
 
-    public void PlayEffect(AudioClip audioClip, bool loop, float volume = 1f)
+    public void PlayEffect(AudioClip audioClip, float volume = 1f)
     {
         effectPlayer.clip = audioClip;
-        effectPlayer.loop = loop;
+        effectPlayer.loop = true;
         effectPlayer.volume = volume;
         effectPlayer.Play();
     }
-    
-    private void StopEffect()
+
+    //used to get the fade out effect
+    private void FadeOutEffect()
     {
         if (effectPlayer.volume > 0f)
         {
             effectPlayer.volume -= 0.1f * Time.deltaTime;
-        } else
+        }
+        else
         {
             effectPlayer.Stop();
             stopEffect = false;
