@@ -49,17 +49,23 @@ void setup() {
     printArray(beeFilenames);
   
     System.out.println("Drawing arrow condition files");
+    System.out.println("participant number, time going to forward, time going back, mistakes made, shortcuts taken");
     for(int i = 0; i < arrowFilenames.length; i++)
     {
       reader = createReader("arrow/" + arrowFilenames[i]);
-      drawPath();
+      drawPath(arrowFilenames[i]);
+      forwardTimeSaved = false;
+      backTimeSaved = false;
     }
     
     System.out.println("Drawing bee condition files");
+    System.out.println("participant number, time going to forward, time going back, mistakes made, shortcuts taken");
     for(int i = 0; i < beeFilenames.length; i++)
     {
       reader = createReader("bee/" + beeFilenames[i]);
-      drawPath();
+      drawPath(beeFilenames[i]);
+      forwardTimeSaved = false;
+      backTimeSaved = false;
     }
   }
   else 
@@ -96,15 +102,14 @@ void drawSinglePathSlow()
   }
 }
 
-void drawPath()
+void drawPath(String filename)
 {
   try {
     while((line = reader.readLine())!= null)
     {
       lineDraw(line);
     }
-    System.out.println(forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts);
-    System.out.println("File read");
+    System.out.println(split(filename, ".")[0] + ", " + forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts);
   }
   catch (IOException e)
   {
