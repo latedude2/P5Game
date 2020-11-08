@@ -10,8 +10,6 @@ public class EndTaskInteraction : MonoBehaviour
     [SerializeField] private float honeyCollectionTime = 10;
     private float honeyCollectionTimeLeft;
 
-    [SerializeField] private float taskCompletionTextShowTime = 5;
-
     [SerializeField] private GameObject progressBar;
     [SerializeField] private GameObject textElement;
     [SerializeField] private PlayerMovementRecorder playerMovementRecorder;
@@ -84,18 +82,11 @@ public class EndTaskInteraction : MonoBehaviour
                 subtitles.Play();
                 ChangeAudioTriggerActiveness();
             }
+            textElement.SetActive(false);
             progressBar.SetActive(false);
-            taskCompletionTextShowTime -= Time.fixedDeltaTime;
             endTestTrigger.SetActive(true);
             mistakeTriggerParent.SetActive(true);
             shortcutTriggerParent.SetActive(true);
-            
-
-            if (taskCompletionTextShowTime <= 0)
-            {
-                textElement.SetActive(false);
-                this.enabled = false;
-            }
         }
     }
 
