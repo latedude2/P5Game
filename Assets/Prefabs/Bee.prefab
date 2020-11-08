@@ -86,7 +86,7 @@ MonoBehaviour:
   player: {fileID: 0}
   navObjects: []
   guidePointParent: {fileID: 0}
-  beeSpookDistance: 0
+  beeSpookDistance: 8
 --- !u!82 &991028575016672361
 AudioSource:
   m_ObjectHideFlags: 0
