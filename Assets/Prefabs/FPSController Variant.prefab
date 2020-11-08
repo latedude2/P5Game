@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   honeyCollectionTime: 5
-  taskCompletionTextShowTime: 5
   progressBar: {fileID: 0}
   textElement: {fileID: 0}
   playerMovementRecorder: {fileID: 9068725277384773965}
@@ -429,6 +428,26 @@ PrefabInstance:
       propertyPath: m_FootstepSounds.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: c15eaa42f4401f94f8ae314ea62dab8a, type: 3}
+    - target: {fileID: 543450653136185066, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.053315572
+      objectReference: {fileID: 0}
+    - target: {fileID: 543450653136185066, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9985777
+      objectReference: {fileID: 0}
+    - target: {fileID: 543450653136185066, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.598
+      objectReference: {fileID: 0}
+    - target: {fileID: 543450653136185066, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.847
+      objectReference: {fileID: 0}
+    - target: {fileID: 543450653136185066, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 6.112
+      objectReference: {fileID: 0}
     - target: {fileID: 1614226369694329713, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
