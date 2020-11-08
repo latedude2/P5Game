@@ -6,10 +6,13 @@ public class AudioScript : MonoBehaviour
 {
     [SerializeField] private AudioSource narrationPlayer;
     [SerializeField] private AudioSource musicPlayer;
+    [SerializeField] private AudioSource effectPlayer;
 
     private Subtitles subtitles;
 
     private AudioTrigger currentTrigger;
+
+    private bool stopEffect;
 
     private void Start()
     {
@@ -39,10 +42,17 @@ public class AudioScript : MonoBehaviour
                     musicPlayer.clip = currentTrigger.musicClip;
                     musicPlayer.Play();
                 }
+                stopEffect = currentTrigger.stopEffect;
             }
             if (currentTrigger.destroyOnPlay)
                 currentTrigger.GetComponent<BoxCollider>().enabled = false;
         }
+    }
+
+    private void Update()
+    {
+        if (stopEffect)
+            FadeOutEffect();
     }
 
     private void PrepareNarrative()
@@ -63,6 +73,28 @@ public class AudioScript : MonoBehaviour
             narrationPlayer.clip = audioClip;
             narrationPlayer.volume = volume;
             narrationPlayer.Play();
+        }
+    }
+
+    public void PlayEffect(AudioClip audioClip, float volume = 1f)
+    {
+        effectPlayer.clip = audioClip;
+        effectPlayer.loop = true;
+        effectPlayer.volume = volume;
+        effectPlayer.Play();
+    }
+
+    //used to get the fade out effect
+    private void FadeOutEffect()
+    {
+        if (effectPlayer.volume > 0f)
+        {
+            effectPlayer.volume -= 0.1f * Time.deltaTime;
+        }
+        else
+        {
+            effectPlayer.Stop();
+            stopEffect = false;
         }
     }
 }
