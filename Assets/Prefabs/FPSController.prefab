@@ -68,13 +68,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ec5cf00ca181d45a42ba1870e148c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_IsTechnicalTesting: 1
   m_IsWalking: 0
-  m_WalkSpeed: 5
-  m_RunSpeed: 10
+  m_WalkSpeed: 8
+  m_RunSpeed: 20
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 10
   m_StickToGroundForce: 10
-  m_GravityMultiplier: 2
+  m_GravityMultiplier: 2.5
   m_MouseLook:
     XSensitivity: 2
     YSensitivity: 2
@@ -305,6 +306,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   framesBetweenRecordTakes: 2
+  mistakeTriggerParent: {fileID: 0}
+  shortcutTriggerParent: {fileID: 0}
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,8 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40cbde3cfa0cfcc45860518bb3f842a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 3
-  navObjectParent: {fileID: 0}
+  objectToFollow: {fileID: 0}
 --- !u!1 &5973269081655845852
 GameObject:
   m_ObjectHideFlags: 0
