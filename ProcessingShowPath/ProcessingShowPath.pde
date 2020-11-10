@@ -49,7 +49,7 @@ void setup() {
     printArray(beeFilenames);
   
     System.out.println("Drawing arrow condition files");
-    System.out.println("participant number, time going to forward, time going back, mistakes made, shortcuts taken");
+    System.out.println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken");
     for(int i = 0; i < arrowFilenames.length; i++)
     {
       reader = createReader("arrow/" + arrowFilenames[i]);
@@ -59,7 +59,7 @@ void setup() {
     }
     
     System.out.println("Drawing bee condition files");
-    System.out.println("participant number, time going to forward, time going back, mistakes made, shortcuts taken");
+    System.out.println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken");
     for(int i = 0; i < beeFilenames.length; i++)
     {
       reader = createReader("bee/" + beeFilenames[i]);
