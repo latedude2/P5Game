@@ -7,6 +7,10 @@ public class StartTest : MonoBehaviour
     [SerializeField] private AudioClip startMusicClip;
 
     [SerializeField] private bool isArrowCondition = false;
+
+    [SerializeField] private NavigationalAid beeNavAid;
+    [SerializeField] private NavigationalAid arrowNavAid;
+
     [SerializeField] private AudioClip introClipArrow;
     [SerializeField] private string[] subtitleTextArrow;
     [SerializeField] private float[] subtitleTimeArrow;
@@ -27,11 +31,13 @@ public class StartTest : MonoBehaviour
 
         if (isArrowCondition)
         {
+            beeNavAid.DisableAidWithSound();
             subtitles.SetupUpSubtitles(subtitleTextArrow, subtitleTimeArrow);
             audioPlayer.PlayAudioClip(introClipArrow, false);
         } 
         else
         {
+            arrowNavAid.DisableAidWithSound();
             subtitles.SetupUpSubtitles(subtitleTextBee, subtitleTimeBee);
             audioPlayer.PlayAudioClip(introClipBee, false);
         }
