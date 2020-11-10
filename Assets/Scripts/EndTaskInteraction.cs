@@ -81,8 +81,8 @@ public class EndTaskInteraction : MonoBehaviour
                 subtitles.SetupUpSubtitles(subtitleText, subtitleTime);
                 subtitles.Play();
                 ChangeAudioTriggerActiveness();
+                textElement.SetActive(false);
             }
-            textElement.SetActive(false);
             progressBar.SetActive(false);
             endTestTrigger.SetActive(true);
             mistakeTriggerParent.SetActive(true);
