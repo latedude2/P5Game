@@ -19,6 +19,9 @@ public class EndTaskInteraction : MonoBehaviour
     private Slider slider;
     private bool taskCompleted = false;
 
+    [SerializeField] private NavigationalAid beeNavAid;
+    [SerializeField] private NavigationalAid arrowNavAid;
+
     [SerializeField] private GameObject endTestTrigger;
     [SerializeField] private GameObject mistakeTriggerParent;
     [SerializeField] private GameObject shortcutTriggerParent;
@@ -73,6 +76,8 @@ public class EndTaskInteraction : MonoBehaviour
         {
             if (!taskCompleted)
             {
+                beeNavAid.DisableAidWithSound();
+                arrowNavAid.DisableAidWithSound();
                 playerMovementRecorder.endTaskCompleted = true;
                 taskCompleted = true;
                 audioPlayer.PlayAudioClip(endTaskClip, false);
