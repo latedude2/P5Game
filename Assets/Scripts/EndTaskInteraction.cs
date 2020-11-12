@@ -82,7 +82,7 @@ public class EndTaskInteraction : MonoBehaviour
                 taskCompleted = true;
                 audioPlayer.PlayAudioClip(endTaskClip, false);
                 audioPlayer.PlayAudioClip(returnMusicClip, true, 0.45f);
-                audioPlayer.PlayEffect(returnEffect, 0.15f);
+                audioPlayer.PlayEffect(returnEffect, 0.12f);
                 subtitles.SetupUpSubtitles(subtitleText, subtitleTime);
                 subtitles.Play();
                 ChangeAudioTriggerActiveness();
