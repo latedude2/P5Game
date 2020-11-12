@@ -18,6 +18,7 @@ public class EndTest : MonoBehaviour
             //End the recording
             transform.GetComponent<PlayerMovementRecorder>().testEnded = true;
             textElement.SetActive(true);
+            textElement.GetComponent<Text>().fontSize = 25;
             textElement.GetComponent<Text>().text = endingText;
         }
     }
