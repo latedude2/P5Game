@@ -76,10 +76,12 @@ public class EndTaskInteraction : MonoBehaviour
         {
             if (!taskCompleted)
             {
-                beeNavAid.DisableAidWithSound();
-                arrowNavAid.DisableAidWithSound();
-                playerMovementRecorder.endTaskCompleted = true;
                 taskCompleted = true;
+                if(beeNavAid != null)
+                    beeNavAid.DisableAidWithSound();
+                if (arrowNavAid != null)
+                    arrowNavAid.DisableAidWithSound();
+                playerMovementRecorder.endTaskCompleted = true;
                 audioPlayer.PlayAudioClip(endTaskClip, false);
                 audioPlayer.PlayAudioClip(returnMusicClip, true, 0.45f);
                 audioPlayer.PlayEffect(returnEffect, 0.12f);
