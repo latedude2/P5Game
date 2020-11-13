@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HurtEffect : MonoBehaviour
 {
-    private readonly float SHAKE_DEFORM_COEFFICIENT = .2f;
+    private readonly float SHAKE_DEFORM_COEF = .2f;
 
     [SerializeField] private bool shake; //only for testing purposes
 
@@ -39,7 +39,7 @@ public class HurtEffect : MonoBehaviour
 
     private float GetDeformedRotation(float axisValue)
     {
-        return axisValue + Random.Range(-shakeIntensity, shakeIntensity) * SHAKE_DEFORM_COEFFICIENT;
+        return axisValue + Random.Range(-shakeIntensity, shakeIntensity) * SHAKE_DEFORM_COEF;
     }
 
     private void TestHit()
