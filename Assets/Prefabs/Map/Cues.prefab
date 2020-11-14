@@ -7328,6 +7328,7 @@ GameObject:
   - component: {fileID: 2353913480294344135}
   - component: {fileID: 2364696665059416901}
   - component: {fileID: 2375110085091988071}
+  - component: {fileID: 6035224881504107743}
   m_Layer: 0
   m_Name: Log_1
   m_TagString: Untagged
@@ -7399,6 +7400,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6035224881504107743
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2351123136998033095}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: f12a3ed37c1553f46a2806744d6b056e, type: 3}
 --- !u!1 &2352189707272548033
 GameObject:
   m_ObjectHideFlags: 0
@@ -7878,7 +7893,6 @@ Transform:
   - {fileID: 5886571105024794555}
   - {fileID: 5886571104838763972}
   - {fileID: 5886571104301380341}
-  - {fileID: 5886571104319533334}
   - {fileID: 5886571103922064928}
   - {fileID: 5886571104280318667}
   - {fileID: 5886571104788918446}
@@ -8266,6 +8280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2352189708447050356}
+  - component: {fileID: 6835005091966942504}
   m_Layer: 0
   m_Name: Mushrooms
   m_TagString: Untagged
@@ -8340,6 +8355,20 @@ Transform:
   m_Father: {fileID: 2352189707448712191}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &6835005091966942504
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2352189708447050357}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &2352189708503667064
 GameObject:
   m_ObjectHideFlags: 0
@@ -8871,6 +8900,7 @@ GameObject:
   - component: {fileID: 2356701433834780147}
   - component: {fileID: 2367804232874992539}
   - component: {fileID: 2375249111113327739}
+  - component: {fileID: 7214877265814815896}
   m_Layer: 0
   m_Name: Log_3
   m_TagString: Untagged
@@ -8942,6 +8972,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7214877265814815896
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2352871479427301547}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: afd0b1f883c32e241806a5fdf70cb47a, type: 3}
 --- !u!1 &2737381880113606868
 GameObject:
   m_ObjectHideFlags: 0
@@ -18767,6 +18811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571104280318667}
+  - component: {fileID: 8994553647545047064}
   m_Layer: 0
   m_Name: Berry_bush (4)
   m_TagString: Untagged
@@ -18793,8 +18838,22 @@ Transform:
   - {fileID: 2214130571207100359}
   - {fileID: 4518501392722878938}
   m_Father: {fileID: 2352189707779108089}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &8994553647545047064
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725481688516721}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725481767740149
 GameObject:
   m_ObjectHideFlags: 0
@@ -18804,6 +18863,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571104068073551}
+  - component: {fileID: 6191342281497130099}
   m_Layer: 0
   m_Name: Berry_bush (10)
   m_TagString: Untagged
@@ -18832,6 +18892,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 130.963, z: 0}
+--- !u!64 &6191342281497130099
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725481767740149}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725481888109722
 GameObject:
   m_ObjectHideFlags: 0
@@ -18841,6 +18915,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571103922064928}
+  - component: {fileID: 8475751748596547496}
   m_Layer: 0
   m_Name: Berry_bush (5)
   m_TagString: Untagged
@@ -18866,9 +18941,24 @@ Transform:
   - {fileID: 1411043771891072495}
   - {fileID: 2214130571402959660}
   - {fileID: 4518501392410049841}
+  - {fileID: 5886571104319533334}
   m_Father: {fileID: 2352189707779108089}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 91.802, z: 0}
+--- !u!64 &8475751748596547496
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725481888109722}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725482000862844
 GameObject:
   m_ObjectHideFlags: 0
@@ -18878,6 +18968,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571103967712454}
+  - component: {fileID: 2973276272482180180}
   m_Layer: 0
   m_Name: Berry_bush (18)
   m_TagString: Untagged
@@ -18906,6 +18997,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -4.226, y: -63.301, z: -7.695}
+--- !u!64 &2973276272482180180
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725482000862844}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725482090742623
 GameObject:
   m_ObjectHideFlags: 0
@@ -18915,6 +19020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571103854172645}
+  - component: {fileID: 8045979263684669005}
   m_Layer: 0
   m_Name: Berry_bush (2)
   m_TagString: Untagged
@@ -18941,8 +19047,22 @@ Transform:
   - {fileID: 2214130571605069033}
   - {fileID: 4518501392341625588}
   m_Father: {fileID: 2352189707779108089}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &8045979263684669005
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725482090742623}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725482117887164
 GameObject:
   m_ObjectHideFlags: 0
@@ -18952,6 +19072,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571103818395142}
+  - component: {fileID: 4868925168445308416}
   m_Layer: 0
   m_Name: Berry_bush (13)
   m_TagString: Untagged
@@ -18980,6 +19101,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 35.266, z: 0}
+--- !u!64 &4868925168445308416
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725482117887164}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725482220186132
 GameObject:
   m_ObjectHideFlags: 0
@@ -18989,6 +19124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571104788918446}
+  - component: {fileID: 8748911799078160134}
   m_Layer: 0
   m_Name: Berry_bush (3)
   m_TagString: Untagged
@@ -19015,8 +19151,22 @@ Transform:
   - {fileID: 2214130571734508962}
   - {fileID: 4518501393285923775}
   m_Father: {fileID: 2352189707779108089}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: -276.988, z: 0}
+--- !u!64 &8748911799078160134
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725482220186132}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725482284106785
 GameObject:
   m_ObjectHideFlags: 0
@@ -19026,6 +19176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571104590700187}
+  - component: {fileID: 6263223365751137551}
   m_Layer: 0
   m_Name: Berry_bush (12)
   m_TagString: Untagged
@@ -19054,6 +19205,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 26.494, z: 0}
+--- !u!64 &6263223365751137551
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725482284106785}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725482311327735
 GameObject:
   m_ObjectHideFlags: 0
@@ -19063,6 +19228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571104563414349}
+  - component: {fileID: 1654160652817502456}
   m_Layer: 0
   m_Name: Berry_bush (1)
   m_TagString: Untagged
@@ -19089,8 +19255,22 @@ Transform:
   - {fileID: 2214130571758538817}
   - {fileID: 4518501393043764828}
   m_Father: {fileID: 2352189707779108089}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: -76.578, z: 0}
+--- !u!64 &1654160652817502456
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725482311327735}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725482556074924
 GameObject:
   m_ObjectHideFlags: 0
@@ -19100,6 +19280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571104319533334}
+  - component: {fileID: 3769631452653605909}
   m_Layer: 0
   m_Name: Berry_bush (6)
   m_TagString: Untagged
@@ -19114,9 +19295,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6555725482556074924}
-  m_LocalRotation: {x: 0.047679525, y: 0.3634758, z: -0.12629688, w: 0.92177063}
-  m_LocalPosition: {x: -18.869995, y: -16.85878, z: 28.91999}
-  m_LocalScale: {x: 0.49801227, y: 0.4980123, z: 0.49801227}
+  m_LocalRotation: {x: 0.12387869, y: -0.4090134, z: -0.053649902, w: 0.90248764}
+  m_LocalPosition: {x: -31.614975, y: 0.26103988, z: 14.100079}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 336873412869821452}
   - {fileID: 2445680472832442395}
@@ -19125,9 +19306,23 @@ Transform:
   - {fileID: 1411043771491664601}
   - {fileID: 2214130572070986778}
   - {fileID: 4518501392815784455}
-  m_Father: {fileID: 2352189707779108089}
-  m_RootOrder: 14
+  m_Father: {fileID: 5886571103922064928}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 10.353, y: 41.985, z: -11.622}
+--- !u!64 &3769631452653605909
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725482556074924}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725482581960783
 GameObject:
   m_ObjectHideFlags: 0
@@ -19137,6 +19332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571104301380341}
+  - component: {fileID: 2918134521666574932}
   m_Layer: 0
   m_Name: Berry_bush (7)
   m_TagString: Untagged
@@ -19165,6 +19361,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2918134521666574932
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725482581960783}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725482652405323
 GameObject:
   m_ObjectHideFlags: 0
@@ -19174,6 +19384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571104365532401}
+  - component: {fileID: 1772899765013790013}
   m_Layer: 0
   m_Name: Berry_bush (17)
   m_TagString: Untagged
@@ -19202,6 +19413,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -19.485}
+--- !u!64 &1772899765013790013
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725482652405323}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725482746274345
 GameObject:
   m_ObjectHideFlags: 0
@@ -19211,6 +19436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571105335982227}
+  - component: {fileID: 4255103890262415895}
   m_Layer: 0
   m_Name: Berry_bush (19)
   m_TagString: Untagged
@@ -19239,6 +19465,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 18.516, y: 0, z: 0}
+--- !u!64 &4255103890262415895
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725482746274345}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725482772791486
 GameObject:
   m_ObjectHideFlags: 0
@@ -19248,6 +19488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571105343658500}
+  - component: {fileID: 763722826519515747}
   m_Layer: 0
   m_Name: Berry_bush (20)
   m_TagString: Untagged
@@ -19276,6 +19517,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 29.418, y: 4.13, z: -12.157}
+--- !u!64 &763722826519515747
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725482772791486}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725482886317707
 GameObject:
   m_ObjectHideFlags: 0
@@ -19285,6 +19540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571105205492785}
+  - component: {fileID: 6281763672876055008}
   m_Layer: 0
   m_Name: Berry_bush (11)
   m_TagString: Untagged
@@ -19313,6 +19569,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 112.182, z: 0}
+--- !u!64 &6281763672876055008
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725482886317707}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725483057906945
 GameObject:
   m_ObjectHideFlags: 0
@@ -19322,6 +19592,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571105024794555}
+  - component: {fileID: 4450604407940000891}
   m_Layer: 0
   m_Name: Berry_bush (9)
   m_TagString: Untagged
@@ -19350,6 +19621,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: -10.8, y: 0, z: 4.06}
+--- !u!64 &4450604407940000891
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725483057906945}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725483119353726
 GameObject:
   m_ObjectHideFlags: 0
@@ -19359,6 +19644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571104838763972}
+  - component: {fileID: 8579599459323034083}
   m_Layer: 0
   m_Name: Berry_bush (8)
   m_TagString: Untagged
@@ -19387,6 +19673,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 105.537, z: 0}
+--- !u!64 &8579599459323034083
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725483119353726}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725483127399047
 GameObject:
   m_ObjectHideFlags: 0
@@ -19396,6 +19696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571104830011453}
+  - component: {fileID: 2032454540216528939}
   m_Layer: 0
   m_Name: Berry_bush
   m_TagString: Untagged
@@ -19422,8 +19723,22 @@ Transform:
   - {fileID: 2214130572579335473}
   - {fileID: 4518501393314040620}
   m_Father: {fileID: 2352189707779108089}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2032454540216528939
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725483127399047}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725483141523461
 GameObject:
   m_ObjectHideFlags: 0
@@ -19433,6 +19748,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571104839938751}
+  - component: {fileID: 5162138539264059598}
   m_Layer: 0
   m_Name: Berry_bush (14)
   m_TagString: Untagged
@@ -19461,6 +19777,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -3.971, y: -20.69, z: 0}
+--- !u!64 &5162138539264059598
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725483141523461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725483532729080
 GameObject:
   m_ObjectHideFlags: 0
@@ -19470,6 +19800,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571105497505858}
+  - component: {fileID: 134384290128585374}
   m_Layer: 0
   m_Name: Berry_bush (16)
   m_TagString: Untagged
@@ -19498,6 +19829,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -5.549, y: -46.449, z: -5.252}
+--- !u!64 &134384290128585374
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725483532729080}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6555725483545172412
 GameObject:
   m_ObjectHideFlags: 0
@@ -19507,6 +19852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886571105512047366}
+  - component: {fileID: 50235093271380128}
   m_Layer: 0
   m_Name: Berry_bush (15)
   m_TagString: Untagged
@@ -19535,6 +19881,20 @@ Transform:
   m_Father: {fileID: 2352189707779108089}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 9.073, y: 46.597, z: -8.483}
+--- !u!64 &50235093271380128
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555725483545172412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6651139033311504064
 GameObject:
   m_ObjectHideFlags: 0
@@ -21571,6 +21931,7 @@ GameObject:
   - component: {fileID: 336873414686964011}
   - component: {fileID: 8555421588320493843}
   - component: {fileID: 750545603894059688}
+  - component: {fileID: 1094590597144363915}
   m_Layer: 0
   m_Name: Icosphere
   m_TagString: Untagged
@@ -21641,6 +22002,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1094590597144363915
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980856421935070904}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 289301614986012343, guid: 893b7cfbf5db3ae4384cd508d1af0284, type: 3}
 --- !u!1 &7980856422066723354
 GameObject:
   m_ObjectHideFlags: 0
