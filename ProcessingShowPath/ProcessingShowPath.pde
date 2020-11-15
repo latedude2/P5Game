@@ -34,7 +34,7 @@ String[] beeFilenames;
 void setup() {
   size(1200,900);
   PImage map = loadImage("isometric.png");
-  //map.filter(GRAY);
+  map.filter(GRAY);
   background(map);
   frameRate(1000000000);
   loadPixels();  
