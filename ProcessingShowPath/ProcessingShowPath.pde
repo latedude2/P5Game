@@ -59,7 +59,7 @@ void setup() {
     printArray(beeFilenames);
   
     println("Drawing arrow condition files");
-    println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken, wander_count, wanter_time_sum");
+    println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken, wander_count, wander_time_sum, finished");
     for(int i = 0; i < arrowFilenames.length; i++)
     {
       reader = createReader("arrow/" + arrowFilenames[i]);
@@ -67,12 +67,12 @@ void setup() {
       FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
       wanderTimeSum = sumOfTimes(wanderTimes);
       //printTimes(wanderTimes);
-      println(split(arrowFilenames[i], ".")[0] + ", " + forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts + ", " + wanderTimes.size() + ", " + wanderTimeSum);
+      printParticipantResult(arrowFilenames[i], wanderTimes);
       resetVariablesForNextTestRun();
     }
     
     println("Drawing bee condition files");
-    println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken");
+    println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken, wander_count, wander_time_sum, finished");
     for(int i = 0; i < beeFilenames.length; i++)
     {
       reader = createReader("bee/" + beeFilenames[i]);
@@ -80,7 +80,7 @@ void setup() {
       FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
       wanderTimeSum = sumOfTimes(wanderTimes);
       //printTimes(wanderTimes);
-      println(split(beeFilenames[i], ".")[0] + ", " + forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts + ", " + wanderTimes.size() + ", " + wanderTimeSum);
+      printParticipantResult(beeFilenames[i], wanderTimes);
       resetVariablesForNextTestRun();
     }
   }
@@ -98,13 +98,27 @@ void draw() {
   }
 }
 
+void printParticipantResult(String filename, FloatList wanderTimes)
+{
+  if(backTimeSaved)
+  {
+    println(split(filename, ".")[0] + ", " + forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts + ", " + wanderTimes.size() + ", " + wanderTimeSum  + ", " + "Yes");
+  }
+  else 
+  {
+    println(split(filename, ".")[0] + ", " + forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts + ", " + wanderTimes.size() + ", " + wanderTimeSum  + ", " + "No");
+  }
+}
+
 void drawSinglePathSlow()
 {
   try {
     line = reader.readLine();
     if (line == null || line == "") {
+      FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
+      wanderTimeSum = sumOfTimes(wanderTimes);
       System.out.println("File read");
-      System.out.println(forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts);
+      System.out.println(forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts + ", " + wanderTimes.size() + ", " + wanderTimeSum);
       stop();
       noLoop();
     } else {
@@ -174,7 +188,6 @@ void lineDraw(String line){
   else if(coords.length > 1) //mistake and shortcut counts, last line in file
   {
     {
-        backTimeSaved = true;
         mistakes = Integer.parseInt(coords[0]);
         shortcuts = Integer.parseInt(coords[1]);
     }
@@ -191,6 +204,10 @@ void lineDraw(String line){
   else if(line.equals("WanderedFromBee")) //This is the end task tag
   {
     wanderFromBeeTimes.append(frameTime);
+  }
+  else if(line.equals("TestCompleted"))
+  {
+    backTimeSaved = true;
   }
 }
 
@@ -229,6 +246,7 @@ void resetVariablesForNextTestRun()
   returnToBeeTimes = new FloatList();
   wanderFromBeeTimes  = new FloatList();
   frameTime = 0;
+  c = forwardColor;
 }
 
 // This function returns all the files in a directory as an array of Strings  
