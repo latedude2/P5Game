@@ -48,6 +48,7 @@ public class PlayerMovementRecorder : MonoBehaviour
         }
         if(testEnded)
         {
+            writer.WriteLine("TestCompleted");
             this.enabled = false;
         }
     }
