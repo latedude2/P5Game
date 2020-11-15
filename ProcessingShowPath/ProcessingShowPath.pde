@@ -30,8 +30,8 @@ int drawAlpha;
 //modify wanted output here
 boolean drawForward = true;
 boolean drawBack = true;
-boolean drawAll = true;
-boolean heatmap = true;
+boolean drawAll = false;
+boolean heatmap = false;
 
 int heatmapCircleDiameter = 5;
 
@@ -100,14 +100,16 @@ void draw() {
 
 void printParticipantResult(String filename, FloatList wanderTimes)
 {
+  String finishedString;
   if(backTimeSaved)
   {
-    println(split(filename, ".")[0] + ", " + forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts + ", " + wanderTimes.size() + ", " + wanderTimeSum  + ", " + "Yes");
+    finishedString = "Yes";
   }
   else 
   {
-    println(split(filename, ".")[0] + ", " + forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts + ", " + wanderTimes.size() + ", " + wanderTimeSum  + ", " + "No");
+    finishedString = "No";
   }
+  println(split(filename, ".")[0] + ", " + forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts + ", " + wanderTimes.size() + ", " + wanderTimeSum  + ", " + finishedString);
 }
 
 void drawSinglePathSlow()
@@ -117,8 +119,7 @@ void drawSinglePathSlow()
     if (line == null || line == "") {
       FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
       wanderTimeSum = sumOfTimes(wanderTimes);
-      System.out.println("File read");
-      System.out.println(forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts + ", " + wanderTimes.size() + ", " + wanderTimeSum);
+      printParticipantResult("arrow/test.txt", wanderTimes);
       stop();
       noLoop();
     } else {
