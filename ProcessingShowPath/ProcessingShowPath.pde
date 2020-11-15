@@ -24,6 +24,9 @@ int drawAlpha;
 boolean drawForward = true;
 boolean drawBack = true;
 boolean drawAll = true;
+boolean heatmap = true;
+
+int heatmapCircleDiameter = 5;
 
 String[] arrowFilenames;
 String[] beeFilenames;
@@ -132,11 +135,21 @@ void lineDraw(String line){
         //int y = Integer.parseInt(split(coords[1], ",")[0]);
         int z = int(startBiasZ + (stretchMultiplierY * Float.parseFloat(coords[2])));
         
-        stroke(c, drawAlpha);
-        point(x, sizeY - z);
-        point(x + 1, sizeY - z);
-        point(x + 1, sizeY - z + 1);
-        point(x + 1, sizeY - z + 1);
+        
+        if(heatmap)
+        {
+          stroke(c, drawAlpha / 10);
+          fill(c, drawAlpha / 10);
+          circle(x, sizeY - z, heatmapCircleDiameter);
+        }
+        else 
+        {
+          stroke(c, drawAlpha);
+          point(x, sizeY - z);
+          point(x + 1, sizeY - z);
+          point(x + 1, sizeY - z + 1);
+          point(x + 1, sizeY - z + 1);
+        }
         
         if(!forwardTimeSaved)
         {
@@ -170,18 +183,6 @@ String[] listFileNames(String dir) {
   if (file.isDirectory()) {
     String names[] = file.list();
     return names;
-  } else {
-    // If it's not a directory
-    return null;
-  }
-}
-
-// This function returns all the files in a directory as an array of File objects
-File[] listFiles(String dir) {
-  File file = new File(dir);
-  if (file.isDirectory()) {
-    File[] files = file.listFiles();
-    return files;
   } else {
     // If it's not a directory
     return null;
