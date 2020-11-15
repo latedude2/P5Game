@@ -12,6 +12,7 @@ public class PlayerMovementRecorder : MonoBehaviour
     [System.NonSerialized] public bool testEnded = false;
     [SerializeField] private GameObject mistakeTriggerParent;
     [SerializeField] private GameObject shortcutTriggerParent;
+    [SerializeField] private GameObject bee;
 
     private List<MistakeTrigger> mistakeTriggers = new List<MistakeTrigger>();
     private List<ShortcutTrigger> shortcutTriggers = new List<ShortcutTrigger>();
@@ -70,7 +71,6 @@ public class PlayerMovementRecorder : MonoBehaviour
         }
         else
         {
-            //File.Delete(path);
             //Write some text to the test.txt file
             writer = new StreamWriter(path, true);
         }
@@ -78,16 +78,31 @@ public class PlayerMovementRecorder : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        BeeController beeController = other.GetComponent<BeeController>();
+        if (beeController != null)
+        {
+            writer.WriteLine("ReturnedToBee");
+        }
+
         MistakeTrigger mistakeTrigger = other.GetComponent<MistakeTrigger>();
         if(mistakeTrigger != null)
         {
-            mistakeTrigger.visited = true; 
+            mistakeTrigger.visited = true;
         }
 
         ShortcutTrigger shortcutTrigger = other.GetComponent<ShortcutTrigger>();
         if (shortcutTrigger != null)
         {
             shortcutTrigger.visited = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        BeeController beeController = other.GetComponent<BeeController>();
+        if (beeController != null)
+        {
+            writer.WriteLine("WanderedFromBee");
         }
     }
 
