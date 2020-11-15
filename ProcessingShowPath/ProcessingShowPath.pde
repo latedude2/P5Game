@@ -6,9 +6,16 @@ boolean backTimeSaved = false;
 
 float forwardTime;
 float backTime;
+float wanderTimeSum; 
+float frameTime = 0;
+
+FloatList returnToBeeTimes = new FloatList();
+FloatList wanderFromBeeTimes  = new FloatList();
+
 int mistakes;
 int shortcuts;
 
+//Variables for matching path to map image
 int sizeX = 1200;
 int sizeY = 900;
 int startBiasX = -140;
@@ -24,6 +31,9 @@ int drawAlpha;
 boolean drawForward = true;
 boolean drawBack = true;
 boolean drawAll = true;
+boolean heatmap = true;
+
+int heatmapCircleDiameter = 5;
 
 String[] arrowFilenames;
 String[] beeFilenames;
@@ -31,7 +41,7 @@ String[] beeFilenames;
 void setup() {
   size(1200,900);
   PImage map = loadImage("isometric.png");
-  //map.filter(GRAY);
+  map.filter(GRAY);
   background(map);
   frameRate(1000000000);
   loadPixels();  
@@ -48,24 +58,30 @@ void setup() {
     beeFilenames = listFileNames("C:/UnityProjects/P5Game/ProcessingShowPath/bee");
     printArray(beeFilenames);
   
-    System.out.println("Drawing arrow condition files");
-    System.out.println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken");
+    println("Drawing arrow condition files");
+    println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken, wander_count, wanter_time_sum");
     for(int i = 0; i < arrowFilenames.length; i++)
     {
       reader = createReader("arrow/" + arrowFilenames[i]);
-      drawPath(arrowFilenames[i]);
-      forwardTimeSaved = false;
-      backTimeSaved = false;
+      drawPath();
+      FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
+      wanderTimeSum = sumOfTimes(wanderTimes);
+      //printTimes(wanderTimes);
+      println(split(arrowFilenames[i], ".")[0] + ", " + forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts + ", " + wanderTimes.size() + ", " + wanderTimeSum);
+      resetVariablesForNextTestRun();
     }
     
-    System.out.println("Drawing bee condition files");
-    System.out.println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken");
+    println("Drawing bee condition files");
+    println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken");
     for(int i = 0; i < beeFilenames.length; i++)
     {
       reader = createReader("bee/" + beeFilenames[i]);
-      drawPath(beeFilenames[i]);
-      forwardTimeSaved = false;
-      backTimeSaved = false;
+      drawPath();
+      FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
+      wanderTimeSum = sumOfTimes(wanderTimes);
+      //printTimes(wanderTimes);
+      println(split(beeFilenames[i], ".")[0] + ", " + forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts + ", " + wanderTimes.size() + ", " + wanderTimeSum);
+      resetVariablesForNextTestRun();
     }
   }
   else 
@@ -102,14 +118,13 @@ void drawSinglePathSlow()
   }
 }
 
-void drawPath(String filename)
+void drawPath()
 {
   try {
     while((line = reader.readLine())!= null)
     {
       lineDraw(line);
     }
-    System.out.println(split(filename, ".")[0] + ", " + forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts);
   }
   catch (IOException e)
   {
@@ -120,48 +135,100 @@ void drawPath(String filename)
 
 void lineDraw(String line){
   String[] coords = split(line, " ");
-  if(!coords[0].equals("EndTaskCompleted"))  //If this is not the end task tag
+  if(coords.length > 2)    //if coordinates, not mistake and shortcut count
   {
-    if(coords.length > 2)    //if coordinates, not mistake and shortcut count
+    if(c == forwardColor && drawForward || c == backColor && drawBack)
     {
-      if(c == forwardColor && drawForward || c == backColor && drawBack)
+      coords[0] = coords[0].replace(',', '.');      //Processing only likes floats with "." and not ","
+      coords[2] = coords[2].replace(',', '.');      //Processing only likes floats with "." and not ","
+      int x = int(startBiasX + (stretchMultiplierX * Float.parseFloat(coords[0])));
+      //int y = Integer.parseInt(split(coords[1], ",")[0]);
+      int z = int(startBiasZ + (stretchMultiplierY * Float.parseFloat(coords[2])));
+      
+      if(heatmap)
       {
-        coords[0] = coords[0].replace(',', '.');      //Processing only likes floats with "." and not ","
-        coords[2] = coords[2].replace(',', '.');      //Processing only likes floats with "." and not ","
-        int x = int(startBiasX + (stretchMultiplierX * Float.parseFloat(coords[0])));
-        //int y = Integer.parseInt(split(coords[1], ",")[0]);
-        int z = int(startBiasZ + (stretchMultiplierY * Float.parseFloat(coords[2])));
-        
+        stroke(c, drawAlpha / 10);
+        fill(c, drawAlpha / 10);
+        circle(x, sizeY - z, heatmapCircleDiameter);
+      }
+      else 
+      {
         stroke(c, drawAlpha);
         point(x, sizeY - z);
         point(x + 1, sizeY - z);
         point(x + 1, sizeY - z + 1);
         point(x + 1, sizeY - z + 1);
-        
-        if(!forwardTimeSaved)
-        {
-           coords[7] = coords[7].replace(',', '.');    //Processing only likes floats with "." and not ","
-           forwardTime = Float.parseFloat(coords[7]);
-        }
-        if(!backTimeSaved)
-        {
-           coords[7] = coords[7].replace(',', '.');    //Processing only likes floats with "." and not ","
-           backTime = Float.parseFloat(coords[7]) - forwardTime;
-        }
+      }
+      coords[7] = coords[7].replace(',', '.');  //Processing only likes floats with "." and not ","
+      frameTime = Float.parseFloat(coords[7]);
+      if(!forwardTimeSaved)
+      {
+         forwardTime = frameTime;
+      }
+      if(!backTimeSaved)
+      {
+         backTime = frameTime;
       }
     }
-    else //mistake and shortcut counts, last line in file
+  }
+  else if(coords.length > 1) //mistake and shortcut counts, last line in file
+  {
     {
         backTimeSaved = true;
         mistakes = Integer.parseInt(coords[0]);
         shortcuts = Integer.parseInt(coords[1]);
     }
   }
-  else //This is the end task tag
+  else if(line.equals("EndTaskCompleted")) //This is the end task tag
   {
     forwardTimeSaved = true;
     c = backColor;
   }
+  else if(line.equals("ReturnedToBee")) //This is the end task tag
+  {
+    returnToBeeTimes.append(frameTime);
+  }
+  else if(line.equals("WanderedFromBee")) //This is the end task tag
+  {
+    wanderFromBeeTimes.append(frameTime);
+  }
+}
+
+void printTimes(FloatList times)
+{
+  for(int i = 0; i < times.size(); i++)
+  {
+    println(times.get(i));
+  }
+}
+
+float sumOfTimes(FloatList times)
+{
+  float sum = 0;
+  for(int i = 0; i < times.size(); i++)
+  {
+    sum += times.get(i);
+  }
+  return sum;
+}
+
+FloatList calculateTimesAwayFromBee(FloatList returnTimes, FloatList awayTimes)
+{
+  FloatList times = new FloatList();
+  for(int i = 0; i < awayTimes.size(); i++)
+  {
+    times.append(returnTimes.get(i + 1) - awayTimes.get(i));
+  }
+  return times;
+}
+
+void resetVariablesForNextTestRun()
+{
+  forwardTimeSaved = false;
+  backTimeSaved = false;
+  returnToBeeTimes = new FloatList();
+  wanderFromBeeTimes  = new FloatList();
+  frameTime = 0;
 }
 
 // This function returns all the files in a directory as an array of Strings  
@@ -170,18 +237,6 @@ String[] listFileNames(String dir) {
   if (file.isDirectory()) {
     String names[] = file.list();
     return names;
-  } else {
-    // If it's not a directory
-    return null;
-  }
-}
-
-// This function returns all the files in a directory as an array of File objects
-File[] listFiles(String dir) {
-  File file = new File(dir);
-  if (file.isDirectory()) {
-    File[] files = file.listFiles();
-    return files;
   } else {
     // If it's not a directory
     return null;

@@ -13,7 +13,7 @@ public class PlayerMovementPlayback : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string path = "Assets/Resources/test.txt";
+        string path = "Save files/test0.txt";
         theSourceFile = new FileInfo(path);
 
         if (theSourceFile != null && theSourceFile.Exists)
@@ -22,7 +22,7 @@ public class PlayerMovementPlayback : MonoBehaviour
 
         if (reader == null)
         {
-            Debug.Log("puzzles.txt not found or not readable");
+            Debug.Log("test0.txt not found or not readable");
         }
 
     }
@@ -37,9 +37,9 @@ public class PlayerMovementPlayback : MonoBehaviour
             if(line != null)
             {
                 string[] data = line.Split(' ');
-                if (!data[0].Equals("EndTaskCompleted") && data.Length > 2) //If this line has coordinates (not the end task tag)
+                if (data.Length > 2) //If this line has coordinates (not the end task tag)
                 {
-                    for(int i = 0; i < data.Length; i++)
+                    for (int i = 0; i < data.Length; i++)
                     {
                         data[i] = data[i].Replace('.', ','); //Some systems save the float values with wrong notation, we fix that here
                     }
@@ -51,7 +51,11 @@ public class PlayerMovementPlayback : MonoBehaviour
 
                     // Dampen towards the target rotation
                     transform.rotation = target;
-                    Debug.Log(data[7]);
+                    //Debug.Log(data[7]);
+                }
+                else
+                {
+                    Debug.Log(line);
                 }
             }
         }
