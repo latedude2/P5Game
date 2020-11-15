@@ -18,15 +18,12 @@ public class CobwebInteraction : MonoBehaviour
     private Slider slider;
     private bool taskCompleted = false;
 
-    //[SerializeField] private AudioClip endTaskClip;
-    //private AudioScript audioPlayer;
 
     void Start()
     {
         interactionTimeLeft = interactionTime;
         slider = progressBar.GetComponent<Slider>();
         slider.maxValue = interactionTime;
-        //audioPlayer = GetComponentInParent<AudioScript>();
     }
 
     void FixedUpdate()
@@ -63,10 +60,8 @@ public class CobwebInteraction : MonoBehaviour
             {
                 taskCompleted = true;
                 cobweb.SetActive(false);
-                //audioPlayer.PlayAudioClip(endTaskClip, false);
-                //audioPlayer.PlayAudioClip(returnMusicClip, true, 0.45f);
-                this.gameObject.GetComponent<CobwebInteraction>().enabled = false;
-                this.gameObject.GetComponent<EndTaskInteraction>().enabled = true;
+                gameObject.GetComponent<CobwebInteraction>().enabled = false;
+                gameObject.GetComponent<EndTaskInteraction>().enabled = true;
                 slider.value = 0;
                 textElement.SetActive(false);
                 
