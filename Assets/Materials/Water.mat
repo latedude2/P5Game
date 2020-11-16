@@ -57,7 +57,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _CellAmount: 40
+    - _CellAmount: 25.7
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -67,8 +67,10 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Offset: 6
     - _Parallax: 0.02
-    - _Shininess: 10
+    - _Ripples: 3
+    - _Shininess: 50
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 0.3
@@ -79,5 +81,6 @@ Material:
     - _CellColor: {r: 0.088679194, g: 1, b: 0.9886793, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SecondaryColor: {r: 0.09122399, g: 0.5217771, b: 0.72400004, a: 1}
+    - _MainColor: {r: 0.1579299, g: 0.78256124, b: 0.8584906, a: 1}
+    - _SecondaryColor: {r: 0.07694017, g: 0.61125237, b: 0.8584906, a: 1}
   m_BuildTextureStacks: []
