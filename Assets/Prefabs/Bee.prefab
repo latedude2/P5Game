@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 950372706609117582}
   - component: {fileID: 950372706609117589}
   - component: {fileID: 991028575016672361}
+  - component: {fileID: 1615430621}
+  - component: {fileID: 1559443480}
   m_Layer: 0
   m_Name: Bee
   m_TagString: Untagged
@@ -183,6 +185,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1615430621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950372706609117583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786c7fd32aa4a75449a924510bfdf724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &1559443480
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950372706609117583}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 35
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7330540162846682922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -254,6 +281,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ceccfb993d662b24eadf6ce4e82eee96, type: 2}
+    - target: {fileID: 8541547550487494039, guid: c74493a2f1686d945ab9b74f68feef44, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c74493a2f1686d945ab9b74f68feef44, type: 3}
 --- !u!4 &7075707025481042113 stripped
