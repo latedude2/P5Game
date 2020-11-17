@@ -14,10 +14,17 @@ public class HurtEffect : MonoBehaviour
     private Vector3 originalPos;
     private Quaternion originalRot;
 
-	public Texture hurtEffect;
+	[SerializeField] private Texture hurtEffect;
 	private bool displayHurtEffect = false;
     private float alpha = 1f;
 
+    private AudioScript audioPlayer;
+    [SerializeField] AudioClip hurtSound;
+
+    private void Start()
+    {
+        audioPlayer = GetComponent<AudioScript>();
+    }
 
     void Update()
     {
@@ -28,9 +35,9 @@ public class HurtEffect : MonoBehaviour
             transform.position = originalPos + Random.insideUnitSphere * shakeIntensity;
             transform.rotation = new Quaternion(
                GetDeformedRotation(originalRot.x),
-                GetDeformedRotation(originalRot.y),
-                GetDeformedRotation(originalRot.z),
-                GetDeformedRotation(originalRot.w)
+               GetDeformedRotation(originalRot.y),
+               GetDeformedRotation(originalRot.z),
+               GetDeformedRotation(originalRot.w)
             );
 
             currentShakeIntensity -= shakeDecay;
@@ -39,7 +46,6 @@ public class HurtEffect : MonoBehaviour
         {
             isShaking = false;
         }
-
     }
 
     IEnumerator FadeOut()
@@ -74,11 +80,12 @@ public class HurtEffect : MonoBehaviour
         {
             displayHurtEffect = true;
 
+            originalPos = transform.position;
+            originalRot = transform.rotation;
+
+            audioPlayer.PlayEffect(hurtSound, false);
             StartCoroutine(FadeOut());
         }
-
-        originalPos = transform.position;
-        originalRot = transform.rotation;
 
         currentShakeIntensity = shakeIntensity;
         isShaking = true;
