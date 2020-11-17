@@ -76,10 +76,10 @@ public class AudioScript : MonoBehaviour
         }
     }
 
-    public void PlayEffect(AudioClip audioClip, float volume = 1f)
+    public void PlayEffect(AudioClip audioClip, bool loop = true, float volume = 1f)
     {
         effectPlayer.clip = audioClip;
-        effectPlayer.loop = true;
+        effectPlayer.loop = loop;
         effectPlayer.volume = volume;
         effectPlayer.Play();
     }
