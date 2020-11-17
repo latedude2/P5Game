@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HurtEffect : MonoBehaviour
@@ -14,6 +13,11 @@ public class HurtEffect : MonoBehaviour
     private float currentShakeIntensity;
     private Vector3 originalPos;
     private Quaternion originalRot;
+
+	public Texture hurtEffect;
+	private bool displayHurtEffect = false;
+    private float alpha = 1f;
+
 
     void Update()
     {
@@ -35,6 +39,18 @@ public class HurtEffect : MonoBehaviour
         {
             isShaking = false;
         }
+
+    }
+
+    IEnumerator FadeOut()
+    {
+        while (alpha > 0)
+        {
+            alpha -= Time.deltaTime;
+            yield return null;
+        }
+        displayHurtEffect = false;
+        alpha = 1f;
     }
 
     private float GetDeformedRotation(float axisValue)
@@ -54,10 +70,30 @@ public class HurtEffect : MonoBehaviour
     // call this function from the follower's (bee swarm) script, when the distance is close enough
     public void Hit()
     {
+        if (displayHurtEffect == false)
+        {
+            displayHurtEffect = true;
+
+            StartCoroutine(FadeOut());
+        }
+
         originalPos = transform.position;
         originalRot = transform.rotation;
 
         currentShakeIntensity = shakeIntensity;
         isShaking = true;
     }
+
+	void OnGUI()
+	{
+		if (displayHurtEffect == true)
+		{
+            //The hurt effect is displyed using a DrawTexture and the texture is stretched to fill
+            //the screen.
+            Vector4 tempColor = GUI.color;
+            tempColor.w = alpha;
+            GUI.color = tempColor;
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), hurtEffect, ScaleMode.StretchToFill);
+        }
+	}
 }
