@@ -7,15 +7,15 @@ public class HurtEffect : MonoBehaviour
 
     [SerializeField] private bool isTechnicalTesting; //only for testing purposes
 
-    [SerializeField] private bool isShaking;
+    private bool displayEffect = false;
+
     [SerializeField] private float shakeIntensity;
     [SerializeField] private float shakeDecay;
     private float currentShakeIntensity;
     private Vector3 originalPos;
     private Quaternion originalRot;
 
-	[SerializeField] private Texture hurtEffect;
-	private bool displayHurtEffect = false;
+	[SerializeField] private Texture hurtTexture;
     private float alpha = 1f;
 
     private AudioScript audioPlayer;
@@ -29,7 +29,7 @@ public class HurtEffect : MonoBehaviour
     void Update()
     {
         if(isTechnicalTesting)
-            TestHit();
+            Hit();
     }
 
     IEnumerator ApplyEffect()
@@ -40,7 +40,13 @@ public class HurtEffect : MonoBehaviour
             Shake();
             yield return null;
         }
-        displayHurtEffect = false;
+        ResetEffect();
+    }
+
+    private void ResetEffect()
+    {
+        currentShakeIntensity = shakeIntensity;
+        displayEffect = false;
         alpha = 1f;
     }
 
@@ -58,10 +64,6 @@ public class HurtEffect : MonoBehaviour
 
             currentShakeIntensity -= shakeDecay * Time.deltaTime;
         }
-        else if (isShaking)
-        {
-            isShaking = false;
-        }
     }
 
     private float GetDeformedRotation(float axisValue)
@@ -69,39 +71,32 @@ public class HurtEffect : MonoBehaviour
         return axisValue + Random.Range(-shakeIntensity, shakeIntensity) * SHAKE_DEFORM_COEF;
     }
 
-    private void TestHit()
-    {
-        Hit();
-    }
+	void OnGUI()
+	{
+		if (displayEffect == true)
+		{
+            // apply alpha for fade out
+            Vector4 tempColor = GUI.color;
+            tempColor.w = alpha;
+            GUI.color = tempColor;
+            
+            //draw texture to GUI
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), hurtTexture, ScaleMode.StretchToFill);
+        }
+	}
 
     // call this function from the follower's (bee swarm) script, when the distance is close enough
     public void Hit()
     {
-        if (!displayHurtEffect && !isShaking)
+        if (!displayEffect)
         {
-            displayHurtEffect = true;
+            displayEffect = true;
 
-
-            currentShakeIntensity = shakeIntensity;
             originalPos = transform.position;
             originalRot = transform.rotation;
 
-            isShaking = true;
             audioPlayer.PlayEffect(hurtSound, false);
             StartCoroutine(ApplyEffect());
         }
     }
-
-	void OnGUI()
-	{
-		if (displayHurtEffect == true)
-		{
-            //The hurt effect is displyed using a DrawTexture and the texture is stretched to fill
-            //the screen.
-            Vector4 tempColor = GUI.color;
-            tempColor.w = alpha;
-            GUI.color = tempColor;
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), hurtEffect, ScaleMode.StretchToFill);
-        }
-	}
 }
