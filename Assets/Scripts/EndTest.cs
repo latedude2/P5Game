@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EndTest : MonoBehaviour
 {
     [System.NonSerialized] public bool endTaskCompleted = false;
-    [System.NonSerialized] public string endingText = "You have saved your cubs! You can now quit the game by pressing ALT + F4 and fill out the questionnaire.";
+    [System.NonSerialized] public string endingText = "You can now quit the game by pressing ALT + F4 and fill out the questionnaire.";
 
 
     [SerializeField] private GameObject textElement;
