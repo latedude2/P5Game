@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d2636aa0491d94092c7dc67d6ae957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  angryBee: {fileID: 3525637240229739424, guid: c331d48801573e84cb515bd4ae26e002, type: 3}
+  beeSpawnPoint: {fileID: 0}
   honeyCollectionTime: 5
   progressBar: {fileID: 0}
   textElement: {fileID: 0}
@@ -233,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 0}
+  angryBee: {fileID: 0}
 --- !u!114 &1744465477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMusicClip: {fileID: 8300000, guid: 309c830a0e239cb4e9c995a5446ff126, type: 3}
-  isArrowCondition: 1
+  isArrowCondition: 0
   beeNavAid: {fileID: 0}
   arrowNavAid: {fileID: 1892466421}
   introClipArrow: {fileID: 8300000, guid: 5b299a9a37c1ec349b8f11a673aa7dbc, type: 3}
