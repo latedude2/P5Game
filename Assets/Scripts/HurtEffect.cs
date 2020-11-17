@@ -5,7 +5,7 @@ public class HurtEffect : MonoBehaviour
 {
     private readonly float SHAKE_DEFORM_COEF = .2f;
 
-    [SerializeField] private bool shake; //only for testing purposes
+    [SerializeField] private bool isTechnicalTesting; //only for testing purposes
 
     [SerializeField] private bool isShaking;
     [SerializeField] private float shakeIntensity;
@@ -28,8 +28,24 @@ public class HurtEffect : MonoBehaviour
 
     void Update()
     {
-        TestHit();
+        if(isTechnicalTesting)
+            TestHit();
+    }
 
+    IEnumerator ApplyEffect()
+    {
+        while (alpha > 0)
+        {
+            alpha -= Time.deltaTime;
+            Shake();
+            yield return null;
+        }
+        displayHurtEffect = false;
+        alpha = 1f;
+    }
+
+    private void Shake()
+    {
         if (currentShakeIntensity > 0)
         {
             transform.position = originalPos + Random.insideUnitSphere * shakeIntensity;
@@ -40,23 +56,12 @@ public class HurtEffect : MonoBehaviour
                GetDeformedRotation(originalRot.w)
             );
 
-            currentShakeIntensity -= shakeDecay;
+            currentShakeIntensity -= shakeDecay * Time.deltaTime;
         }
         else if (isShaking)
         {
             isShaking = false;
         }
-    }
-
-    IEnumerator FadeOut()
-    {
-        while (alpha > 0)
-        {
-            alpha -= Time.deltaTime;
-            yield return null;
-        }
-        displayHurtEffect = false;
-        alpha = 1f;
     }
 
     private float GetDeformedRotation(float axisValue)
@@ -66,29 +71,25 @@ public class HurtEffect : MonoBehaviour
 
     private void TestHit()
     {
-        if (shake)
-        {
-            Hit();
-            shake = false;
-        }
+        Hit();
     }
 
     // call this function from the follower's (bee swarm) script, when the distance is close enough
     public void Hit()
     {
-        if (displayHurtEffect == false)
+        if (!displayHurtEffect && !isShaking)
         {
             displayHurtEffect = true;
 
+
+            currentShakeIntensity = shakeIntensity;
             originalPos = transform.position;
             originalRot = transform.rotation;
 
+            isShaking = true;
             audioPlayer.PlayEffect(hurtSound, false);
-            StartCoroutine(FadeOut());
+            StartCoroutine(ApplyEffect());
         }
-
-        currentShakeIntensity = shakeIntensity;
-        isShaking = true;
     }
 
 	void OnGUI()
