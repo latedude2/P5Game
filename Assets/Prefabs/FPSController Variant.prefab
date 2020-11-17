@@ -297,7 +297,7 @@ MonoBehaviour:
   isShaking: 0
   shakeIntensity: 0.3
   shakeDecay: 0.02
-  hurtEffect: {fileID: 2800000, guid: 53bd90754e780fa40ab632e0d223320b, type: 3}
+  hurtEffect: {fileID: 2800000, guid: 18a81fbc885737e459b47c8be4f4f35d, type: 3}
 --- !u!1001 &9068725275937778667
 PrefabInstance:
   m_ObjectHideFlags: 0
