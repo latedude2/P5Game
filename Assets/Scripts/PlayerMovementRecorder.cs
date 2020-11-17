@@ -12,6 +12,7 @@ public class PlayerMovementRecorder : MonoBehaviour
     [System.NonSerialized] public bool testEnded = false;
     [SerializeField] private GameObject mistakeTriggerParent;
     [SerializeField] private GameObject shortcutTriggerParent;
+    [SerializeField] private GameObject bee;
 
     private List<MistakeTrigger> mistakeTriggers = new List<MistakeTrigger>();
     private List<ShortcutTrigger> shortcutTriggers = new List<ShortcutTrigger>();
@@ -28,11 +29,8 @@ public class PlayerMovementRecorder : MonoBehaviour
             shortcutTriggers.Add(child.GetComponent<ShortcutTrigger>());
         }
 
-        string path = "test.txt";
-
-        File.Delete(path);
-        //Write some text to the test.txt file
-        writer = new StreamWriter(path, true);
+        FirstTimeSetup();
+        Save(0);
     }
 
     //Does not depend on framerate
@@ -50,22 +48,62 @@ public class PlayerMovementRecorder : MonoBehaviour
         }
         if(testEnded)
         {
+            writer.WriteLine("TestCompleted");
             this.enabled = false;
+        }
+    }
+
+    private void FirstTimeSetup()
+    {
+        if (!Directory.Exists("Save files"))
+        {
+            Directory.CreateDirectory("Save files");
+        }
+    }
+
+    private void Save(int num)
+    {
+        string path = "Save files/test" + num + ".txt";
+
+        if (System.IO.File.Exists(path))
+        {
+            num++;
+            Save(num);
+        }
+        else
+        {
+            //Write some text to the test.txt file
+            writer = new StreamWriter(path, true);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        BeeController beeController = other.GetComponent<BeeController>();
+        if (beeController != null)
+        {
+            writer.WriteLine("ReturnedToBee");
+        }
+
         MistakeTrigger mistakeTrigger = other.GetComponent<MistakeTrigger>();
         if(mistakeTrigger != null)
         {
-            mistakeTrigger.visited = true; 
+            mistakeTrigger.visited = true;
         }
 
         ShortcutTrigger shortcutTrigger = other.GetComponent<ShortcutTrigger>();
         if (shortcutTrigger != null)
         {
             shortcutTrigger.visited = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        BeeController beeController = other.GetComponent<BeeController>();
+        if (beeController != null)
+        {
+            writer.WriteLine("WanderedFromBee");
         }
     }
 
