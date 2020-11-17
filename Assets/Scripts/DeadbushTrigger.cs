@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deadbush_Hurt : MonoBehaviour
+public class DeadbushTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        HurtEffect hurtableObject = other.GetComponent<HurtEffect>();
+                
+        if (hurtableObject != null)
+        {
+          hurtableObject.Hit();
+        }
     }
 }
