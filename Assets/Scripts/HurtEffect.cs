@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HurtEffect : MonoBehaviour
 {
-    private readonly float SHAKE_DEFORM_COEF = .2f;
+    private const float SHAKE_DEFORM_COEF = .2f;
 
     [SerializeField] private bool isTechnicalTesting; //only for testing purposes
 
