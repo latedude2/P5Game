@@ -5,13 +5,19 @@ using UnityEngine.AI;
 public class BeeAngryController : MonoBehaviour
 {
     public Transform player;
+    public int minDist = 2;
 
     private NavMeshAgent agent;
+    public Animator anim;
     private int refreshTargetTimer = 0;
+    public int refreshTargetTimerLimit = 50;
 
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
+
+        anim.Play("AngryFlight");
 
         agent.stoppingDistance = 2;
     }
@@ -30,11 +36,11 @@ public class BeeAngryController : MonoBehaviour
         if (refreshTargetTimer <= 0)
         {
             agent.destination = player.position;
-            refreshTargetTimer = 50;
+            refreshTargetTimer = refreshTargetTimerLimit;
         }
 
         //add timer
-        if (dist <= 2)
+        if (dist <= minDist)
         {
             BeeAttack();
         }
@@ -43,6 +49,7 @@ public class BeeAngryController : MonoBehaviour
     void BeeAttack()
     {
         //Set bee run attack animation here
+        anim.Play("Attack");
 
         //player.GetComponent<HurtEffect>().Hit();
         Debug.Log("DEAD!");
