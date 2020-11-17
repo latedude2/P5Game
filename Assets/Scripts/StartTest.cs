@@ -24,6 +24,7 @@ public class StartTest : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = 60;
         subtitles = GetComponentInChildren<Subtitles>();
         audioPlayer = GetComponent<AudioScript>();
 

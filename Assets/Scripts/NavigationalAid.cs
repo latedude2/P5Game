@@ -10,6 +10,7 @@ public class NavigationalAid : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
-        GetComponent<AudioSource>().enabled = false;
+        if(GetComponent<AudioSource>() != null)
+            GetComponent<AudioSource>().enabled = false;
     }
 }
