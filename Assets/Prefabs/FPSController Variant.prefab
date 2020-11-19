@@ -302,7 +302,12 @@ MonoBehaviour:
   shakeIntensity: 0.2
   shakeDecay: 1
   hurtTexture: {fileID: 2800000, guid: 18a81fbc885737e459b47c8be4f4f35d, type: 3}
-  hurtSound: {fileID: 8300000, guid: 16b97fcb6c0d1e44aa05eb14bfd08c95, type: 3}
+  hurtSound:
+  - {fileID: 8300000, guid: 33425e6c01ee4a043ae10c6b298200e0, type: 3}
+  - {fileID: 8300000, guid: 28d4fc68a87139a47b382906b649f1e3, type: 3}
+  - {fileID: 8300000, guid: 3631972fc2f3dc9498589658ca04bfdc, type: 3}
+  - {fileID: 8300000, guid: e576dbaad3b8dd54d9c25e1b4d624f3d, type: 3}
+  - {fileID: 8300000, guid: 7f22f0c11a5cbe0468dbe8b18aee2bd5, type: 3}
 --- !u!1001 &9068725275937778667
 PrefabInstance:
   m_ObjectHideFlags: 0
