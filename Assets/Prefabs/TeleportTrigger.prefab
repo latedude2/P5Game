@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 8084439500975749047}
   - component: {fileID: 4855241557219054932}
   - component: {fileID: 2801092017598067866}
-  - component: {fileID: 4528485113382483379}
   m_Layer: 0
   m_Name: TeleportTrigger
   m_TagString: Untagged
@@ -90,15 +89,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportDestination: {fileID: 4423355143562294805}
---- !u!114 &4528485113382483379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6497239280175818831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 226aedd679b2fa44691980ef9b88b1ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

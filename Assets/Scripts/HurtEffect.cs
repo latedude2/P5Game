@@ -7,6 +7,7 @@ public class HurtEffect : MonoBehaviour
 
     [SerializeField] private bool isTechnicalTesting; //only for testing purposes
 
+
     private bool displayEffect = false;
 
     [SerializeField] private float shakeIntensity;
@@ -20,6 +21,8 @@ public class HurtEffect : MonoBehaviour
 
     private AudioScript audioPlayer;
     [SerializeField] AudioClip[] hurtSound = new AudioClip[0];
+
+    private bool deformPosition = true;
 
     private void Start()
     {
@@ -54,7 +57,8 @@ public class HurtEffect : MonoBehaviour
     {
         if (currentShakeIntensity > 0)
         {
-            transform.position = originalPos + Random.insideUnitSphere * shakeIntensity;
+            if (deformPosition)
+                transform.position = originalPos + Random.insideUnitSphere * shakeIntensity;
             transform.rotation = new Quaternion(
                GetDeformedRotation(originalRot.x),
                GetDeformedRotation(originalRot.y),
@@ -86,13 +90,14 @@ public class HurtEffect : MonoBehaviour
 	}
 
     // call this function from the follower's (bee swarm) script, when the distance is close enough
-    public void Hit()
+    public void Hit(bool deformPosition = true)
     {
         if (!displayEffect)
         {
+            this.deformPosition = deformPosition;
             displayEffect = true;
-
-            originalPos = transform.position;
+            if (deformPosition)
+                originalPos = transform.position;
             originalRot = transform.rotation;
 
             int hurtSoundNumber = Random.Range(0, hurtSound.Length);
