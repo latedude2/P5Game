@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.AI;
+using System.Collections;
 
 public class BeeAngryController : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class BeeAngryController : MonoBehaviour
     private float distanceBeeToPlayer;
     public int minDist = 2;
     public int minSpeed = 2;
+    private bool isBeeAttackReady = true;
+    private float attackAnimationDelay = .5f;
 
     private NavMeshAgent agent;
     public Animator animator;
@@ -59,13 +62,30 @@ public class BeeAngryController : MonoBehaviour
 
     void BeeAttack()
     {
-        if (distanceBeeToPlayer <= minDist)
+        if (isBeeAttackReady && distanceBeeToPlayer <= minDist)
         {
+            isBeeAttackReady = false; 
+
             //Set bee run attack animation here
             animator.Play("Attack");
 
-            //player.GetComponent<HurtEffect>().Hit();
-            Debug.Log("DEAD!");
+            StartCoroutine(TriggerDamageEffect());
         }
+    }
+
+    IEnumerator TriggerDamageEffect()
+    {
+        //Time damage effect delay to when bee stings
+        yield return new WaitForSeconds(attackAnimationDelay);
+        if (distanceBeeToPlayer <= minDist)
+        {
+            player.GetComponent<HurtEffect>().Hit();
+        }
+
+        //Wait for bee animation to finish
+        yield return new WaitForSeconds(attackAnimationDelay);
+        isBeeAttackReady = true;
+
+        yield return null;
     }
 }

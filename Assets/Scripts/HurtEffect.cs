@@ -19,7 +19,7 @@ public class HurtEffect : MonoBehaviour
     private float alpha = 1f;
 
     private AudioScript audioPlayer;
-    [SerializeField] AudioClip hurtSound;
+    [SerializeField] AudioClip[] hurtSound = new AudioClip[0];
 
     private void Start()
     {
@@ -95,7 +95,9 @@ public class HurtEffect : MonoBehaviour
             originalPos = transform.position;
             originalRot = transform.rotation;
 
-            audioPlayer.PlayEffect(hurtSound, false);
+            int hurtSoundNumber = Random.Range(0, hurtSound.Length);
+
+            audioPlayer.PlayEffect(hurtSound[hurtSoundNumber], false);
             StartCoroutine(ApplyEffect());
         }
     }
