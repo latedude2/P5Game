@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class EndTaskInteraction : MonoBehaviour
 {
+    public GameObject angryBee;
+    public GameObject beeSpawnPoint;
+    private bool hasAngryBeeSpawned = false;
     
     [SerializeField] private float honeyCollectionTime = 10;
     private float honeyCollectionTimeLeft;
@@ -95,6 +98,18 @@ public class EndTaskInteraction : MonoBehaviour
             endTestTrigger.SetActive(true);
             mistakeTriggerParent.SetActive(true);
             shortcutTriggerParent.SetActive(true);
+
+            if (!hasAngryBeeSpawned)
+            {
+                //Spawn bee at position and set player for targetting to be the player object
+                GameObject bee = Instantiate(angryBee, beeSpawnPoint.transform.position, Quaternion.identity);
+                bee.GetComponent<BeeAngryController>().player = gameObject.transform.parent.gameObject.transform;
+
+                //apply the bee object to the endtest script in the parent object, so we can remove when we reach the cave
+                gameObject.transform.parent.gameObject.GetComponent<EndTest>().angryBee = bee;
+
+                hasAngryBeeSpawned = true;
+            }
         }
     }
 
