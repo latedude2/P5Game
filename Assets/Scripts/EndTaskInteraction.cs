@@ -8,6 +8,7 @@ public class EndTaskInteraction : MonoBehaviour
 {
     public GameObject angryBee;
     public GameObject beeSpawnPoint;
+    [SerializeField] private int beeSpawnAmount = 3;
     private bool hasAngryBeeSpawned = false;
     
     [SerializeField] private float honeyCollectionTime = 10;
@@ -101,16 +102,29 @@ public class EndTaskInteraction : MonoBehaviour
 
             if (!hasAngryBeeSpawned)
             {
-                //Spawn bee at position and set player for targetting to be the player object
-                GameObject bee = Instantiate(angryBee, beeSpawnPoint.transform.position, Quaternion.identity);
-                bee.GetComponent<BeeAngryController>().player = gameObject.transform.parent.gameObject.transform;
-
-                //apply the bee object to the endtest script in the parent object, so we can remove when we reach the cave
-                gameObject.transform.parent.gameObject.GetComponent<EndTest>().angryBee = bee;
-
                 hasAngryBeeSpawned = true;
+
+                StartCoroutine(BeeSpawn());
             }
         }
+    }
+
+    IEnumerator BeeSpawn()
+    {
+        //Time damage effect delay to when bee stings
+        
+        for (int i = 0; i < beeSpawnAmount; i++)
+                {
+                    //Spawn bee at position and set player for targetting to be the player object
+                    GameObject bee = Instantiate(angryBee, beeSpawnPoint.transform.position, Quaternion.identity);
+                    bee.GetComponent<BeeAngryController>().player = gameObject.transform.parent.gameObject.transform;
+
+                    //apply the bee object to the endtest script in the parent object, so we can remove when we reach the cave
+                    gameObject.transform.parent.gameObject.GetComponent<EndTest>().angryBee.Add(bee);
+                    yield return new WaitForSeconds(1);
+                }
+
+        yield return null;
     }
 
     private void ChangeAudioTriggerActiveness()
