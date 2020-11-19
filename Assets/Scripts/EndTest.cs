@@ -10,7 +10,7 @@ public class EndTest : MonoBehaviour
 
     [SerializeField] private GameObject textElement;
 
-    public List<GameObject> angryBee;
+    public List<GameObject> angryBeeList;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,9 +24,9 @@ public class EndTest : MonoBehaviour
 
             //Remove the chasing bee
 
-            for (int i = 0; i < angryBee.Count; i++)
+            foreach (GameObject angryBee in angryBeeList)
             {
-                Destroy(angryBee[i]);
+                Destroy(angryBee);
             }
         }
     }
