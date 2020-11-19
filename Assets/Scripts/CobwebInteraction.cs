@@ -38,9 +38,10 @@ public class CobwebInteraction : MonoBehaviour
             // Does the ray intersect any objects excluding the beehive layer
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, interactionDistance, layerMask))
             {
-                textElement.GetComponent<Text>().text = "Press E to break cobweb";
+                textElement.GetComponent<Text>().text = "Hold E to break cobweb";
                 cobweb = hit.transform.gameObject;
                 progressBar.SetActive(true);
+                slider.maxValue = interactionTime;
                 textElement.SetActive(true);
                 if (Input.GetKey(KeyCode.E))
                 {
