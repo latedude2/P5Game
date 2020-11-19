@@ -14,14 +14,13 @@ public class BeeController : MonoBehaviour
 
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+
         foreach (Transform child in guidePointParent.transform)
         {
             navObjects.Add(child);
         }
         navObjects.Reverse();
-
-        agent = GetComponent<NavMeshAgent>();
-
         //Set first point as goal
         agent.destination = navObjects[destPoint].position;
     }

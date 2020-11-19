@@ -3,7 +3,20 @@ guid: e5d2636aa0491d94092c7dc67d6ae957
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - angryBee: {instanceID: 0}
+  - progressBar: {instanceID: 0}
+  - textElement: {instanceID: 0}
+  - playerMovementRecorder: {instanceID: 0}
+  - beeNavAid: {instanceID: 0}
+  - arrowNavAid: {instanceID: 0}
+  - endTestTrigger: {instanceID: 0}
+  - mistakeTriggerParent: {instanceID: 0}
+  - shortcutTriggerParent: {instanceID: 0}
+  - audioTriggers: {instanceID: 0}
+  - returnMusicClip: {instanceID: 0}
+  - returnEffect: {instanceID: 0}
+  - endTaskClip: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
