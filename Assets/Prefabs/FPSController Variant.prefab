@@ -204,22 +204,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh: {fileID: 0}
---- !u!114 &7452380380684428997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9068725275937811785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a02fa591793b9946ae94ef54d6ad153, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shake: 0
-  isShaking: 0
-  shakeIntensity: 0.3
-  shakeDecay: 0.02
 --- !u!114 &615961245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +281,23 @@ MonoBehaviour:
   - 3
   - 2.5
   - 2.5
+--- !u!114 &7593007757476648501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068725275937811787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a02fa591793b9946ae94ef54d6ad153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTechnicalTesting: 0
+  shakeIntensity: 0.2
+  shakeDecay: 1
+  hurtTexture: {fileID: 2800000, guid: 18a81fbc885737e459b47c8be4f4f35d, type: 3}
+  hurtSound: {fileID: 8300000, guid: 16b97fcb6c0d1e44aa05eb14bfd08c95, type: 3}
 --- !u!1001 &9068725275937778667
 PrefabInstance:
   m_ObjectHideFlags: 0
