@@ -8,7 +8,7 @@ public class EndTaskInteraction : MonoBehaviour
 {
     public GameObject angryBee;
     public GameObject beeSpawnPoint;
-    private bool angryBeeSpawned = false;
+    private bool hasAngryBeeSpawned = false;
     
     [SerializeField] private float honeyCollectionTime = 10;
     private float honeyCollectionTimeLeft;
@@ -99,7 +99,7 @@ public class EndTaskInteraction : MonoBehaviour
             mistakeTriggerParent.SetActive(true);
             shortcutTriggerParent.SetActive(true);
 
-            if (!angryBeeSpawned)
+            if (!hasAngryBeeSpawned)
             {
                 //Spawn bee at position and set player for targetting to be the player object
                 GameObject bee = Instantiate(angryBee, beeSpawnPoint.transform.position, Quaternion.identity);
@@ -108,7 +108,7 @@ public class EndTaskInteraction : MonoBehaviour
                 //apply the bee object to the endtest script in the parent object, so we can remove when we reach the cave
                 gameObject.transform.parent.gameObject.GetComponent<EndTest>().angryBee = bee;
 
-                angryBeeSpawned = true;
+                hasAngryBeeSpawned = true;
             }
         }
     }
