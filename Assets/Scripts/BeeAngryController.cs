@@ -11,6 +11,7 @@ public class BeeAngryController : MonoBehaviour
     public int minDist = 2;
     public int minSpeed = 2;
     private bool isBeeAttackReady = true;
+    private float attackAnimationDelay = .5f;
 
     private NavMeshAgent agent;
     public Animator animator;
@@ -75,14 +76,14 @@ public class BeeAngryController : MonoBehaviour
     IEnumerator TriggerDamageEffect()
     {
         //Time damage effect delay to when bee stings
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(attackAnimationDelay);
         if (distanceBeeToPlayer <= minDist)
         {
             player.GetComponent<HurtEffect>().Hit();
         }
 
         //Wait for bee animation to finish
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(attackAnimationDelay);
         isBeeAttackReady = true;
 
         yield return null;
