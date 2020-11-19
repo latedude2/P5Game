@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786c7fd32aa4a75449a924510bfdf724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &662512309
+--- !u!114 &262301738
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,6 +147,22 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9068725275937811785}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506b08110a73cdb4cb0a75ee3235bfbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionTime: 3
+  progressBar: {fileID: 0}
+  textElement: {fileID: 0}
+  interactionDistance: 2
+--- !u!114 &662512309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068725275937811785}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d2636aa0491d94092c7dc67d6ae957, type: 3}
   m_Name: 
@@ -156,6 +172,8 @@ MonoBehaviour:
   textElement: {fileID: 0}
   playerMovementRecorder: {fileID: 9068725277384773965}
   interactionDistance: 3
+  beeNavAid: {fileID: 0}
+  arrowNavAid: {fileID: 1892466421}
   endTestTrigger: {fileID: 0}
   mistakeTriggerParent: {fileID: 0}
   shortcutTriggerParent: {fileID: 0}
@@ -224,6 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a80c561a7532e8438bc1c68f8efd47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicVolumeOnNarration: 0.5
+  effectVolumeOnNarration: 0.5
   narrationPlayer: {fileID: 7074432612378404327}
   musicPlayer: {fileID: 557509441849837174}
   effectPlayer: {fileID: 1971626235}
@@ -263,6 +283,23 @@ MonoBehaviour:
   - 3
   - 2.5
   - 2.5
+--- !u!114 &7593007757476648501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068725275937811787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a02fa591793b9946ae94ef54d6ad153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTechnicalTesting: 0
+  shakeIntensity: 0.2
+  shakeDecay: 1
+  hurtTexture: {fileID: 2800000, guid: 18a81fbc885737e459b47c8be4f4f35d, type: 3}
+  hurtSound: {fileID: 8300000, guid: 16b97fcb6c0d1e44aa05eb14bfd08c95, type: 3}
 --- !u!1001 &9068725275937778667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,6 +467,10 @@ PrefabInstance:
       propertyPath: m_FootstepSounds.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: c15eaa42f4401f94f8ae314ea62dab8a, type: 3}
+    - target: {fileID: 1774238374, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: nearBee
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 543450653136185066, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.053315572

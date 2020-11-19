@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class AudioScript : MonoBehaviour
 {
+    [SerializeField, Range(0f, 1f)] private float musicVolumeOnNarration;
+    private float lastMusicVolume;
+    [SerializeField, Range(0f, 1f)] private float effectVolumeOnNarration;
+    private float lastEffectVolume;
+
     [SerializeField] private AudioSource narrationPlayer;
     [SerializeField] private AudioSource musicPlayer;
     [SerializeField] private AudioSource effectPlayer;
@@ -12,12 +17,21 @@ public class AudioScript : MonoBehaviour
 
     private AudioTrigger currentTrigger;
 
-    private bool stopEffect;
-
     private void Start()
     {
         subtitles = GetComponentInChildren<Subtitles>();
         musicPlayer.loop = true;
+        lastMusicVolume = musicPlayer.volume;
+        lastEffectVolume = effectPlayer.volume;
+    }
+
+    private void Update()
+    {
+        if (!narrationPlayer.isPlaying)
+        {
+            StartCoroutine(FadeInEffect(musicPlayer, lastMusicVolume));
+            StartCoroutine(FadeInEffect(effectPlayer, lastEffectVolume));
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,34 +39,28 @@ public class AudioScript : MonoBehaviour
         if (other.GetComponent<AudioTrigger>() != null)
         {
             currentTrigger = other.GetComponent<AudioTrigger>();
-            if (currentTrigger.isMusicTrigger)
+            
+            PrepareNarrative();
+            narrationPlayer.Play();
+            subtitles.Play();
+
+            LowerVolumeOnNarration();
+
+            if (currentTrigger.changeMusic)
             {
-                //Debug.Log("Triggered music trigger");
-                musicPlayer.clip = currentTrigger.triggerClip;
+                musicPlayer.clip = currentTrigger.musicClip;
                 musicPlayer.Play();
             }
-            else
+
+            if (currentTrigger.stopEffect)
             {
-                //Debug.Log("Triggered audio trigger");
-                PrepareNarrative();
-                narrationPlayer.Play();
-                subtitles.Play();
-                if (currentTrigger.changeMusic)
-                {
-                    musicPlayer.clip = currentTrigger.musicClip;
-                    musicPlayer.Play();
-                }
-                stopEffect = currentTrigger.stopEffect;
+                //fade out the effect in a coroutine not to block all the other code
+                StartCoroutine(FadeOutEffect());
             }
+            //should the trigger be disabled after the first interaction
             if (currentTrigger.destroyOnPlay)
                 currentTrigger.GetComponent<BoxCollider>().enabled = false;
         }
-    }
-
-    private void Update()
-    {
-        if (stopEffect)
-            FadeOutEffect();
     }
 
     private void PrepareNarrative()
@@ -73,28 +81,43 @@ public class AudioScript : MonoBehaviour
             narrationPlayer.clip = audioClip;
             narrationPlayer.volume = volume;
             narrationPlayer.Play();
+            LowerVolumeOnNarration();
         }
     }
 
-    public void PlayEffect(AudioClip audioClip, float volume = 1f)
+    private void LowerVolumeOnNarration()
+    {
+        lastMusicVolume = musicPlayer.volume;
+        lastEffectVolume = effectPlayer.volume;
+        musicPlayer.volume *= musicVolumeOnNarration;
+        effectPlayer.volume *= effectVolumeOnNarration;
+    }
+
+    public void PlayEffect(AudioClip audioClip, bool loop = true, float volume = 1f)
     {
         effectPlayer.clip = audioClip;
-        effectPlayer.loop = true;
+        effectPlayer.loop = loop;
         effectPlayer.volume = volume;
         effectPlayer.Play();
     }
 
     //used to get the fade out effect
-    private void FadeOutEffect()
+    private IEnumerator FadeOutEffect()
     {
-        if (effectPlayer.volume > 0f)
+        while (effectPlayer.volume > 0f)
         {
             effectPlayer.volume -= 0.1f * Time.deltaTime;
+            yield return null;
         }
-        else
+        effectPlayer.Stop();
+    }
+    //used to get the fade out effect
+    private IEnumerator FadeInEffect(AudioSource audioSource, float volumeLimit)
+    {
+        while (audioSource.volume < volumeLimit)
         {
-            effectPlayer.Stop();
-            stopEffect = false;
+            audioSource.volume += 0.1f * Time.deltaTime;
+            yield return null;
         }
     }
 }

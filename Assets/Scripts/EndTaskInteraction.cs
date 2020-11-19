@@ -58,6 +58,7 @@ public class EndTaskInteraction : MonoBehaviour
             // Does the ray intersect any objects excluding the beehive layer
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, interactionDistance, layerMask))
             {
+                textElement.GetComponent<Text>().text = "Press E to collect honey";
                 progressBar.SetActive(true);
                 textElement.SetActive(true);
                 if (Input.GetKey(KeyCode.E))
@@ -82,9 +83,9 @@ public class EndTaskInteraction : MonoBehaviour
                 if (arrowNavAid != null)
                     arrowNavAid.DisableAidWithSound();
                 playerMovementRecorder.endTaskCompleted = true;
-                audioPlayer.PlayAudioClip(endTaskClip, false);
                 audioPlayer.PlayAudioClip(returnMusicClip, true, 0.45f);
-                audioPlayer.PlayEffect(returnEffect, 0.12f);
+                audioPlayer.PlayEffect(returnEffect, true, 0.12f);
+                audioPlayer.PlayAudioClip(endTaskClip, false);
                 subtitles.SetupUpSubtitles(subtitleText, subtitleTime);
                 subtitles.Play();
                 ChangeAudioTriggerActiveness();
