@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d2636aa0491d94092c7dc67d6ae957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angryBee: {fileID: 3525637240229739424, guid: c331d48801573e84cb515bd4ae26e002, type: 3}
+  angryBee: {fileID: 5732855970157686022, guid: c331d48801573e84cb515bd4ae26e002, type: 3}
   beeSpawnPoint: {fileID: 0}
   honeyCollectionTime: 5
   progressBar: {fileID: 0}
