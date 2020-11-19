@@ -245,6 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a80c561a7532e8438bc1c68f8efd47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicVolumeOnNarration: 0.5
+  effectVolumeOnNarration: 0.5
   narrationPlayer: {fileID: 7074432612378404327}
   musicPlayer: {fileID: 557509441849837174}
   effectPlayer: {fileID: 1971626235}

@@ -86,9 +86,9 @@ public class EndTaskInteraction : MonoBehaviour
                 if (arrowNavAid != null)
                     arrowNavAid.DisableAidWithSound();
                 playerMovementRecorder.endTaskCompleted = true;
-                audioPlayer.PlayAudioClip(endTaskClip, false);
                 audioPlayer.PlayAudioClip(returnMusicClip, true, 0.45f);
                 audioPlayer.PlayEffect(returnEffect, true, 0.12f);
+                audioPlayer.PlayAudioClip(endTaskClip, false);
                 subtitles.SetupUpSubtitles(subtitleText, subtitleTime);
                 subtitles.Play();
                 ChangeAudioTriggerActiveness();
