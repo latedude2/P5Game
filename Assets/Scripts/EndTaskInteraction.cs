@@ -63,7 +63,7 @@ public class EndTaskInteraction : MonoBehaviour
             // Does the ray intersect any objects excluding the beehive layer
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, interactionDistance, layerMask))
             {
-                textElement.GetComponent<Text>().text = "Press E to collect honey";
+                textElement.GetComponent<Text>().text = "Hold E to collect honey";
                 progressBar.SetActive(true);
                 textElement.SetActive(true);
                 slider.maxValue = honeyCollectionTime;
