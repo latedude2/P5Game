@@ -3,6 +3,7 @@ String line;
 color c;
 boolean forwardTimeSaved = false;
 boolean backTimeSaved = false;
+float invalidTimeBecauseAidWasAbandoned = -1.0;
 
 float forwardTime;
 float backTime;
@@ -28,10 +29,10 @@ color backColor = color(255,0,0);
 int drawAlpha;
 
 //modify wanted output here
-boolean drawForward = true;
+boolean drawForward = false;
 boolean drawBack = true;
-boolean drawAll = false;
-boolean heatmap = false;
+boolean drawAll = true;
+boolean heatmap = true;
 
 int heatmapCircleDiameter = 5;
 
@@ -101,7 +102,12 @@ void draw() {
 void printParticipantResult(String filename, FloatList wanderTimes)
 {
   String finishedString;
-  if(backTimeSaved)
+  
+  if (wanderTimes.size() != 0 && wanderTimes.get(0) == invalidTimeBecauseAidWasAbandoned)
+  {
+      finishedString = "Left aid";
+  }
+  else if(backTimeSaved)
   {
     finishedString = "Yes";
   }
@@ -152,14 +158,14 @@ void lineDraw(String line){
   String[] coords = split(line, " ");
   if(coords.length > 2)    //if coordinates, not mistake and shortcut count
   {
+    coords[0] = coords[0].replace(',', '.');      //Processing only likes floats with "." and not ","
+    coords[2] = coords[2].replace(',', '.');      //Processing only likes floats with "." and not ","
+    int x = int(startBiasX + (stretchMultiplierX * Float.parseFloat(coords[0])));
+    //int y = Integer.parseInt(split(coords[1], ",")[0]);
+    int z = int(startBiasZ + (stretchMultiplierY * Float.parseFloat(coords[2])));
+      
     if(c == forwardColor && drawForward || c == backColor && drawBack)
     {
-      coords[0] = coords[0].replace(',', '.');      //Processing only likes floats with "." and not ","
-      coords[2] = coords[2].replace(',', '.');      //Processing only likes floats with "." and not ","
-      int x = int(startBiasX + (stretchMultiplierX * Float.parseFloat(coords[0])));
-      //int y = Integer.parseInt(split(coords[1], ",")[0]);
-      int z = int(startBiasZ + (stretchMultiplierY * Float.parseFloat(coords[2])));
-      
       if(heatmap)
       {
         stroke(c, drawAlpha / 10);
@@ -174,16 +180,17 @@ void lineDraw(String line){
         point(x + 1, sizeY - z + 1);
         point(x + 1, sizeY - z + 1);
       }
-      coords[7] = coords[7].replace(',', '.');  //Processing only likes floats with "." and not ","
-      frameTime = Float.parseFloat(coords[7]);
-      if(!forwardTimeSaved)
-      {
-         forwardTime = frameTime;
-      }
-      if(!backTimeSaved)
-      {
-         backTime = frameTime;
-      }
+    }
+    coords[7] = coords[7].replace(',', '.');  //Processing only likes floats with "." and not ","
+    frameTime = Float.parseFloat(coords[7]);
+    //println(forwardTimeSaved);
+    if(!forwardTimeSaved)
+    {
+       forwardTime = frameTime;
+    }
+    if(!backTimeSaved)
+    {
+       backTime = frameTime - forwardTime;
     }
   }
   else if(coords.length > 1) //mistake and shortcut counts, last line in file
@@ -198,11 +205,11 @@ void lineDraw(String line){
     forwardTimeSaved = true;
     c = backColor;
   }
-  else if(line.equals("ReturnedToBee")) //This is the end task tag
+  else if(line.equals("ReturnedToBee")) 
   {
     returnToBeeTimes.append(frameTime);
   }
-  else if(line.equals("WanderedFromBee")) //This is the end task tag
+  else if(line.equals("WanderedFromBee")) 
   {
     wanderFromBeeTimes.append(frameTime);
   }
@@ -233,6 +240,11 @@ float sumOfTimes(FloatList times)
 FloatList calculateTimesAwayFromBee(FloatList returnTimes, FloatList awayTimes)
 {
   FloatList times = new FloatList();
+  if(returnTimes.size() == awayTimes.size())
+  {
+      times.append(invalidTimeBecauseAidWasAbandoned);
+      return times;
+  }
   for(int i = 0; i < awayTimes.size(); i++)
   {
     times.append(returnTimes.get(i + 1) - awayTimes.get(i));
@@ -242,6 +254,8 @@ FloatList calculateTimesAwayFromBee(FloatList returnTimes, FloatList awayTimes)
 
 void resetVariablesForNextTestRun()
 {
+  forwardTime = 0;
+  backTime = 0;
   forwardTimeSaved = false;
   backTimeSaved = false;
   returnToBeeTimes = new FloatList();
