@@ -3,6 +3,7 @@ String line;
 color c;
 boolean forwardTimeSaved = false;
 boolean backTimeSaved = false;
+float invalidTimeBecauseAidWasAbandoned = -1.0;
 
 float forwardTime;
 float backTime;
@@ -102,7 +103,7 @@ void printParticipantResult(String filename, FloatList wanderTimes)
 {
   String finishedString;
   
-  if (wanderTimes.size() != 0 && wanderTimes.get(0) == -1.0)
+  if (wanderTimes.size() != 0 && wanderTimes.get(0) == invalidTimeBecauseAidWasAbandoned)
   {
       finishedString = "Left aid";
   }
@@ -241,7 +242,7 @@ FloatList calculateTimesAwayFromBee(FloatList returnTimes, FloatList awayTimes)
   FloatList times = new FloatList();
   if(returnTimes.size() == awayTimes.size())
   {
-      times.append(-1.0);
+      times.append(invalidTimeBecauseAidWasAbandoned);
       return times;
   }
   for(int i = 0; i < awayTimes.size(); i++)
