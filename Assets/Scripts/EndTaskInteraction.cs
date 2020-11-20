@@ -66,6 +66,7 @@ public class EndTaskInteraction : MonoBehaviour
                 textElement.GetComponent<Text>().text = "Press E to collect honey";
                 progressBar.SetActive(true);
                 textElement.SetActive(true);
+                slider.maxValue = honeyCollectionTime;
                 if (Input.GetKey(KeyCode.E))
                 {
                     honeyCollectionTimeLeft -= Time.fixedDeltaTime;
