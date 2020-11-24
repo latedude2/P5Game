@@ -169,6 +169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angryBee: {fileID: 5732855970157686022, guid: c331d48801573e84cb515bd4ae26e002, type: 3}
   beeSpawnPoint: {fileID: 0}
+  beeSpawnAmount: 3
+  beeSpawnDelay: 1
   honeyCollectionTime: 5
   progressBar: {fileID: 0}
   textElement: {fileID: 0}
@@ -219,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 0}
-  angryBee: {fileID: 0}
+  angryBeeList: []
 --- !u!114 &1744465477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +310,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3631972fc2f3dc9498589658ca04bfdc, type: 3}
   - {fileID: 8300000, guid: e576dbaad3b8dd54d9c25e1b4d624f3d, type: 3}
   - {fileID: 8300000, guid: 7f22f0c11a5cbe0468dbe8b18aee2bd5, type: 3}
+--- !u!114 &6247742041850342064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068725275937811787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663cf1088f33e2048a45ed31bd81bb33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9068725275937778667
 PrefabInstance:
   m_ObjectHideFlags: 0
