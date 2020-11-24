@@ -64,6 +64,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  beeBaseSpeed: 30
+  minDist: 2
+  minSpeed: 4
+  animator: {fileID: 0}
+  refreshTargetTimerLimit: 50
 --- !u!195 &5732855970157686023
 NavMeshAgent:
   m_ObjectHideFlags: 0
