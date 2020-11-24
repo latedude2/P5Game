@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4351214284116841660, guid: 24ad4e6009cbb24448f4c8473cfb6a0a, type: 3}
       propertyPath: gameObjectsToDisable.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4351214284116841660, guid: 24ad4e6009cbb24448f4c8473cfb6a0a, type: 3}
       propertyPath: gameObjectsToEnable.Array.data[0]
@@ -231,7 +231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4351214284116841660, guid: 24ad4e6009cbb24448f4c8473cfb6a0a, type: 3}
       propertyPath: gameObjectsToDisable.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4351214284116841660, guid: 24ad4e6009cbb24448f4c8473cfb6a0a, type: 3}
       propertyPath: gameObjectsToEnable.Array.data[0]
@@ -361,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4351214284116841660, guid: 24ad4e6009cbb24448f4c8473cfb6a0a, type: 3}
       propertyPath: gameObjectsToEnable.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4351214284116841660, guid: 24ad4e6009cbb24448f4c8473cfb6a0a, type: 3}
       propertyPath: gameObjectsToDisable.Array.size
@@ -589,7 +589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4351214284116841660, guid: 24ad4e6009cbb24448f4c8473cfb6a0a, type: 3}
       propertyPath: gameObjectsToEnable.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4351214284116841660, guid: 24ad4e6009cbb24448f4c8473cfb6a0a, type: 3}
       propertyPath: gameObjectsToDisable.Array.size
