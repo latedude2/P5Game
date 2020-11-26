@@ -298,6 +298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AngryBee
       objectReference: {fileID: 0}
+    - target: {fileID: 8541547550487494039, guid: 8b943de5f629e1341ac7e40fd72ee42e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 686f6ff171e99b24b82537583e2674f6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b943de5f629e1341ac7e40fd72ee42e, type: 3}
 --- !u!1 &6935326978706153692 stripped
