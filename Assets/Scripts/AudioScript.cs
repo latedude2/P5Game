@@ -66,7 +66,7 @@ public class AudioScript : MonoBehaviour
     private void PrepareNarrative()
     {
         narrationPlayer.clip = currentTrigger.triggerClip;
-        subtitles.SetupUpSubtitles(currentTrigger.subtitleText, currentTrigger.subtitleTime);
+        subtitles.SetupUpSubtitles(currentTrigger.subtitleText, currentTrigger.subtitleTime, currentTrigger.subtitleBackdropSize);
     }
 
     public void PlayAudioClip(AudioClip audioClip, bool isMusicClip, float volume = 1f)

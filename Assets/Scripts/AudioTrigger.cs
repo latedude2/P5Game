@@ -14,6 +14,7 @@ public class AudioTrigger : MonoBehaviour
     public bool changeMusic = false;
     public AudioClip musicClip;
 
+    public int[] subtitleBackdropSize;
     public string[] subtitleText;
     public float[] subtitleTime;
 

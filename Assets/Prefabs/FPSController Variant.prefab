@@ -162,7 +162,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9068725275937811785}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d2636aa0491d94092c7dc67d6ae957, type: 3}
   m_Name: 
@@ -185,13 +185,16 @@ MonoBehaviour:
   returnMusicClip: {fileID: 8300000, guid: b3d2fbe899a839d428cacd8c12bd8a7d, type: 3}
   returnEffect: {fileID: 8300000, guid: 9394e33344037944496e68e63993da89, type: 3}
   endTaskClip: {fileID: 8300000, guid: a97b83f805c93be40b8e82b87ed0a0d4, type: 3}
+  subtitleBackdropSize: 40010000ae01000033020000a1010000d1010000
   subtitleText:
-  - The bees don't seem so happy. You have to leave this place and do it fast!
+  - 'The bees don''t seem so happy. '
+  - You have to leave this place and do it fast!
   - Jumping into water should be enough to get rid of them
   - Luckily, there is a lake next to your cave!
   - Quickly rush back before the bees reach you!
   subtitleTime:
-  - 4.5
+  - 1.5
+  - 3
   - 2.5
   - 2
   - 3
@@ -207,7 +210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f300168696dda4496814f528ea1660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backdrop: {fileID: 0}
   textMesh: {fileID: 0}
+  subtitleBackdropHeight: 30
 --- !u!114 &615961245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +257,18 @@ MonoBehaviour:
   narrationPlayer: {fileID: 7074432612378404327}
   musicPlayer: {fileID: 557509441849837174}
   effectPlayer: {fileID: 1971626235}
+--- !u!114 &6247742041850342064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068725275937811787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663cf1088f33e2048a45ed31bd81bb33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7382902158597848906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,18 +286,20 @@ MonoBehaviour:
   beeNavAid: {fileID: 0}
   arrowNavAid: {fileID: 1892466421}
   introClipArrow: {fileID: 8300000, guid: 5b299a9a37c1ec349b8f11a673aa7dbc, type: 3}
+  subtitleBackdropSizeArrow: ab010000e601000087020000
   subtitleTextArrow:
   - You are persuaded to go on a honey hunt.
-  - Luckily, you know, where the nearest beehive is.
+  - Luckily, you know where the nearest beehive is.
   - You should head out and follow your senses to find the beehive!
   subtitleTimeArrow:
   - 3
   - 2.5
   - 3.5
   introClipBee: {fileID: 8300000, guid: 8e1a4cfdea8e5ee4b992a0ba24249764, type: 3}
+  subtitleBackdropSizeBee: e6010000e6010000a201000068010000
   subtitleTextBee:
   - You sometimes see a few bees buzzing around.
-  - Even now, one is wondering around your cave.
+  - Even now, one is wandering around your cave.
   - Perhaps it could lead you towards honey
   - Follow the bee to find the beehive!
   subtitleTimeBee:
@@ -310,18 +329,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3631972fc2f3dc9498589658ca04bfdc, type: 3}
   - {fileID: 8300000, guid: e576dbaad3b8dd54d9c25e1b4d624f3d, type: 3}
   - {fileID: 8300000, guid: 7f22f0c11a5cbe0468dbe8b18aee2bd5, type: 3}
---- !u!114 &6247742041850342064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9068725275937811787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 663cf1088f33e2048a45ed31bd81bb33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &9068725275937778667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -489,6 +496,10 @@ PrefabInstance:
       propertyPath: m_FootstepSounds.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: c15eaa42f4401f94f8ae314ea62dab8a, type: 3}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_IsTechnicalTesting
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1774238374, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: nearBee
       value: 1
