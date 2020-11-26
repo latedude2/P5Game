@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Subtitles : MonoBehaviour
 {
+    [SerializeField] private GameObject backdrop;
     [SerializeField] private TextMeshProUGUI textMesh;
 
+    [SerializeField] private int subtitleBackdropHeight = 40;
+    private int[] subtitleBackdropWidth;
     private string[] subtitleText;
     private float[] subtitleTime;
 
@@ -26,18 +30,22 @@ public class Subtitles : MonoBehaviour
 
             if (subtitleCounter >= subtitleText.Length)
             {
+                backdrop.GetComponent<Image>().enabled = false;
                 isNarrativePlaying = false;
                 textMesh.text = " ";
             }
             else
             {
+                backdrop.GetComponent<Image>().enabled = true;
+                backdrop.GetComponent<RectTransform>().sizeDelta = new Vector2(subtitleBackdropWidth[subtitleCounter], subtitleBackdropHeight);
                 textMesh.text = subtitleText[subtitleCounter];
             }
         }
     }
 
-    public void SetupUpSubtitles(string[] text, float[] time)
+    public void SetupUpSubtitles(string[] text, float[] time, int[] backdropSize)
     {
+        subtitleBackdropWidth = backdropSize;
         subtitleText = text;
         subtitleTime = time;
         subtitleCounter = 0;

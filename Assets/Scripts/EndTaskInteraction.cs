@@ -37,6 +37,7 @@ public class EndTaskInteraction : MonoBehaviour
     [SerializeField] private AudioClip returnEffect;
 
     [SerializeField] private AudioClip endTaskClip;
+    [SerializeField] private int[] subtitleBackdropSize;
     [SerializeField] private string[] subtitleText;
     [SerializeField] private float[] subtitleTime;
     private Subtitles subtitles;
@@ -92,7 +93,7 @@ public class EndTaskInteraction : MonoBehaviour
                 audioPlayer.PlayAudioClip(returnMusicClip, true, 0.45f);
                 audioPlayer.PlayEffect(returnEffect, true, 0.12f);
                 audioPlayer.PlayAudioClip(endTaskClip, false);
-                subtitles.SetupUpSubtitles(subtitleText, subtitleTime);
+                subtitles.SetupUpSubtitles(subtitleText, subtitleTime, subtitleBackdropSize);
                 subtitles.Play();
                 ChangeAudioTriggerActiveness();
                 textElement.SetActive(false);

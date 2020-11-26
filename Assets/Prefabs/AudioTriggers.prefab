@@ -51,13 +51,16 @@ MonoBehaviour:
   destroyOnPlay: 1
   changeMusic: 1
   musicClip: {fileID: 8300000, guid: 309c830a0e239cb4e9c995a5446ff126, type: 3}
+  subtitleBackdropSize: d40000009f010000cf010000d8010000
   subtitleText:
   - Home sweet home!
-  - You managed to run away from the bees and make your cubs happy with honey treats!
+  - You managed to run away from the bees
+  - and make your cubs happy with honey treats!
   - Congratulations on being the Bear of the Year!
   subtitleTime:
   - 1.5
-  - 4
+  - 2
+  - 2
   - 3
 --- !u!1 &3425012224984650831
 GameObject:
@@ -109,6 +112,7 @@ MonoBehaviour:
   destroyOnPlay: 1
   changeMusic: 0
   musicClip: {fileID: 0}
+  subtitleBackdropSize: 30020000
   subtitleText:
   - At last! Now quickly gather the sweet honey goodness!
   subtitleTime:
