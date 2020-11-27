@@ -15,6 +15,7 @@ public class EndTaskInteraction : MonoBehaviour
     [SerializeField] private float honeyCollectionTime = 10;
     private float honeyCollectionTimeLeft;
 
+    [SerializeField] private GameObject interactionBackdrop;
     [SerializeField] private GameObject progressBar;
     [SerializeField] private GameObject textElement;
     [SerializeField] private PlayerMovementRecorder playerMovementRecorder;
@@ -64,6 +65,7 @@ public class EndTaskInteraction : MonoBehaviour
             // Does the ray intersect any objects excluding the beehive layer
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, interactionDistance, layerMask))
             {
+                interactionBackdrop.GetComponent<Image>().enabled = true;
                 textElement.GetComponent<Text>().text = "Hold E to collect honey";
                 progressBar.SetActive(true);
                 textElement.SetActive(true);
@@ -76,6 +78,7 @@ public class EndTaskInteraction : MonoBehaviour
             }
             else
             {
+                interactionBackdrop.GetComponent<Image>().enabled = false;
                 progressBar.SetActive(false);
                 textElement.SetActive(false);
             }
@@ -93,6 +96,7 @@ public class EndTaskInteraction : MonoBehaviour
                 audioPlayer.PlayAudioClip(returnMusicClip, true, 0.45f);
                 audioPlayer.PlayEffect(returnEffect, true, 0.12f);
                 audioPlayer.PlayAudioClip(endTaskClip, false);
+                interactionBackdrop.GetComponent<Image>().enabled = false;
                 subtitles.SetupUpSubtitles(subtitleText, subtitleTime, subtitleBackdropSize);
                 subtitles.Play();
                 ChangeAudioTriggerActiveness();

@@ -8,6 +8,9 @@ public class EndTest : MonoBehaviour
     [System.NonSerialized] public bool endTaskCompleted = false;
     [System.NonSerialized] public string endingText = "You can now quit the game by pressing ALT + F4 and fill out the questionnaire.";
 
+    [SerializeField] private GameObject interactionBackdrop;
+    [SerializeField] private int textBackdropWidth;
+    [SerializeField] private int textBackdropHeight;
     [SerializeField] private GameObject textElement;
 
     public List<GameObject> angryBeeList;
@@ -19,11 +22,13 @@ public class EndTest : MonoBehaviour
             //End the recording
             transform.GetComponent<PlayerMovementRecorder>().testEnded = true;
             textElement.SetActive(true);
+
+            interactionBackdrop.GetComponent<Image>().enabled = true;
+            interactionBackdrop.GetComponent<RectTransform>().sizeDelta = new Vector2(textBackdropWidth, textBackdropHeight);
             textElement.GetComponent<Text>().fontSize = 25;
             textElement.GetComponent<Text>().text = endingText;
 
-            //Remove the chasing bee
-
+            //Remove the chasing bees
             foreach (GameObject angryBee in angryBeeList)
             {
                 Destroy(angryBee);

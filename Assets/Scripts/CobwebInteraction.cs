@@ -9,6 +9,7 @@ public class CobwebInteraction : MonoBehaviour
     [SerializeField] private float interactionTime = 3;
     private float interactionTimeLeft;
 
+    [SerializeField] private GameObject interactionBackdrop;
     [SerializeField] private GameObject progressBar;
     [SerializeField] private GameObject textElement;
 
@@ -38,6 +39,7 @@ public class CobwebInteraction : MonoBehaviour
             // Does the ray intersect any objects excluding the beehive layer
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, interactionDistance, layerMask))
             {
+                interactionBackdrop.GetComponent<Image>().enabled = true;
                 textElement.GetComponent<Text>().text = "Hold E to break cobweb";
                 cobweb = hit.transform.gameObject;
                 progressBar.SetActive(true);
@@ -51,6 +53,7 @@ public class CobwebInteraction : MonoBehaviour
             }
             else
             {
+                interactionBackdrop.GetComponent<Image>().enabled = false;
                 progressBar.SetActive(false);
                 textElement.SetActive(false);
             }
