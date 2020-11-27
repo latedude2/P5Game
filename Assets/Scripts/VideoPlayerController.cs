@@ -7,8 +7,7 @@ using UnityEngine.Video;
 
 public class VideoPlayerController : MonoBehaviour
 {
-
-    [SerializeField] private string masterSceneName;
+    [SerializeField] private GameObject mainGameObject;
 
     private VideoPlayer videoPlayer;
     private long playerFrameCount;
@@ -29,8 +28,9 @@ public class VideoPlayerController : MonoBehaviour
 
         if (playerCurrentFrame >= playerFrameCount)
         {
+            gameObject.SetActive(false);
             videoPlayer.Stop();
-            SceneManager.LoadScene(masterSceneName);
+            mainGameObject.SetActive(true);
             //Cancel Invoke since video is no longer playing
             CancelInvoke("CheckOver");
         }
