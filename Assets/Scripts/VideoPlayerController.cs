@@ -13,6 +13,7 @@ public class VideoPlayerController : MonoBehaviour
     private long playerFrameCount;
     void Start()
     {
+        mainGameObject.SetActive(false);
         Debug.developerConsoleVisible = true;
         videoPlayer = GetComponent<VideoPlayer>();
         playerFrameCount = Convert.ToInt64(videoPlayer.frameCount);
