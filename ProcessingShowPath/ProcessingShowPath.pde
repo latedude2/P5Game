@@ -29,10 +29,11 @@ color backColor = color(255,0,0);
 int drawAlpha;
 
 //modify wanted output here
-boolean drawForward = false;
+boolean drawForward = true;
 boolean drawBack = true;
-boolean drawAll = true;
-boolean heatmap = true;
+boolean drawAll = false;
+boolean heatmap = false;
+String singleFilePath = "arrow/Lina.txt";
 
 int heatmapCircleDiameter = 5;
 
@@ -88,7 +89,7 @@ void setup() {
   else 
    {
      drawAlpha = 100;
-     reader = createReader("arrow/test.txt");
+     reader = createReader(singleFilePath);
    }
 }
 
@@ -125,7 +126,8 @@ void drawSinglePathSlow()
     if (line == null || line == "") {
       FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
       wanderTimeSum = sumOfTimes(wanderTimes);
-      printParticipantResult("arrow/test.txt", wanderTimes);
+      println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken, wander_count, wander_time_sum, finished");
+      printParticipantResult(singleFilePath, wanderTimes);
       stop();
       noLoop();
     } else {
