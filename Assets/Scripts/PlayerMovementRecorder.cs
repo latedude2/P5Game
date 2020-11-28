@@ -55,20 +55,21 @@ public class PlayerMovementRecorder : MonoBehaviour
 
     private void FirstTimeSetup()
     {
-        if (!Directory.Exists("Save files"))
+        string directoryName = Path.GetDirectoryName(Application.dataPath) + "/Save files";
+        if (!Directory.Exists(directoryName))
         {
-            Directory.CreateDirectory("Save files");
+            Directory.CreateDirectory(directoryName);
         }
     }
 
     private void Save(int num)
     {
-        string path = "Save files/test" + num + ".txt";
+        string path = Path.GetDirectoryName(Application.dataPath) + "/Save files/test" + num + ".txt";
 
         if (System.IO.File.Exists(path))
         {
             num++;
-            Save(num);
+            Save(num); 
         }
         else
         {
