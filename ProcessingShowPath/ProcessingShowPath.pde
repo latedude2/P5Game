@@ -5,6 +5,7 @@ boolean forwardTimeSaved = false;
 boolean backTimeSaved = false;
 float invalidTimeBecauseAidWasAbandoned = -1.0;
 
+float firstFrameTime = -1.0;
 float forwardTime;
 float backTime;
 float wanderTimeSum; 
@@ -33,7 +34,7 @@ boolean drawForward = true;
 boolean drawBack = true;
 boolean drawAll = false;
 boolean heatmap = false;
-String singleFilePath = "arrow/Lina.txt";
+String singleFilePath = "bee/B37.txt";
 
 int heatmapCircleDiameter = 5;
 
@@ -185,7 +186,14 @@ void lineDraw(String line){
     }
     coords[7] = coords[7].replace(',', '.');  //Processing only likes floats with "." and not ","
     frameTime = Float.parseFloat(coords[7]);
-    //println(forwardTimeSaved);
+    
+    //Save time of first frame
+    if(firstFrameTime == -1.0)
+    {
+       firstFrameTime =  frameTime;
+    }
+    frameTime -= firstFrameTime;  //Adjust starting time to be 0
+    
     if(!forwardTimeSaved)
     {
        forwardTime = frameTime;
@@ -256,6 +264,7 @@ FloatList calculateTimesAwayFromBee(FloatList returnTimes, FloatList awayTimes)
 
 void resetVariablesForNextTestRun()
 {
+  firstFrameTime = -1.0;
   forwardTime = 0;
   backTime = 0;
   forwardTimeSaved = false;
