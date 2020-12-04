@@ -32,11 +32,13 @@ int drawAlpha;
 //modify wanted output here
 boolean drawForward = true;
 boolean drawBack = true;
-boolean drawAll = false;
-boolean heatmap = false;
-String singleFilePath = "bee/B37.txt";
+boolean drawAll = true;
+boolean heatmap = true;
+String singleFilePath = "arrow/A40.txt";
 
 int heatmapCircleDiameter = 5;
+int heatmapDrawSkip = 5;
+int heatmapDrawCounter = 0;
 
 String[] arrowFilenames;
 String[] beeFilenames;
@@ -52,7 +54,7 @@ void setup() {
   
   if(drawAll)
   {
-    drawAlpha = 30;
+    drawAlpha = 2;
     println("Files for arrow condition: ");
     arrowFilenames = listFileNames("C:/UnityProjects/P5Game/ProcessingShowPath/arrow");
     printArray(arrowFilenames);
@@ -171,9 +173,14 @@ void lineDraw(String line){
     {
       if(heatmap)
       {
-        stroke(c, drawAlpha / 10);
-        fill(c, drawAlpha / 10);
-        circle(x, sizeY - z, heatmapCircleDiameter);
+        heatmapDrawCounter++;
+        if(heatmapDrawCounter == heatmapDrawSkip)
+        {
+          heatmapDrawCounter = 0;
+          stroke(c, drawAlpha);
+          fill(c, drawAlpha);
+          circle(x, sizeY - z, heatmapCircleDiameter);
+        }
       }
       else 
       {
