@@ -30,11 +30,13 @@ color backColor = color(255,0,0);
 int drawAlpha;
 
 //modify wanted output here
-boolean drawForward = true;
+boolean drawForward = false;
 boolean drawBack = true;
 boolean drawAll = true;
 boolean heatmap = true;
-String singleFilePath = "arrow/A40.txt";
+boolean drawArrow = false;
+boolean drawBee = true;
+String singleFilePath = "bee/B22.txt";
 
 int heatmapCircleDiameter = 5;
 int heatmapDrawSkip = 5;
@@ -62,31 +64,37 @@ void setup() {
     println("Files for bee condition: ");
     beeFilenames = listFileNames("C:/UnityProjects/P5Game/ProcessingShowPath/bee");
     printArray(beeFilenames);
-  
-    println("Drawing arrow condition files");
-    println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken, wander_count, wander_time_sum, finished");
-    for(int i = 0; i < arrowFilenames.length; i++)
+    
+    if(drawArrow)
     {
-      reader = createReader("arrow/" + arrowFilenames[i]);
-      drawPath();
-      FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
-      wanderTimeSum = sumOfTimes(wanderTimes);
-      //printTimes(wanderTimes);
-      printParticipantResult(arrowFilenames[i], wanderTimes);
-      resetVariablesForNextTestRun();
+      println("Drawing arrow condition files");
+      println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken, wander_count, wander_time_sum, finished");
+      for(int i = 0; i < arrowFilenames.length; i++)
+      {
+        reader = createReader("arrow/" + arrowFilenames[i]);
+        drawPath();
+        FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
+        wanderTimeSum = sumOfTimes(wanderTimes);
+        //printTimes(wanderTimes);
+        printParticipantResult(arrowFilenames[i], wanderTimes);
+        resetVariablesForNextTestRun();
+      }
     }
     
-    println("Drawing bee condition files");
-    println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken, wander_count, wander_time_sum, finished");
-    for(int i = 0; i < beeFilenames.length; i++)
+    if(drawBee)
     {
-      reader = createReader("bee/" + beeFilenames[i]);
-      drawPath();
-      FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
-      wanderTimeSum = sumOfTimes(wanderTimes);
-      //printTimes(wanderTimes);
-      printParticipantResult(beeFilenames[i], wanderTimes);
-      resetVariablesForNextTestRun();
+      println("Drawing bee condition files");
+      println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken, wander_count, wander_time_sum, finished");
+      for(int i = 0; i < beeFilenames.length; i++)
+      {
+        reader = createReader("bee/" + beeFilenames[i]);
+        drawPath();
+        FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
+        wanderTimeSum = sumOfTimes(wanderTimes);
+        //printTimes(wanderTimes);
+        printParticipantResult(beeFilenames[i], wanderTimes);
+        resetVariablesForNextTestRun();
+      }
     }
   }
   else 
