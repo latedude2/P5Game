@@ -30,13 +30,13 @@ color backColor = color(255,0,0);
 int drawAlpha;
 
 //modify wanted output here
-boolean drawForward = false;
+boolean drawForward = true;
 boolean drawBack = true;
 boolean drawAll = true;
 boolean heatmap = true;
-boolean drawArrow = false;
+boolean drawArrow = true;
 boolean drawBee = true;
-String singleFilePath = "bee/B22.txt";
+String singleFilePath = "bee/B31.txt";
 
 int heatmapCircleDiameter = 5;
 int heatmapDrawSkip = 5;
@@ -44,6 +44,16 @@ int heatmapDrawCounter = 0;
 
 String[] arrowFilenames;
 String[] beeFilenames;
+
+float noMovementTimeForward = 0;
+float noMovementTimeBack = 0;
+float noMovementTime = 0;
+int breakCount = 0;
+boolean isTakingBreak = false;
+String[] previousCoords;
+FloatList forwardBreakTimes  = new FloatList();
+FloatList backBreakTimes  = new FloatList();
+static float minimumBreakTime = 5.0;
 
 void setup() {
   size(1200,900);
@@ -74,8 +84,9 @@ void setup() {
         reader = createReader("arrow/" + arrowFilenames[i]);
         drawPath();
         FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
-        wanderTimeSum = sumOfTimes(wanderTimes);
-        //printTimes(wanderTimes);
+        wanderTimeSum = floatListSum(wanderTimes);
+        noMovementTimeForward = floatListSum(forwardBreakTimes);
+        noMovementTimeBack = floatListSum(backBreakTimes);
         printParticipantResult(arrowFilenames[i], wanderTimes);
         resetVariablesForNextTestRun();
       }
@@ -90,8 +101,9 @@ void setup() {
         reader = createReader("bee/" + beeFilenames[i]);
         drawPath();
         FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
-        wanderTimeSum = sumOfTimes(wanderTimes);
-        //printTimes(wanderTimes);
+        wanderTimeSum = floatListSum(wanderTimes);
+        noMovementTimeForward = floatListSum(forwardBreakTimes);
+        noMovementTimeBack = floatListSum(backBreakTimes);
         printParticipantResult(beeFilenames[i], wanderTimes);
         resetVariablesForNextTestRun();
       }
@@ -127,7 +139,10 @@ void printParticipantResult(String filename, FloatList wanderTimes)
   {
     finishedString = "No";
   }
+  forwardTime -= noMovementTimeForward;  //Adjust for participants taking breaks
+  backTime -= noMovementTimeBack;
   println(split(filename, ".")[0] + ", " + forwardTime + ", " + backTime + ", " + mistakes + ", " + shortcuts + ", " + wanderTimes.size() + ", " + wanderTimeSum  + ", " + finishedString);
+  //println("Breaks taken: " + breakCount + " Standing still time forward: " + noMovementTimeForward + " Standing still time back: " + noMovementTimeBack);
 }
 
 void drawSinglePathSlow()
@@ -136,7 +151,7 @@ void drawSinglePathSlow()
     line = reader.readLine();
     if (line == null || line == "") {
       FloatList wanderTimes = calculateTimesAwayFromBee(returnToBeeTimes, wanderFromBeeTimes);
-      wanderTimeSum = sumOfTimes(wanderTimes);
+      wanderTimeSum = floatListSum(wanderTimes);
       println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken, wander_count, wander_time_sum, finished");
       printParticipantResult(singleFilePath, wanderTimes);
       stop();
@@ -173,8 +188,39 @@ void lineDraw(String line){
   {
     coords[0] = coords[0].replace(',', '.');      //Processing only likes floats with "." and not ","
     coords[2] = coords[2].replace(',', '.');      //Processing only likes floats with "." and not ","
+    coords[7] = coords[7].replace(',', '.');  //Processing only likes floats with "." and not ","
+    if(previousCoords != null)
+    {
+      if(previousCoords[0].equals(coords[0]) && previousCoords[1].equals(coords[1]) && previousCoords[2].equals(coords[2])     //If movement and rotational data didnt change over frame, we assume player is standing still not doing anything
+        && previousCoords[3].equals(coords[3]) && previousCoords[4].equals(coords[4]) && previousCoords[5].equals(coords[5]) && previousCoords[6].equals(coords[6]))
+      {
+        if(!isTakingBreak)
+        {
+          isTakingBreak = true;
+        }
+        noMovementTime += Float.parseFloat(coords[7]) - Float.parseFloat(previousCoords[7]);
+      }
+      else
+      {
+        if(noMovementTime > minimumBreakTime)  //We need to check against a bigger time than one frame to make sure the break is player behavior and not a low framerate
+          {
+          breakCount++;
+          if(!forwardTimeSaved)
+          {
+            forwardBreakTimes.append(noMovementTime);
+          }
+          else
+          {
+            backBreakTimes.append(noMovementTime);
+          }
+        }
+        isTakingBreak = false;
+        noMovementTime = 0;
+      }
+    }
+    previousCoords = coords;
+    
     int x = int(startBiasX + (stretchMultiplierX * Float.parseFloat(coords[0])));
-    //int y = Integer.parseInt(split(coords[1], ",")[0]);
     int z = int(startBiasZ + (stretchMultiplierY * Float.parseFloat(coords[2])));
       
     if(c == forwardColor && drawForward || c == backColor && drawBack)
@@ -199,7 +245,6 @@ void lineDraw(String line){
         point(x + 1, sizeY - z + 1);
       }
     }
-    coords[7] = coords[7].replace(',', '.');  //Processing only likes floats with "." and not ","
     frameTime = Float.parseFloat(coords[7]);
     
     //Save time of first frame
@@ -220,10 +265,8 @@ void lineDraw(String line){
   }
   else if(coords.length > 1) //mistake and shortcut counts, last line in file
   {
-    {
-        mistakes = Integer.parseInt(coords[0]);
-        shortcuts = Integer.parseInt(coords[1]);
-    }
+    mistakes = Integer.parseInt(coords[0]);
+    shortcuts = Integer.parseInt(coords[1]);
   }
   else if(line.equals("EndTaskCompleted")) //This is the end task tag
   {
@@ -252,7 +295,7 @@ void printTimes(FloatList times)
   }
 }
 
-float sumOfTimes(FloatList times)
+float floatListSum(FloatList times)
 {
   float sum = 0;
   for(int i = 0; i < times.size(); i++)
@@ -288,6 +331,13 @@ void resetVariablesForNextTestRun()
   wanderFromBeeTimes  = new FloatList();
   frameTime = 0;
   c = forwardColor;
+  noMovementTimeForward = 0;
+  noMovementTimeBack = 0;
+  previousCoords = null;
+  breakCount = 0;
+  isTakingBreak = false;
+  forwardBreakTimes  = new FloatList();
+  backBreakTimes  = new FloatList();
 }
 
 // This function returns all the files in a directory as an array of Strings  
