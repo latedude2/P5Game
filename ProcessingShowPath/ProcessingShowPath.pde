@@ -3,7 +3,7 @@ String line;
 color c;
 boolean forwardTimeSaved = false;
 boolean backTimeSaved = false;
-float invalidTimeBecauseAidWasAbandoned = -1.0;
+float invalidTimeBecauseAidWasAbandoned = -0.01;
 
 float firstFrameTime = -1.0;
 float forwardTime;
@@ -36,7 +36,7 @@ boolean drawAll = true;
 boolean heatmap = true;
 boolean drawArrow = true;
 boolean drawBee = true;
-String singleFilePath = "bee/B31.txt";
+String singleFilePath = "bee/B12.txt";
 
 int heatmapCircleDiameter = 5;
 int heatmapDrawSkip = 5;
@@ -308,12 +308,13 @@ float floatListSum(FloatList times)
 FloatList calculateTimesAwayFromBee(FloatList returnTimes, FloatList awayTimes)
 {
   FloatList times = new FloatList();
+  int timesToCheck = awayTimes.size();
   if(returnTimes.size() == awayTimes.size())
   {
       times.append(invalidTimeBecauseAidWasAbandoned);
-      return times;
+      timesToCheck--;
   }
-  for(int i = 0; i < awayTimes.size(); i++)
+  for(int i = 0; i < timesToCheck; i++)
   {
     times.append(returnTimes.get(i + 1) - awayTimes.get(i));
   }
