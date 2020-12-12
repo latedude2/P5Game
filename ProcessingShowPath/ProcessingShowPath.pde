@@ -2,9 +2,10 @@
 boolean drawForward = true;  //draw the path the participants take to the beehive
 boolean drawBack = true;     //draw the path the participants take back from the beehive
 boolean drawAll = true;      //draw the paths of all participants
-boolean isHeatmap = true;      //draw path as a heatmap
+boolean isHeatmap = true;    //draw path as a heatmap
 boolean drawArrow = true;    //draw the paths for the Arrow condition
 boolean drawNPC = true;      //draw the paths for the NPC condition
+boolean printPlayerBreaks = false;  //print the data about player breaks
 String singleFilePath = "arrow/A12.txt";    //path of to the test file when drawing only a single test file
 
 //for drawing single path
@@ -32,7 +33,7 @@ void setup() {
     drawer = new PathDrawer(drawForward, drawBack, false);  
     PathAnalyser analyser = new PathAnalyser(path);
     analyser.analysePath();
-    analyser.printResult(true);
+    analyser.printResult(printPlayerBreaks);
   }
 }
 
@@ -64,7 +65,7 @@ void drawCondition(String fileFolderName, boolean drawCondition)
         drawer.drawPath(paths[i]);
         PathAnalyser analyser = new PathAnalyser(paths[i]);
         analyser.analysePath();
-        analyser.printResult(false);
+        analyser.printResult(printPlayerBreaks);
       }
     }
 }
