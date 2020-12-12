@@ -44,7 +44,14 @@ public class PlayerMovementRecorder : MonoBehaviour
         counter++;
         if (counter % framesBetweenRecordTakes == 0)
         {
-            writer.WriteLine(transform.position.x + " " + transform.position.y + " " + transform.position.z + " " + transform.GetChild(0).rotation.w + " " + transform.GetChild(0).rotation.x + " " + transform.GetChild(0).rotation.y + " " + transform.GetChild(0).rotation.z + " " + Time.fixedTime);
+            writer.WriteLine(transform.position.x + " " 
+                           + transform.position.y + " "
+                           + transform.position.z + " "
+                           + transform.GetChild(0).rotation.w + " "
+                           + transform.GetChild(0).rotation.x + " "
+                           + transform.GetChild(0).rotation.y + " "
+                           + transform.GetChild(0).rotation.z + " "
+                           + Time.fixedTime);
         }
         if(testEnded)
         {
