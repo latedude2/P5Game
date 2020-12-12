@@ -69,7 +69,6 @@ class PathAnalyser{
   {
     String[] previousCoords = null;        //coordinates from the previous point in the path
     float noMovementTime = 0;              //for how long the player has not moved
-    boolean isTakingBreak = false;         //is the player currently standing still     
     float firstFrameTime = -1.0;           //when did the first frame of gameplay happen
     float frameTime = 0;                   //time of the current frame
     boolean isForwardTimeSaved = false;    //has forward time been saved
@@ -106,7 +105,6 @@ class PathAnalyser{
           {
             if(hasPlayerStopped(previousCoords, coords))
             {
-              isTakingBreak = true;
               noMovementTime += Float.parseFloat(coords[7]) - Float.parseFloat(previousCoords[7]);
             }
             else
@@ -123,7 +121,6 @@ class PathAnalyser{
                   backBreakTimes.append(noMovementTime);
                 }
               }
-              isTakingBreak = false;
               noMovementTime = 0;
             }
           }
