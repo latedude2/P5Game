@@ -1,5 +1,6 @@
 class Reader{ 
   private String[] filenames;
+  static final int maxDataPointCount = 8;
   
   Reader()
   {
@@ -15,17 +16,17 @@ class Reader{
   }
   
   //read all game files from the folder the reader was created with
-  Path[] readGameFiles(String folder)
+  Path[] readPlayerPathFiles(String folder)
   {
     Path[] playerPaths = new Path[filenames.length];
     for(int i = 0; i < filenames.length; i++)
     {
-        playerPaths[i] = readTestFile(folder + "/" + filenames[i]);
+        playerPaths[i] = readPlayerPathFile(folder + "/" + filenames[i]);
     }
     return playerPaths;
   }
   
-  Path readTestFile(String filePath)
+  Path readPlayerPathFile(String filePath)
   {
     BufferedReader reader = createReader(filePath);
     StringList lines = new StringList();
@@ -42,13 +43,13 @@ class Reader{
     {
       e.printStackTrace();
     }
-    String[][] gameplayData = new String[lines.size()][8];
+    String[][] gameplayData = new String[lines.size()][maxDataPointCount];
     for(int i = 0; i < lines.size(); i++)
     {
         gameplayData[i] = lines.get(i).split(" ");
     }
     String participantNumber = split(filePath, ".")[0];
-    return new Path(gameplayData, participantNumber, gameplayData.length);
+    return new Path(gameplayData, participantNumber);
   }
   
   //this function returns all the files in a directory as an array of Strings  

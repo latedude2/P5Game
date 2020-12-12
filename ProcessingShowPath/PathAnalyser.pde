@@ -76,17 +76,37 @@ class PathAnalyser{
     for(int i = 0; i < path.gameplayData.length; i++)
     {
       String coords[] = path.gameplayData[i];
-      if(coords.length > 2)    //if coordinates, not mistake and shortcut count
+      
+      switch(coords.length) 
       {
-        if(previousCoords != null)
-        {
-            if(previousCoords[0].equals(coords[0]) && previousCoords[1].equals(coords[1]) && previousCoords[2].equals(coords[2])     //If movement and rotational data didnt change over frame, we assume player is standing still not doing anything
-              && previousCoords[3].equals(coords[3]) && previousCoords[4].equals(coords[4]) && previousCoords[5].equals(coords[5]) && previousCoords[6].equals(coords[6]))
+        case 1:   //line with tag
+          switch(coords[0]) 
+          {
+            case "EndTaskCompleted":
+              isForwardTimeSaved = true;
+              break;
+            case "ReturnedToBee":
+              returnToAidTimes.append(frameTime);
+              break;
+            case "WanderedFromBee":
+              wanderToAidTimes.append(frameTime);
+              break;
+            case "TestCompleted":
+              isBackTimeSaved = true;
+              break;
+          }
+          break;
+        case 2:    //line with player mistake and shortcut counts
+          mistakes = Integer.parseInt(coords[0]);
+          shortcuts = Integer.parseInt(coords[1]);
+          break;
+          
+        case 8:    //line with coordinates
+          if(previousCoords != null)
+          {
+            if(hasPlayerStopped(previousCoords, coords))
             {
-              if(!isTakingBreak)
-              {
-                isTakingBreak = true;
-              }
+              isTakingBreak = true;
               noMovementTime += Float.parseFloat(coords[7]) - Float.parseFloat(previousCoords[7]);
             }
             else
@@ -110,12 +130,7 @@ class PathAnalyser{
           previousCoords = coords;
           frameTime = Float.parseFloat(coords[7]);
           
-          //Save time of first frame
-          if(firstFrameTime == -1.0)
-          {
-             firstFrameTime =  frameTime;
-          }
-          frameTime -= firstFrameTime;  //Adjust starting time to be 0
+          adjustForStartingTime(firstFrameTime, frameTime);
           
           if(!isForwardTimeSaved)
           {
@@ -125,31 +140,12 @@ class PathAnalyser{
           {
              backTime = frameTime - forwardTime;
           }
-        }
-        else if(coords.length > 1) //mistake and shortcut counts, last line in file
-        {
-          mistakes = Integer.parseInt(coords[0]);
-          shortcuts = Integer.parseInt(coords[1]);
-        }
-        else if(coords[0].equals("EndTaskCompleted")) //This is the end task tag
-        {
-          isForwardTimeSaved = true;
-        }
-        else if(coords[0].equals("ReturnedToBee")) 
-        {
-          returnToAidTimes.append(frameTime);
-        }
-        else if(coords[0].equals("WanderedFromBee")) 
-        {
-          wanderToAidTimes.append(frameTime);
-        }
-        else if(coords[0].equals("TestCompleted"))
-        {
-          isBackTimeSaved = true;
-        }
-    }
+          break;
+        default:           
+          break;
+      }
+    } 
   }
-  
   private FloatList calculateTimesAwayFromBee(FloatList returnTimes, FloatList awayTimes)
   {
     FloatList times = new FloatList();    //how long is each wander
@@ -174,5 +170,26 @@ class PathAnalyser{
       sum += times.get(i);
     }
     return sum;
+  }
+  private boolean hasPlayerStopped(String[] previousCoords, String[] coords)
+  {
+    for(int i=0; i < coords.length - 1; i++)
+    {
+      if (!previousCoords[i].equals(coords[i]))
+      {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  void adjustForStartingTime(float firstFrameTime, float frameTime)
+  {
+    //Save time of first frame
+    if(firstFrameTime == -1.0)  //if the starting time has not been saved yet
+    {
+       firstFrameTime = frameTime;
+    }
+    frameTime -= firstFrameTime;  //Adjust starting time to be 0
   }
 }

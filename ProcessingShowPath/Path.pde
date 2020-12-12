@@ -3,10 +3,10 @@ class Path{
   String participantNumber;   
   int pathLength;             //length of gameplayData, used when drawing single file
   
-  Path(String[][] gameplayData, String participantNumber, int pathLength)
+  Path(String[][] gameplayData, String participantNumber)
   {
     this.gameplayData = gameplayData;
     this.participantNumber = split(participantNumber, "/")[1];
-    this.pathLength = pathLength;
+    this.pathLength = gameplayData.length;
   }
 } 

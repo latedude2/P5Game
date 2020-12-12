@@ -20,14 +20,14 @@ class PathDrawer{
   //how do we want the path drawer to draw
   private boolean drawForward;
   private boolean drawBack;
-  private boolean heatmap;
+  private boolean isHeatmap;
   
-  PathDrawer(boolean drawForward, boolean drawBack, boolean heatmap)
+  PathDrawer(boolean drawForward, boolean drawBack, boolean isHeatmap)
   {
     this.drawForward = drawForward;
     this.drawBack = drawBack;
-    this.heatmap = heatmap;
-    if(heatmap)
+    this.isHeatmap = isHeatmap;
+    if(isHeatmap)
     {
       drawAlpha = 2;
     }
@@ -57,7 +57,7 @@ class PathDrawer{
         
       if(currentColor == forwardColor && drawForward || currentColor == backColor && drawBack)
       {
-        if(heatmap)
+        if(isHeatmap)
         {
           heatmapDrawCounter++;
           if(heatmapDrawCounter == heatmapDrawSkip)

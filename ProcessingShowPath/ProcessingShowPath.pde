@@ -2,7 +2,7 @@
 boolean drawForward = true;  //draw the path the participants take to the beehive
 boolean drawBack = true;     //draw the path the participants take back from the beehive
 boolean drawAll = true;      //draw the paths of all participants
-boolean heatmap = true;      //draw path as a heatmap
+boolean isHeatmap = true;      //draw path as a heatmap
 boolean drawArrow = true;    //draw the paths for the Arrow condition
 boolean drawNPC = true;      //draw the paths for the NPC condition
 String singleFilePath = "arrow/A12.txt";    //path of to the test file when drawing only a single test file
@@ -22,46 +22,13 @@ void setup() {
   
   if(drawAll)
   {
-    if(drawArrow)
-    {
-      Reader arrowReader = new Reader();
-      arrowReader.getFilesFromFolder("C:/UnityProjects/P5Game/ProcessingShowPath/arrow");
-      Path[] arrowPaths = arrowReader.readGameFiles("arrow");
-     
-      println("Drawing arrow condition files");
-      println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken, wander_count, wander_time_sum, finished");
-      for(int i = 0; i < arrowPaths.length; i++)
-      {
-        PathDrawer drawer = new PathDrawer(drawForward, drawBack, heatmap);  
-        drawer.drawPath(arrowPaths[i]);
-        PathAnalyser analyser = new PathAnalyser(arrowPaths[i]);
-        analyser.analysePath();
-        analyser.printResult(false);
-      }
-    }
-    
-    if(drawNPC)
-    {
-      Reader npcReader = new Reader();
-      npcReader.getFilesFromFolder("C:/UnityProjects/P5Game/ProcessingShowPath/bee");
-      Path[] npcPaths = npcReader.readGameFiles("bee");
-      
-      println("Drawing arrow condition files");
-      println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken, wander_count, wander_time_sum, finished");
-      for(int i = 0; i < npcPaths.length; i++)
-      {
-        PathDrawer drawer = new PathDrawer(drawForward, drawBack, heatmap); 
-        drawer.drawPath(npcPaths[i]);
-        PathAnalyser analyser = new PathAnalyser(npcPaths[i]);
-        analyser.analysePath();
-        analyser.printResult(false);
-      }
-    }
+    drawCondition("arrow", drawArrow);
+    drawCondition("bee", drawNPC);
   }
   else
   {
     Reader reader = new Reader();
-    path = reader.readTestFile(singleFilePath);
+    path = reader.readPlayerPathFile(singleFilePath);
     drawer = new PathDrawer(drawForward, drawBack, false);  
     PathAnalyser analyser = new PathAnalyser(path);
     analyser.analysePath();
@@ -79,4 +46,25 @@ void draw() {
       drawIterator++;
     }
   }
+}
+
+void drawCondition(String fileFolderName, boolean drawCondition)
+{
+  if(drawCondition)
+    {
+      Reader reader = new Reader();
+      reader.getFilesFromFolder("C:/UnityProjects/P5Game/ProcessingShowPath/" + fileFolderName);
+      Path[] paths = reader.readPlayerPathFiles(fileFolderName);
+     
+      println("Drawing " + fileFolderName + " condition files");
+      println("participant_number, time_going_forward, time_going_back, mistakes_made, shortcuts_taken, wander_count, wander_time_sum, finished");
+      for(int i = 0; i < paths.length; i++)
+      {
+        PathDrawer drawer = new PathDrawer(drawForward, drawBack, isHeatmap);  
+        drawer.drawPath(paths[i]);
+        PathAnalyser analyser = new PathAnalyser(paths[i]);
+        analyser.analysePath();
+        analyser.printResult(false);
+      }
+    }
 }
