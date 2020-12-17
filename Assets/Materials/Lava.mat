@@ -70,12 +70,14 @@ Material:
     - _Offset: 6
     - _Parallax: 0.02
     - _Ripples: 2
-    - _Shininess: 40
+    - _Shininess: 100
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 0.5
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WaveAmplitude: 0.1
+    - _WaveSpeed: 1
     - _ZWrite: 1
     m_Colors:
     - _CellColor: {r: 0.745283, g: 0.4457636, b: 0.4457636, a: 1}
