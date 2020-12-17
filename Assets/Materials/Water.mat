@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water
-  m_Shader: {fileID: 4800000, guid: 2124a42b1e98c414a84af610525ce2e8, type: 3}
+  m_Shader: {fileID: 4800000, guid: 467bb31c7004f324a80631e4695080b8, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -70,12 +70,14 @@ Material:
     - _Offset: 6
     - _Parallax: 0.02
     - _Ripples: 3
-    - _Shininess: 50
+    - _Shininess: 100.16
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 0.3
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WaveAmplitude: 0.2
+    - _WaveSpeed: 3
     - _ZWrite: 1
     m_Colors:
     - _CellColor: {r: 0.088679194, g: 1, b: 0.9886793, a: 1}
