@@ -76,8 +76,8 @@ Material:
     - _Speed: 0.3
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WaveAmplitude: 0.1
-    - _WaveSpeed: 1
+    - _WaveAmplitude: 0.2
+    - _WaveSpeed: 3
     - _ZWrite: 1
     m_Colors:
     - _CellColor: {r: 0.088679194, g: 1, b: 0.9886793, a: 1}
