@@ -72,7 +72,7 @@
 
 			float2 random2d(float2 rand) //gives output of a random vector for each pixel
 			{
-				return frac(float2(dot(rand, float2(169.1562, 321.742)), dot(rand, float2(252.758, 179.323))))*48.5453;
+				return frac(sin(float2(dot(rand, float2(169.156, 321.742)), dot(rand, float2(252.758, 179.323))))*48.5453);
 			}
 
 			fixed4 frag(v2f i) : SV_Target
