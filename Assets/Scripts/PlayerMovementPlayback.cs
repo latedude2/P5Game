@@ -7,13 +7,15 @@ public class PlayerMovementPlayback : MonoBehaviour
 {
     private StreamReader reader = null;
     FileInfo theSourceFile = null;
+    private float currentTime = 0;
     private int counter = 0;
+    private int framesRendered = 0;
     [SerializeField] private int framesBetweenRecordTakes = 10; // How many frames between recording of gameobject coordinates
 
     // Start is called before the first frame update
     void Start()
     {
-        string path = "Save files/test0.txt";
+        string path = "Save files/test.txt";
         theSourceFile = new FileInfo(path);
 
         if (theSourceFile != null && theSourceFile.Exists)
@@ -49,6 +51,7 @@ public class PlayerMovementPlayback : MonoBehaviour
                     Quaternion target = new Quaternion(float.Parse(data[4]), float.Parse(data[5]), float.Parse(data[6]), float.Parse(data[3]));
                     transform.rotation = target;
                     //Debug.Log(data[7]);
+                    currentTime = float.Parse(data[7]);
                 }
                 else
                 {
@@ -60,6 +63,12 @@ public class PlayerMovementPlayback : MonoBehaviour
 
     void OnDisable()
     {
+        Debug.Log("Time passed: " + currentTime + " Frames rendered: " + framesRendered + " Average FPS: " + framesRendered / currentTime);
         reader.Close();
+    }
+
+    void Update()
+    {
+        framesRendered++;
     }
 }
