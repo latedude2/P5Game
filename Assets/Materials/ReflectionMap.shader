@@ -41,8 +41,7 @@
 
               float4 frag(vertexOutput input) : COLOR
               {
-                 float3 reflectedDir =
-                    reflect(input.viewDir, normalize(input.normalDir));
+                 float3 reflectedDir = input.viewDir;
                  return texCUBE(_Cube, reflectedDir);
               }
 
