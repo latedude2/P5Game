@@ -1,2 +1,2 @@
 # P5Game
-5th semester project at
+Prototype for the 5th semester project
