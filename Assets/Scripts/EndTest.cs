@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EndTest : MonoBehaviour
 {
     [System.NonSerialized] public bool endTaskCompleted = false;
-    [System.NonSerialized] public string endingText = "You can now quit the game by pressing ALT + F4 and fill out the questionnaire.";
+    [System.NonSerialized] public string endingText = "You can now quit the game by pressing ALT + F4.";
 
     [SerializeField] private GameObject interactionBackdrop;
     [SerializeField] private int textBackdropWidth;
@@ -20,7 +20,7 @@ public class EndTest : MonoBehaviour
         if(other.GetComponent<EndTestTrigger>() != null)
         {
             //End the recording
-            transform.GetComponent<PlayerMovementRecorder>().testEnded = true;
+            //transform.GetComponent<PlayerMovementRecorder>().testEnded = true; //disabled for itch release
             textElement.SetActive(true);
 
             interactionBackdrop.GetComponent<Image>().enabled = true;
